@@ -5,11 +5,10 @@
     "logo":"https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/logo%20xuper%20hydra.png",
     "apk":"https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/Xuper.Hydra.Nuevo.2.apk"
   },
-
   {
     "nombre":"Magma",
     "descripcion":"Versión 1.0.9",
-    "logo":"https://github.com/gerardogalazveliz26-cloud/smart-box-connect/blob/main/logos/logo%20magma.png",
+    "logo":"https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/logo%20magma.png",
     "apk":"https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/magma.sin.actualizar.1.0.9.apk"
   }
 ]
