@@ -1,1 +1,9 @@
 
+[
+  {
+    "nombre":"Aplicación Demo",
+    "descripcion":"Primera aplicación de Smart Box Connect",
+    "logo":"https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/logo_smart_box.png",
+    "apk":"https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/apks/demo.apk"
+  }
+]
