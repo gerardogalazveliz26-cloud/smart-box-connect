@@ -12,5 +12,12 @@
     "url": "https://youtu.be/IE9kUIdzZR8",
     "miniatura": "https://img.youtube.com/vi/IE9kUIdzZR8/hqdefault.jpg",
     "categoria": "Aplicaciones"
+   },
+  {
+    "titulo": "Video de prueba",  
+    "descripcion": "Probando carga remota",
+    "url": "https://youtu.be/XXXXXXXX",
+    "miniatura": "https://img.youtube.com/vi/XXXXXXXX/hqdefault.jpg",
+    "categoria": "Aplicaciones"
   }
 ]
