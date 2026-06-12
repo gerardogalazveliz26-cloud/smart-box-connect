@@ -10,21 +10,21 @@
     "titulo": "Cómo eliminar cualquier aplicación",
     "descripcion": "Aprende a desinstalar aplicaciones de tu dispositivo de forma rápida y segura.",
     "url": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/como.eliminar.cualquier.aplicacion.de.tu.dispositivo.mp4",
-    "miniatura": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/miniaturas/miniatura_eliminar_apps.png",
+    "miniatura": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/miniaturas/miniatura_como_desintalar_cualquier_aplicacion.png",
     "categoria": "Aplicaciones"
   },
   {
     "titulo": "Cómo descargar la Tienda Oficial Smart Box Connect",
     "descripcion": "Instala la tienda oficial y accede a todas las aplicaciones disponibles.",
     "url": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/como.descargar.tienda.oficial.smartboxconnect.mp4",
-    "miniatura": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/miniaturas/miniatura_tienda_oficial.png",
+    "miniatura": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/miniaturas/miniatura_instalacion_de_tienda.png",
     "categoria": "Aplicaciones"
   },
   {
     "titulo": "Cómo descargar aplicaciones desde la Tienda Smart Box Connect",
     "descripcion": "Aprende a instalar cualquier aplicación disponible en la tienda Smart Box Connect.",
     "url": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/como.descargar.cualquier.aplicacion.desde.la.tienda.Smartboxconnect.mp4",
-    "miniatura": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/miniaturas/miniatura_descargar_apps.png",
+    "miniatura": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/miniaturas/miniatura_como_descargar_aplicaciones_de_la_tienda.png",
     "categoria": "Aplicaciones"
   }
 ]
