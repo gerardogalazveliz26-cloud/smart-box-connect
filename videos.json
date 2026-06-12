@@ -12,12 +12,12 @@
     "url": "https://youtu.be/IE9kUIdzZR8",
     "miniatura": "https://img.youtube.com/vi/IE9kUIdzZR8/hqdefault.jpg",
     "categoria": "Aplicaciones"
-   },
+  },
   {
-    "titulo": "Video de prueba",  
-    "descripcion": "Probando carga remota",
-    "url": "https://youtu.be/XXXXXXXX",
-    "miniatura": "https://img.youtube.com/vi/XXXXXXXX/hqdefault.jpg",
+    "titulo": "Tutorial Smart Box Connect",
+    "descripcion": "Aprende a utilizar las funciones principales de Smart Box Connect.",
+    "url": "https://youtu.be/IE9kUIdzZR8",
+    "miniatura": "https://img.youtube.com/vi/IE9kUIdzZR8/hqdefault.jpg",
     "categoria": "Aplicaciones"
-  }
+   }
 ]
