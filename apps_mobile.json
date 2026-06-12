@@ -13,7 +13,7 @@
   },
   {
     "nombre": "RB Live 77",
-    "descripcion": "deportes en vivo",
+    "descripcion": "Deportes en vivo",
     "logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/RBLive77%20logo.webp",
     "apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/RBLive77.v3.0.319.apk"
   },
@@ -22,5 +22,17 @@
     "descripcion": "Versión 4.0.7",
     "logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/logo%20plpro.jpeg",
     "apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/PLayer.Pro.4.0.7.apk"
+  },
+  {
+    "nombre": "Xuper",
+    "descripcion": "Versión 6.2.91",
+    "logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/logo%20xuper%20oficial.png",
+    "apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/Xuper.6.2.91.apk"
+  },
+  {
+    "nombre": "BIX Plus",
+    "descripcion": "Versión 1.41",
+    "logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/logo_bixplus.png",
+    "apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/BIXPLUS.1.41.apk"
   }
 ]
