@@ -40,5 +40,11 @@
     "descripcion": "Versión 2.5",
     "logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/logo%20sportzxtv.png",
     "apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/SportzX.2.5.apk"
+  },
+  {
+    "nombre": "Aple TV",
+    "descripcion": "Versión 1.0",
+    "logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/aple%20TV%20logo.png",
+    "apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/Apple.TV.1.0.0.apk"
   }
 ]
