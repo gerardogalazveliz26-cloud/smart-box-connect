@@ -6,13 +6,13 @@
       "id": 1,
       "nombre": "Canal Demo",
       "logo": "https://tu-servidor.com/logo1.png",
-      "url": "http://rlatinop.com:8880/get.php?username=Ew4wFcudrKs6&password=mD4EuLWa7yBV&type=m3u_plus"
+      "url": ""
     },
     {
       "id": 2,
       "nombre": "Big Buck Bunny",
       "logo": "https://tu-servidor.com/logo2.png",
-      "url": "http://rlatinop.com:8880/get.php?username=Ew4wFcudrKs6&password=mD4EuLWa7yBV&type=m3u_plus"
+      "url": "www.prueba"
     }
   ]
 }
