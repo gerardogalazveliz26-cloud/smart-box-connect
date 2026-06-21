@@ -94,5 +94,12 @@
     "logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/fctv33%20logo.webp",
     "apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/FCTV33.TV._3.0.319_VIP.apk"
   }
+{
+  "nombre": "RetroArch",
+  "descripcion": "Centro de emulación retro",
+  "logo": "https://TU_LOGO_RETROARCH.png",
+  "apk": "https://TU_APK_RETROARCH.apk",
+  "categoria": "Retro Gaming"
+}
 ]
 
