@@ -1,40 +1,75 @@
 [
-  {
-    "nombre": "Xuper Hydra",
-    "descripcion": "version 4.99.2",
-    "logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/logo%20xuper%20hydra.png",
-    "apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/Xuper.Hydra.Nuevo.2.apk"
-  },
-  {
-    "nombre": "Magma",
-    "descripcion": "Versión 1.0.9",
-    "logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/logo%20magma.png",
-    "apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/magma.sin.actualizar.1.0.9.apk"
-  },
-  {
-    "nombre": "AK47 Sports",
-    "descripcion": "Deportes en vivo",
-    "logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/ak47-sports-logo.jpg",
-    "apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/AK47Sports_.V1.1.apk"
-  },
-  {
-    "nombre": "RB Live 77",
-    "descripcion": "deportes en vivo",
-    "logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/RBLive77%20logo.webp",
-    "apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/RBLive77.v3.0.319.apk"
-  },
-  {
-    "nombre": "Player Pro",
-    "descripcion": "Versión 4.0.7",
-    "logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/logo%20plpro.jpeg",
-    "apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/PLayer.Pro.4.0.7.apk"
-  },
-  {
-    "nombre": "SmartTube",
-    "descripcion": "Versión 31.73",
-    "logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/logo%20smartyoutube.png",
-    "apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/SmartTube.31.73.apk"
-  },
+{
+"nombre": "Xuper Hydra",
+"descripcion": "version 4.99.2",
+"logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/logo%20xuper%20hydra.png",
+"apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/Xuper.Hydra.Nuevo.2.apk",
+"categoria": "Streaming"
+},
+{
+"nombre": "Magma",
+"descripcion": "Versión 1.0.9",
+"logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/logo%20magma.png",
+"apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/magma.sin.actualizar.1.0.9.apk",
+"categoria": "Streaming"
+},
+{
+"nombre": "AK47 Sports",
+"descripcion": "Deportes en vivo",
+"logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/ak47-sports-logo.jpg",
+"apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/AK47Sports_.V1.1.apk",
+"categoria": "Deportes"
+},
+{
+"nombre": "RB Live 77",
+"descripcion": "deportes en vivo",
+"logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/RBLive77%20logo.webp",
+"apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/RBLive77.v3.0.319.apk",
+"categoria": "Deportes"
+},
+{
+"nombre": "Player Pro",
+"descripcion": "Versión 4.0.7",
+"logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/logo%20plpro.jpeg",
+"apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/PLayer.Pro.4.0.7.apk",
+"categoria": "Streaming"
+},
+{
+"nombre": "SmartTube",
+"descripcion": "Versión 31.73",
+"logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/logo%20smartyoutube.png",
+"apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/SmartTube.31.73.apk",
+"categoria": "Herramientas"
+},
+{
+"nombre": "Xuper",
+"descripcion": "Versión 4.34.5",
+"logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/logo%20xuper%20oficial.png",
+"apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/Xuper.4.34.5.apk",
+"categoria": "Streaming"
+},
+{
+"nombre": "SportZxTV",
+"descripcion": "Versión 2.5",
+"logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/logo%20sportzxtv.png",
+"apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/SportzX.2.5.apk",
+"categoria": "Deportes"
+},
+{
+"nombre": "BixPlus",
+"descripcion": "Versión 1.2",
+"logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/logo_bixplus.png",
+"apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/BIXPLUS_1.42.vip.apk",
+"categoria": "Streaming"
+},
+{
+"nombre": "Fctv33",
+"descripcion": "Versión 3.0.3",
+"logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/fctv33%20logo.webp",
+"apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/FCTV33.TV._3.0.319_VIP.apk",
+"categoria": "Deportes"
+}
+]  },
   {
     "nombre": "Xuper",
     "descripcion": "Versión 4.34.5",
