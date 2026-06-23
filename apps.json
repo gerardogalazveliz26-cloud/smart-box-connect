@@ -138,5 +138,13 @@
 "logo":"https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/logo_smartbox.png",
 "apk":"https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/retro-gaming/snes/Super%20Street%20Fighter%20II.smc",
 "categoria":"SNES"
+},
+{
+"nombre":"RetroArch",
+"descripcion":"Centro de emulación retro",
+"logo":"URL_DEL_LOGO",
+"apk":"URL_DEL_APK",
+"categoria":"Emuladores"
 }
 ]
+
