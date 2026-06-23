@@ -74,69 +74,69 @@
 "descripcion":"Juego clásico de Super Nintendo",
 "logo":"https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/logo_smartbox.png",
 "apk":"https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/retro-gaming/snes/Aladdin%20(Spain).sfc",
-"categoria":"Retro Gaming"
+"categoria":"SNES"
 },
 {
 "nombre":"Donkey Kong Country",
 "descripcion":"Aventura clásica de SNES",
 "logo":"https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/logo_smartbox.png",
 "apk":"https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/retro-gaming/snes/Donkey%20Kong%20Country%20(USA)%20(Rev%202)%20ESP.sfc",
-"categoria":"Retro Gaming"
+"categoria":"SNES"
 },
 {
 "nombre":"Donkey Kong Country 2",
 "descripcion":"La segunda aventura de Donkey Kong",
 "logo":"https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/logo_smartbox.png",
 "apk":"https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/retro-gaming/snes/Donkey%20Kong%20Country%202",
-"categoria":"Retro Gaming"
+"categoria":"SNES"
 },
 {
 "nombre":"Mortal Kombat",
 "descripcion":"Lucha clásica de SNES",
 "logo":"https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/logo_smartbox.png",
 "apk":"https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/retro-gaming/snes/Mortal%20Kombat%201",
-"categoria":"Retro Gaming"
+"categoria":"SNES"
 },
 {
 "nombre":"Mortal Kombat 2",
 "descripcion":"La secuela definitiva",
 "logo":"https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/logo_smartbox.png",
 "apk":"https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/retro-gaming/snes/Mortal%20Kombat%202",
-"categoria":"Retro Gaming"
+"categoria":"SNES"
 },
 {
 "nombre":"Super Mario All-Stars",
 "descripcion":"Colección de clásicos Mario",
 "logo":"https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/logo_smartbox.png",
 "apk":"https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/retro-gaming/snes/Super%20Mario%20All-Stars.smc",
-"categoria":"Retro Gaming"
+"categoria":"SNES"
 },
 {
 "nombre":"Super Mario World",
 "descripcion":"El clásico definitivo de SNES",
 "logo":"https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/logo_smartbox.png",
 "apk":"https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/retro-gaming/snes/Super%20Mario%20All-Stars%20%2B%20Super%20Mario%20World.smc",
-"categoria":"Retro Gaming"
+"categoria":"SNES"
 },
 {
 "nombre":"Super Mario Kart",
 "descripcion":"Carreras clásicas de Nintendo",
 "logo":"https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/logo_smartbox.png",
 "apk":"https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/retro-gaming/snes/Super%20Mario%20Kart.smc",
-"categoria":"Retro Gaming"
+"categoria":"SNES"
 },
 {
 "nombre":"Super Mario Land 3",
 "descripcion":"Tatanga's Return",
 "logo":"https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/logo_smartbox.png",
 "apk":"https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/retro-gaming/snes/Super%20Mario%20Land%203%20Tatanga%27s%20Return.sfc",
-"categoria":"Retro Gaming"
+"categoria":"SNES"
 },
 {
 "nombre":"Super Street Fighter II",
 "descripcion":"Lucha arcade en SNES",
 "logo":"https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/logo_smartbox.png",
 "apk":"https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/retro-gaming/snes/Super%20Street%20Fighter%20II.smc",
-"categoria":"Retro Gaming"
+"categoria":"SNES"
 }
 ]
