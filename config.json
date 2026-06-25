@@ -1,18 +1,3 @@
 {
-  "version": "1.0",
-  "mensaje": "Bienvenido a Smart Box Connect",
-  "items": [
-    {
-      "id": 1,
-      "nombre": "Canal Demo",
-      "logo": "https://tu-servidor.com/logo1.png",
-      "url": "http://rlatinop.com:8880/get.php?username=Ew4wFcudrKs6&password=mD4EuLWa7yBV&type=m3u_plus"
-    },
-    {
-      "id": 2,
-      "nombre": "Big Buck Bunny",
-      "logo": "https://tu-servidor.com/logo2.png",
-      "url": "http://rlatinop.com:8880/get.php?username=Ew4wFcudrKs6&password=mD4EuLWa7yBV&type=m3u_plus"
-    }
-  ]
+  "playlist": "http://rlatinop.com:8880/get.php?username=Ew4wFcudrKs6&password=mD4EuLWa7yBV&type=m3u_plus"
 }
