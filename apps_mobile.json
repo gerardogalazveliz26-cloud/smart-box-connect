@@ -1,5 +1,11 @@
 [
   {
+    "nombre": "micro g",
+    "descripcion": "necesario para YouTube",
+    "logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/logo%20magma.png",
+    "apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/YouTube.Premium.21.24.366.apk"
+  },
+  {
     "nombre": "YouTube Premium",
     "descripcion": "Versión 1.0.9",
     "logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/logo%20magma.png",
