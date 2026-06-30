@@ -7,6 +7,20 @@
 "categoria": "todas"
 },
 {
+"nombre": "femon play",
+"descripcion": "version 3.01",
+"logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/femon%20play%20logo.png",
+"apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/Femon.Play+_3.01.VIP.apk",
+"categoria": "Streaming"
+},
+{
+"nombre": "xuper smartboxconnect",
+"descripcion": "version 4.99.2",
+"logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/icon_app.png.png",
+"apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/xuper.Smart.2.logo.apk",
+"categoria": "Streaming"
+},
+{
 "nombre": "Xuper Hydra",
 "descripcion": "version 4.99.2",
 "logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/logo%20xuper%20hydra.png",
