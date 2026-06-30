@@ -2,19 +2,19 @@
   {
     "nombre": "micro g",
     "descripcion": "necesario para YouTube",
-    "logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/logo%20magma.png",
+    "logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/microG-Limited-Services_round.png",
     "apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/MicroG.v6.1.4.b255034004-@EfrAPK.apk"
   },
   {
     "nombre": "YouTube Premium",
     "descripcion": "necesario micro g",
-    "logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/logo%20magma.png",
+    "logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/YouTube%20premium.png",
     "apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/YouTube.Premium.21.24.366.apk"
   },
   {
     "nombre": "YouTube Music",
     "descripcion": "necesario micro g",
-    "logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/ak47-sports-logo.jpg",
+    "logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/logo%20YouTube%20music.png",
     "apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/YT.Music.Morphe.9.21.51.apk"
   },
   {
