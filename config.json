@@ -1,4 +1,6 @@
 {
-    "playlist":"http://rlatinop.com:8880/get.php?username=faueazqemn&password=DakS9wbL9qsb&type=m3u_plus",
-    "epg":"http://rlatinop.com:8880/xmltv.php?username=faueazqemn&password=DakS9wbL9qsb"
+  "version": "1.0.0",
+  "playlist": "http://rlatinop.com:8880/get.php?username=faueazqemn&password=DakS9wbL9qsb&type=m3u_plus",
+  "epg": "http://rlatinop.com:8880/xmltv.php?username=faueazqemn&password=DakS9wbL9qsb",
+  "maintenance": false
 }
