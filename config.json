@@ -1,6 +1,6 @@
 {
-  "version": "1.0.0",
-  "playlist": "http://livetv-plus.com:80/get.php?username=Manini&password=egaLUtqdaM&type=m3u_plus",
+  "version": "1.0.1",
+  "playlist": "http://livetv-plus.com:80/get.php?username=Manini&password=egaLUtqdaM&type=m3u_plus&output=ts",
   "epg": "",
   "maintenance": false
 }
