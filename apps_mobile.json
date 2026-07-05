@@ -1,9 +1,9 @@
 [
   {
     "nombre": "Smart Box TV",
-    "descripcion": "necesario para YouTube",
+    "descripcion": "version de peueba",
     "logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/microG-Limited-Services_round.png",
-    "apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/MicroG.v6.1.4.b255034004-@EfrAPK.apk"
+    "apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/smrtboxTV.apk"
   },
   {
     "nombre": "micro g",
