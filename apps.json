@@ -1,12 +1,5 @@
 [
 {
-"nombre": "Sporify",
-"descripcion": "version premium",
-"logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/logo_smart_box.png",
-"apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/Smart.Box.Connect.2.2.apk",
-"categoria": "todas"
-},
-{
 "nombre": "actualizacion smart box connect",
 "descripcion": "version 2.2",
 "logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/logo_smart_box.png",
