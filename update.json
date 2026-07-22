@@ -1,4 +1,5 @@
 {
   "version": "2.3",
-  "apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/app-debug.apk",
-  "novedades": "🚀 Smart Box Connect 2.3, actualiza para poder acceder a la zona retro."
+  "apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v2.3/app-debug.apk",
+  "novedades": "🚀 Smart Box Connect 2.3\n- Nueva zona Retro.\n- Categorías Emuladores y Aplicaciones.\n- Mejoras de estabilidad."
+}
