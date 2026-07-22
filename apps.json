@@ -98,8 +98,8 @@
 "categoria": "Deportes"
 },
 {
-"nombre":"RetroArch",
-"descripcion":"Centro de emulación retro",
+"nombre":"Snes9x EX+",
+"descripcion":"necesario para jugar super nintendo",
 "logo":"URL_DEL_LOGO",
 "apk":"URL_DEL_APK",
 "categoria":"Emuladores"
