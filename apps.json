@@ -100,7 +100,7 @@
 {
 "nombre":"Snes9x EX+",
 "descripcion":"necesario para jugar super nintendo",
-"logo":"URL_DEL_LOGO",
+"logo":"https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/logo%20Snes9x.jpg",
 "apk":"https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/Snes9x.EX+.1.5.85.apk+",
 "categoria":"Emuladores"
 }
