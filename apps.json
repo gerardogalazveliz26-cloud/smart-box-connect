@@ -98,11 +98,11 @@
 "categoria": "Deportes"
 },
 {
-"nombre":"Snes9x EX+",
+"nombre":"Smart Box Retro",
 "descripcion":"necesario para jugar super nintendo",
 "logo":"https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/logo%20Snes9x.jpg",
-"apk":"https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/Snes9x.EX+.1.5.85.apk+",
-"categoria":"Emuladores"
+"apk":"https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/smartbox.retro.apk",
+"categoria":"Aplicaciones"
 }
 ]
 
