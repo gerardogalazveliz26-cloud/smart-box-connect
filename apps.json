@@ -1,5 +1,12 @@
 [
 {
+"nombre": "Spotify",
+"descripcion": "mod oficial",
+"logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/YouTube%20premium.png",
+"apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/cobalt-arm.apk",
+"categoria": "Streaming"
+},
+{
 "nombre": "YouTube premium oficial",
 "descripcion": "mod oficial",
 "logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/YouTube%20premium.png",
