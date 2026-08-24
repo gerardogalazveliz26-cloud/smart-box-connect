@@ -19,11 +19,7 @@
   },
   {
     "nombre": "Smart Box TV",
-    "descripcion": "version de peueba",
-    "logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/logo%20smartboxTV.png",
-    "apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/smrtboxTV.apk"
-  },
-  {
+
     "nombre": "micro g",
     "descripcion": "necesario para YouTube",
     "logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/microG-Limited-Services_round.png",
@@ -73,9 +69,9 @@
   },
   {
     "nombre": "SportZxTV",
-    "descripcion": "Versión 2.5",
+    "descripcion": "Versión 3.2",
     "logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/logo%20sportzxtv.png",
-    "apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/SportzX.2.5.apk"
+    "apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/SportzX_3.2v.1.apk"
   },
   {
     "nombre": "Aple TV",
