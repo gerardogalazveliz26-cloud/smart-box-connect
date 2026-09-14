@@ -1,5 +1,12 @@
 [
 {
+"nombre": "prueba",
+"descripcion": "multiples plataformas",
+"logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/streamflix.webp",
+"apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/streamflix-v1.7.230.apk",
+"categoria": "Streaming"
+},
+{
 "nombre": "streamflix",
 "descripcion": "multiples plataformas",
 "logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/streamflix.webp",
