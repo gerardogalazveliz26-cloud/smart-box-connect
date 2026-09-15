@@ -1,1 +1,9 @@
-https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/SmartBoxConnectStore-1.13-PRODUCCION.apk
+[
+{
+"nombre": "tienda oficial ",
+"descripcion": "sistema android TV",
+"logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/streamflix.webp",
+"apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/SmartBoxConnectStore-1.13-PRODUCCION.apk",
+"categoria": "Streaming"
+},
+{
