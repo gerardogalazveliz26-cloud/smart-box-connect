@@ -1,5 +1,12 @@
 [
 {
+"nombre": "Film Plus",
+"descripcion": "peliculas y series",
+"logo": "",
+"apk": "",
+"categoria": "Streaming"
+},
+{
 "nombre": "streamflix",
 "descripcion": "multiples plataformas",
 "logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/streamflix.webp",
