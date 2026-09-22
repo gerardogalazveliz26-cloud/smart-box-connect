@@ -1,6 +1,13 @@
 [
 {
-"nombre": "XuperSBC",
+"nombre": "XuperSBC normal",
+"descripcion": "modificacion Smartboxconnect",
+"logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/xuperSBC.png",
+"apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/xuperSBC.normal.apk",
+"categoria": "Streaming"
+},
+{
+"nombre": "XuperSBC (+18)",
 "descripcion": "TODO DESBLOQUEADO",
 "logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/xuperSBC.png",
 "apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/xuperSBC.libre.apk",
