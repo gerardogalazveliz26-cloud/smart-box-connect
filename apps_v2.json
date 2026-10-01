@@ -1,16 +1,9 @@
 [
 {
-"nombre": "(n)XuperSBC normal",
+"nombre": "XuperSBC antibloqueo",
 "descripcion": "modificacion Smartboxconnect",
 "logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/xuperSBC.png",
-"apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/xuperSBC.normal.apk",
-"categoria": "Streaming"
-},
-{
-"nombre": "En mantenimiento (+18)XuperSBC(+18)",
-"descripcion": "se subira pronto",
-"logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/xuperSBC.png",
-"apk": "",
+"apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/xuperSBC-vpn-multiservidor.apk",
 "categoria": "Streaming"
 },
 {
@@ -70,7 +63,7 @@
 "categoria": "Streaming"
 },
 {
-"nombre": "xuper oficial 2.0",
+"nombre": "xuper oficial 4.99.5",
 "descripcion": "version 4.99.5",
 "logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/logo%20xuper%20oficial.png",
 "apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/xuper_4.99.5_release_20260709094006_jiagu_sign.apk",
@@ -109,13 +102,6 @@
 "descripcion": "Versión 4.0.7",
 "logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/logo%20plpro.jpeg",
 "apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/PLayer.Pro.4.0.7.apk",
-"categoria": "Streaming"
-},
-{
-"nombre": "SmartTube",
-"descripcion": "Versión 31.73",
-"logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/logo%20smartyoutube.png",
-"apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/SmartTube.31.73.apk",
 "categoria": "Streaming"
 },
 {
