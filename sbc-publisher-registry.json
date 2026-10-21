@@ -26,5 +26,19 @@
     ],
     "fecha": "2026-10-21T14:47:36Z",
     "codigo_downloader": "4709470"
+  },
+  "sbc-donacion": {
+    "nombre": "xuper futbol",
+    "version": "1.0",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-sbc-donacion-v1.0\/sbc-donacion-1.0.apk",
+    "url_downloader": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-publisher-production-current\/sbc-donacion.apk",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/sbc-donacion.png",
+    "sha256": "b0f19dd00e4ce10f1dc0e12e7a6c6daa8274acbf7c7e2d0b330e851503f40f73",
+    "size_bytes": 111823604,
+    "objetivos": [
+      "tv"
+    ],
+    "fecha": "2026-10-21T16:43:19Z",
+    "codigo_downloader": ""
   }
 }
