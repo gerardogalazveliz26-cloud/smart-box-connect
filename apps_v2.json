@@ -1,158 +1,163 @@
 [
-{
-"nombre": "Xuper ESPN",
-"descripcion": "modificacion Smartboxconnect",
-"logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/file_00000000589c820e82944502007ff474.png",
-"apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/xuperSBC-ESPN-logo-nuevo.apk",
-"categoria": "Streaming"
-},
-{
-"nombre": "XuperSBC antibloqueo",
-"descripcion": "modificacion Smartboxconnect",
-"logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/xuperSBC.png",
-"apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/xuperSBC-vpn-multiservidor.apk",
-"categoria": "Streaming"
-},
-{
-"nombre": "Film Plus",
-"descripcion": "peliculas y series",
-"logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/film%20plus%20logo.png",
-"apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/Film.Plus.v1.4.7.apk",
-"categoria": "Streaming"
-},
-{
-"nombre": "streamflix",
-"descripcion": "multiples plataformas",
-"logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/streamflix.webp",
-"apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/streamflix-v1.7.230.apk",
-"categoria": "Streaming"
-},
-{
-"nombre": "TDT Chile",
-"descripcion": "canales nacionales",
-"logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/tdt%20chile.jpeg",
-"apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/TDT_Chile.apk",
-"categoria": "Streaming"
-},
-{
-"nombre": "TV clasica",
-"descripcion": "para canales de tv",
-"logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/TV%20clasica%20.jpg",
-"apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/TV.CLASICA.100.apk",
-"categoria": "Streaming"
-},
-{
-"nombre": "Spotify",
-"descripcion": "mod oficial",
-"logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/Spotify%20logo.png",
-"apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/com.spotify.tv.android_1.126.8-2260800_minAPI23.armeabi-v7a.nodpi._apkmirror.com.apk",
-"categoria": "Streaming"
-},
-{
-"nombre": "YouTube premium oficial",
-"descripcion": "mod oficial",
-"logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/YouTube%20premium.png",
-"apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/cobalt-arm.apk",
-"categoria": "Streaming"
-},
-{
-  "nombre": "actualizacion smart box connect",
-"descripcion": "version 2.2",
-"logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/logo_smart_box.png",
-"apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/Smart.Box.Connect.2.2.apk",
-"categoria": "todas"
-},
-{
-"nombre": "Nova",
-"descripcion": "nueva actualización",
-"logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/Nova%20logo.webp",
-"apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/NOVA.Premium.v1.2.7.-.apk",
-"categoria": "Streaming"
-},
-{
-"nombre": "xuper oficial 4.99.5",
-"descripcion": "version 4.99.5",
-"logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/logo%20xuper%20oficial.png",
-"apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/xuper_4.99.5_release_20260709094006_jiagu_sign.apk",
-"categoria": "Streaming"
-},
-{
-"nombre": "Xuper smartboxconnect",
-"descripcion": "version 4.99.2",
-"logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/icon_app.png.png",
-"apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/xuper.Smart.2.logo.apk",
-"categoria": "Streaming"
-},
-{
-"nombre": "Magma",
-"descripcion": "Versión 1.0.9",
-"logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/logo%20magma.png",
-"apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/magma.sin.actualizar.1.0.9.apk",
-"categoria": "Streaming"
-},
-{
-"nombre": "AK47 Sports",
-"descripcion": "Deportes en vivo",
-"logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/ak47-sports-logo.jpg",
-"apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/AK47Sports_.V1.6.1.apk",
-"categoria": "Deportes"
-},
-{
-"nombre": "RB Live 77",
-"descripcion": "deportes en vivo",
-"logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/RBLive77%20logo.webp",
-"apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/RBLive77.v3.0.319.apk",
-"categoria": "Deportes"
-},
-{
-"nombre": "Player Pro",
-"descripcion": "Versión 4.0.7",
-"logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/logo%20plpro.jpeg",
-"apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/PLayer.Pro.4.0.7.apk",
-"categoria": "Streaming"
-},
-{
-"nombre": "Xuper",
-"descripcion": "Versión 4.34.5",
-"logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/logo%20xuper%20oficial.png",
-"apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/Xuper.4.34.5.apk",
-"categoria": "Streaming"
-},
-{
-"nombre": "SportZxTV",
-"descripcion": "Versión 3.2",
-"logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/logo%20sportzxtv.png",
-"apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/SportzX_3.2v.1.apk",
-"categoria": "Deportes"
-},
-{
-"nombre": "BixPlus",
-"descripcion": "Versión 1.2",
-"logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/logo_bixplus.png",
-"apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/BIXPLUS_1.42.vip.apk",
-"categoria": "Streaming"
-},
-{
-"nombre": "Fctv33",
-"descripcion": "Versión 3.0.3",
-"logo": "https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/fctv33%20logo.webp",
-"apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/FCTV33.TV._3.0.319_VIP.apk",
-"categoria": "Deportes"
-},
-{
-"nombre":"Smart Box Retro",
-"descripcion":"necesario para jugar",
-"logo":"https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/Smart%20box%20retro.png",
-"apk":"https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/SmartBoxRetro-2.6-MAME-prueba.apk",
-"categoria":"Aplicaciones"
-},
-{
-"nombre":"Joystick (tv box)",
-"descripcion":"complementonpara el tv box",
-"logo":"https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/logos/droid%20mote%20server%20logo.png",
-"apk":"https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/DroidMote+Server+.root._4.1.5_APKPure.apk",
-"categoria":"Aplicaciones"
-}
+  {
+    "nombre": "Xuper ESPN",
+    "descripcion": "modificacion Smartboxconnect",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/file_00000000589c820e82944502007ff474.png",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/v1.0\/xuperSBC-ESPN-logo-nuevo.apk",
+    "categoria": "Streaming"
+  },
+  {
+    "nombre": "XuperSBC antibloqueo",
+    "descripcion": "modificacion Smartboxconnect",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/xuperSBC.png",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/v1.0\/xuperSBC-vpn-multiservidor.apk",
+    "categoria": "Streaming"
+  },
+  {
+    "nombre": "Film Plus",
+    "descripcion": "peliculas y series",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/film%20plus%20logo.png",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/v1.0\/Film.Plus.v1.4.7.apk",
+    "categoria": "Streaming"
+  },
+  {
+    "nombre": "streamflix",
+    "descripcion": "multiples plataformas",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/streamflix.webp",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/v1.0\/streamflix-v1.7.230.apk",
+    "categoria": "Streaming"
+  },
+  {
+    "nombre": "TDT Chile",
+    "descripcion": "canales nacionales",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/tdt%20chile.jpeg",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/v1.0\/TDT_Chile.apk",
+    "categoria": "Streaming"
+  },
+  {
+    "nombre": "TV clasica",
+    "descripcion": "para canales de tv",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/TV%20clasica%20.jpg",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/v1.0\/TV.CLASICA.100.apk",
+    "categoria": "Streaming"
+  },
+  {
+    "nombre": "Spotify",
+    "descripcion": "mod oficial",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/Spotify%20logo.png",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/v1.0\/com.spotify.tv.android_1.126.8-2260800_minAPI23.armeabi-v7a.nodpi._apkmirror.com.apk",
+    "categoria": "Streaming"
+  },
+  {
+    "nombre": "YouTube premium oficial",
+    "descripcion": "mod oficial",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/YouTube%20premium.png",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/v1.0\/cobalt-arm.apk",
+    "categoria": "Streaming"
+  },
+  {
+    "nombre": "actualizacion smart box connect",
+    "descripcion": "version 2.2",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/logo_smart_box.png",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/v1.0\/Smart.Box.Connect.2.2.apk",
+    "categoria": "todas"
+  },
+  {
+    "nombre": "Nova",
+    "descripcion": "nueva actualización",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/Nova%20logo.webp",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/v1.0\/NOVA.Premium.v1.2.7.-.apk",
+    "categoria": "Streaming"
+  },
+  {
+    "nombre": "xuper oficial 4.99.5",
+    "descripcion": "version 4.99.5",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/logo%20xuper%20oficial.png",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/v1.0\/xuper_4.99.5_release_20260709094006_jiagu_sign.apk",
+    "categoria": "Streaming"
+  },
+  {
+    "nombre": "Xuper smartboxconnect",
+    "descripcion": "version 4.99.2",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/icon_app.png.png",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/v1.0\/xuper.Smart.2.logo.apk",
+    "categoria": "Streaming"
+  },
+  {
+    "nombre": "Magma",
+    "descripcion": "Versión 1.0.9",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/logo%20magma.png",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/v1.0\/magma.sin.actualizar.1.0.9.apk",
+    "categoria": "Streaming"
+  },
+  {
+    "nombre": "AK47 Sports",
+    "descripcion": "Deportes en vivo",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/ak47-sports-logo.jpg",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/v1.0\/AK47Sports_.V1.6.1.apk",
+    "categoria": "Deportes"
+  },
+  {
+    "nombre": "RB Live 77",
+    "descripcion": "deportes en vivo",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/RBLive77%20logo.webp",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/v1.0\/RBLive77.v3.0.319.apk",
+    "categoria": "Deportes"
+  },
+  {
+    "nombre": "Player Pro",
+    "descripcion": "Versión 4.0.7",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/logo%20plpro.jpeg",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/v1.0\/PLayer.Pro.4.0.7.apk",
+    "categoria": "Streaming"
+  },
+  {
+    "nombre": "Xuper",
+    "descripcion": "Versión 4.34.5",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/logo%20xuper%20oficial.png",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/v1.0\/Xuper.4.34.5.apk",
+    "categoria": "Streaming"
+  },
+  {
+    "nombre": "SportZxTV",
+    "descripcion": "Versión 3.2",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/logo%20sportzxtv.png",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/v1.0\/SportzX_3.2v.1.apk",
+    "categoria": "Deportes"
+  },
+  {
+    "nombre": "BixPlus",
+    "descripcion": "Versión 1.2",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/logo_bixplus.png",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/v1.0\/BIXPLUS_1.42.vip.apk",
+    "categoria": "Streaming"
+  },
+  {
+    "nombre": "Fctv33",
+    "descripcion": "Versión 3.0.3",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/fctv33%20logo.webp",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/v1.0\/FCTV33.TV._3.0.319_VIP.apk",
+    "categoria": "Deportes"
+  },
+  {
+    "nombre": "Smart Box Retro",
+    "descripcion": "necesario para jugar",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/Smart%20box%20retro.png",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/v1.0\/SmartBoxRetro-2.6-MAME-prueba.apk",
+    "categoria": "Aplicaciones"
+  },
+  {
+    "nombre": "Joystick (tv box)",
+    "descripcion": "complementonpara el tv box",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/droid%20mote%20server%20logo.png",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/v1.0\/DroidMote+Server+.root._4.1.5_APKPure.apk",
+    "categoria": "Aplicaciones"
+  },
+  {
+    "nombre": "xuper (eventos deportivos)",
+    "descripcion": "xuper modificada por SBC",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/xuper-mod-sbc.png",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-xuper-mod-sbc-v1.0\/xuper-mod-sbc-1.0.apk",
+    "categoria": "Aplicaciones"
+  }
 ]
-
-

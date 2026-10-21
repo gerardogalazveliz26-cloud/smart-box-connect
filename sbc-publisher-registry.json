@@ -1,0 +1,16 @@
+{
+  "xuper-mod-sbc": {
+    "nombre": "xuper (eventos deportivos)",
+    "version": "1.0",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-xuper-mod-sbc-v1.0\/xuper-mod-sbc-1.0.apk",
+    "url_downloader": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-publisher-production-current\/xuper-mod-sbc.apk",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/xuper-mod-sbc.png",
+    "sha256": "87f344f95487691e28588c13d808e168481363e74f2f0a48d7eedde4b44cf53b",
+    "size_bytes": 113785647,
+    "objetivos": [
+      "tv"
+    ],
+    "fecha": "2026-10-21T02:02:29Z",
+    "codigo_downloader": ""
+  }
+}
