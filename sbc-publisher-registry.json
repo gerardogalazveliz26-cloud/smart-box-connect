@@ -54,5 +54,19 @@
     ],
     "fecha": "2026-10-21T18:59:47Z",
     "codigo_downloader": ""
+  },
+  "sbc-x2": {
+    "nombre": "xuper híbrido",
+    "version": "1.0",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-sbc-x2-v1.0\/sbc-x2-1.0.apk",
+    "url_downloader": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-publisher-production-current\/sbc-x2.apk",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/sbc-x2.png",
+    "sha256": "b1bc1c1e91026ac4319bcbc7049e65ec016bfd3e817cbaaa23887983e6f30207",
+    "size_bytes": 110326076,
+    "objetivos": [
+      "tv"
+    ],
+    "fecha": "2026-10-21T23:30:54Z",
+    "codigo_downloader": ""
   }
 }
