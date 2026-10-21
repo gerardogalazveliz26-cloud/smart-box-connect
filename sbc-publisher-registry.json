@@ -12,5 +12,19 @@
     ],
     "fecha": "2026-10-21T02:02:29Z",
     "codigo_downloader": "1750019"
+  },
+  "sbc-mod": {
+    "nombre": "xuper-SBC-futbol",
+    "version": "1.0",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-sbc-mod-v1.0\/sbc-mod-1.0.apk",
+    "url_downloader": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-publisher-production-current\/sbc-mod.apk",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/sbc-mod.png",
+    "sha256": "bf59082103cf11a9b6ed874203d5124f6f89e6de3acaa38f3584a5c2956b118f",
+    "size_bytes": 111811257,
+    "objetivos": [
+      "tv"
+    ],
+    "fecha": "2026-10-21T14:47:36Z",
+    "codigo_downloader": ""
   }
 }
