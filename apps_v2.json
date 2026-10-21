@@ -1,5 +1,10 @@
 [
   {
+    "nombre": "xuper (eventos deportivos)",
+    "descripcion": "xuper modificada por SBC",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/xuper-mod-sbc.png",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-xuper-mod-sbc-v1.0\/xuper-mod-sbc-1.0.apk",
+    "categoria": "Aplicaciones"
     "nombre": "Xuper ESPN",
     "descripcion": "modificacion Smartboxconnect",
     "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/file_00000000589c820e82944502007ff474.png",
@@ -151,13 +156,6 @@
     "descripcion": "complementonpara el tv box",
     "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/droid%20mote%20server%20logo.png",
     "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/v1.0\/DroidMote+Server+.root._4.1.5_APKPure.apk",
-    "categoria": "Aplicaciones"
-  },
-  {
-    "nombre": "xuper (eventos deportivos)",
-    "descripcion": "xuper modificada por SBC",
-    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/xuper-mod-sbc.png",
-    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-xuper-mod-sbc-v1.0\/xuper-mod-sbc-1.0.apk",
     "categoria": "Aplicaciones"
   }
 ]
