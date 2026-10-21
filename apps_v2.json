@@ -1,5 +1,12 @@
 [
   {
+    "nombre": "xuper.especial",
+    "descripcion": "",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/sbc-espn.png",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-sbc-espn-v1.0\/sbc-espn-1.0.apk",
+    "categoria": "Streaming"
+  },
+  {
     "nombre": "xuper futbol",
     "descripcion": "esta aplicación requiere una donación para poder cubrir gastos operativos",
     "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/sbc-donacion.png",

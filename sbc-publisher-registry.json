@@ -40,5 +40,19 @@
     ],
     "fecha": "2026-10-21T16:43:19Z",
     "codigo_downloader": "9996104"
+  },
+  "sbc-espn": {
+    "nombre": "xuper.especial",
+    "version": "1.0",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-sbc-espn-v1.0\/sbc-espn-1.0.apk",
+    "url_downloader": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-publisher-production-current\/sbc-espn.apk",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/sbc-espn.png",
+    "sha256": "02949f98719c07ac97143e3cc62a30d88c07ada2ed0f5e9a412ee649cc32ad43",
+    "size_bytes": 46432418,
+    "objetivos": [
+      "tv"
+    ],
+    "fecha": "2026-10-21T18:59:47Z",
+    "codigo_downloader": ""
   }
 }
