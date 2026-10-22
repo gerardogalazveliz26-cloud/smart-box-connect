@@ -1,5 +1,12 @@
 [
   {
+    "nombre": "xuper especial 1 y 2",
+    "descripcion": "modificación otorgada gratuitamente por Smartboxconnect",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/sbc-triple.png",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-sbc-triple-v1.0\/sbc-triple-1.0.apk",
+    "categoria": "Streaming"
+  },
+  {
     "nombre": "xuper híbrido",
     "descripcion": "xuper con canales extra y eventos",
     "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/sbc-x2.png",
