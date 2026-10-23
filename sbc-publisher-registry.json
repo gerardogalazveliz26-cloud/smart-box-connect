@@ -96,5 +96,19 @@
     ],
     "fecha": "2026-10-22T11:29:34Z",
     "codigo_downloader": "4608055"
+  },
+  "sbc-streaming": {
+    "nombre": "xuper triple",
+    "version": "1.5",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-sbc-streaming-v1.5\/sbc-streaming-1.5.apk",
+    "url_downloader": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-publisher-production-current\/sbc-streaming.apk",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/sbc-streaming.png",
+    "sha256": "64493c2bd7d26a7b476dba23c8c2e62d18914e87400c9a0130ba2ca8cfeb603a",
+    "size_bytes": 99841987,
+    "objetivos": [
+      "tv"
+    ],
+    "fecha": "2026-10-23T12:24:23Z",
+    "codigo_downloader": ""
   }
 }
