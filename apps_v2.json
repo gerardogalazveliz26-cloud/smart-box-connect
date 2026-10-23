@@ -1,19 +1,6 @@
 [
   {
-    "nombre": "xuper especial 1 y 2",
-    "descripcion": "modificación otorgada gratuitamente por Smartboxconnect",
-    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/sbc-ultimo.png",
-    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-sbc-ultimo-v1.1\/sbc-ultimo-1.1.apk",
-    "categoria": "Streaming"
-  },
-  {
-    "nombre": "xuper híbrido",
-    "descripcion": "xuper con canales extra y eventos",
-    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/sbc-x2.png",
-    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-sbc-x2-v1.0\/sbc-x2-1.0.apk",
-    "categoria": "Streaming"
-  },
-  {
+
     "nombre": "Xuper ESPN",
     "descripcion": "modificacion Smartboxconnect",
     "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/file_00000000589c820e82944502007ff474.png",
