@@ -1,5 +1,12 @@
 [
   {
+    "nombre": "SmartBoxRetro",
+    "descripcion": "aplicación creada por Smartboxconnect con tecnología potenciada por NexumID",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/sbc-retro.png",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-sbc-retro-v2.9\/sbc-retro-2.9.apk",
+    "categoria": "Streaming"
+  },
+  {
     "nombre": "xuper triple",
     "descripcion": "xuper híbrido con canales especiales",
     "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/sbc-streaming.png",

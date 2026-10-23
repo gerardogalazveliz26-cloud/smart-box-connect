@@ -110,5 +110,20 @@
     ],
     "fecha": "2026-10-23T12:24:23Z",
     "codigo_downloader": ""
+  },
+  "sbc-retro": {
+    "nombre": "SmartBoxRetro",
+    "version": "2.9",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-sbc-retro-v2.9\/sbc-retro-2.9.apk",
+    "url_downloader": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-publisher-production-current\/sbc-retro.apk",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/sbc-retro.png",
+    "sha256": "9bc76615567de491c99d643b72e08e1ce41362b4dd8a167446689c9eec0b8c3c",
+    "size_bytes": 20542579,
+    "objetivos": [
+      "tv",
+      "mobile"
+    ],
+    "fecha": "2026-10-23T15:42:17Z",
+    "codigo_downloader": ""
   }
 }
