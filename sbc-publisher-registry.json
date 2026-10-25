@@ -125,5 +125,20 @@
     ],
     "fecha": "2026-10-23T15:42:17Z",
     "codigo_downloader": ""
+  },
+  "smartboxconnect-retro-3-4": {
+    "nombre": "Smartboxconnect Retro",
+    "version": "3.4-gamepad-wifi",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-smartboxconnect-retro-3-4-v3.4-gamepad-wifi\/smartboxconnect-retro-3-4-3.4-gamepad-wifi.apk",
+    "url_downloader": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-publisher-production-current\/smartboxconnect-retro-3-4.apk",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/smartboxconnect-retro-3-4.png",
+    "sha256": "0e71f00defe87d361b1df264da8b0761797b4eb64f9f24da508af62320c2916f",
+    "size_bytes": 21041647,
+    "objetivos": [
+      "tv",
+      "mobile"
+    ],
+    "fecha": "2026-10-25T14:08:11Z",
+    "codigo_downloader": ""
   }
 }
