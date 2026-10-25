@@ -140,5 +140,19 @@
     ],
     "fecha": "2026-10-25T14:08:11Z",
     "codigo_downloader": ""
+  },
+  "netflix": {
+    "nombre": "netflix",
+    "version": "9.7",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-netflix-v9.7\/netflix-9.7.apk",
+    "url_downloader": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-publisher-production-current\/netflix.apk",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/netflix.png",
+    "sha256": "b49286092c9e269ba90943d8e054ca272ade0378058a18e6a48b3f87bd7d9994",
+    "size_bytes": 226187023,
+    "objetivos": [
+      "tv"
+    ],
+    "fecha": "2026-10-25T18:02:34Z",
+    "codigo_downloader": ""
   }
 }
