@@ -168,5 +168,19 @@
     ],
     "fecha": "2026-11-01T15:59:15Z",
     "codigo_downloader": ""
+  },
+  "nexumid-sbc-android-tv": {
+    "nombre": "nexumID SBC Android TV",
+    "version": "1.1.0",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-nexumid-sbc-android-tv-v1.1.0\/nexumid-sbc-android-tv-1.1.0.apk",
+    "url_downloader": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-publisher-production-current\/nexumid-sbc-android-tv.apk",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/nexumid-sbc-android-tv.png",
+    "sha256": "eae23892885ac0926b40f4f0b6e1db65b785a55b7c8c313bd4f626147769345c",
+    "size_bytes": 82225989,
+    "objetivos": [
+      "tv"
+    ],
+    "fecha": "2026-11-01T16:01:08Z",
+    "codigo_downloader": ""
   }
 }
