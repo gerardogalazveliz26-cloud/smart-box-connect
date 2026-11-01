@@ -1,12 +1,5 @@
 [
   {
-    "nombre": "NexumID TV",
-    "descripcion": "requiere cuenta",
-    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/nexumid-tv.png",
-    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-nexumid-tv-v1.0.1\/nexumid-tv-1.0.1.apk",
-    "categoria": "todas"
-  },
-  {
     "nombre": "Smartboxconnect Retro",
     "descripcion": "aplicacion tanto para celular como para tv box.",
     "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/smartboxconnect-retro-3-4.png",
