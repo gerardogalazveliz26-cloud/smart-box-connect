@@ -169,5 +169,19 @@
     ],
     "fecha": "2026-11-01T03:41:48Z",
     "codigo_downloader": ""
+  },
+  "nexumid-sbc-movil": {
+    "nombre": "NexumID SBC Movil",
+    "version": "1.1.0",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-nexumid-sbc-movil-v1.1.0\/nexumid-sbc-movil-1.1.0.apk",
+    "url_downloader": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-publisher-production-current\/nexumid-sbc-movil.apk",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/nexumid-sbc-movil.png",
+    "sha256": "d257f54416ca69caa1b7c7377e159de8c48ce098701ba1924433d2050c1870fd",
+    "size_bytes": 82156357,
+    "objetivos": [
+      "mobile"
+    ],
+    "fecha": "2026-11-01T08:57:52Z",
+    "codigo_downloader": ""
   }
 }
