@@ -6,6 +6,12 @@
     "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/v1.0\/xuperSBC-Mobile-visual-v3.apk"
   },
   {
+    "nombre": "Smartboxconnect Retro",
+    "descripcion": "aplicacion tanto para celular como para tv box.",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/smartboxconnect-retro-3-4.png",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-smartboxconnect-retro-3-4-v3.4-gamepad-wifi\/smartboxconnect-retro-3-4-3.4-gamepad-wifi.apk"
+  },
+  }
     "nombre": "noutube",
     "descripcion": "youtube y music premium",
     "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/noutube%20logo.png",
@@ -70,17 +76,5 @@
     "descripcion": "Versión 1.0",
     "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/aple%20TV%20logo.png",
     "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/v1.0\/Apple.TV.1.0.0.apk"
-  },
-  {
-    "nombre": "Smartboxconnect Retro",
-    "descripcion": "aplicacion tanto para celular como para tv box.",
-    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/smartboxconnect-retro-3-4.png",
-    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-smartboxconnect-retro-3-4-v3.4-gamepad-wifi\/smartboxconnect-retro-3-4-3.4-gamepad-wifi.apk"
-  },
-  {
-    "nombre": "NexumID TV",
-    "descripcion": "requiere cuenta",
-    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/nexumid-tv.png",
-    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-nexumid-tv-v1.0.1\/nexumid-tv-1.0.1.apk"
   }
 ]
