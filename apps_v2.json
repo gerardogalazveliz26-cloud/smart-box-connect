@@ -1,5 +1,12 @@
 [
   {
+    "nombre": "actualización tienda tv",
+    "descripcion": "actualización de la tienda oficial, se corrigieron varias cosas.",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/actualizacion-tienda-tv.png",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-actualizacion-tienda-tv-v1.19\/actualizacion-tienda-tv-1.19.apk",
+    "categoria": "celular"
+  },
+  {
     "nombre": "nexumID SBC Android TV",
     "descripcion": "",
     "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/nexumid-sbc-android-tv.png",
