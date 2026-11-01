@@ -82,5 +82,11 @@
     "descripcion": "",
     "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/nexumid-sbc-movil.png",
     "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-nexumid-sbc-movil-v1.1.0\/nexumid-sbc-movil-1.1.0.apk"
+  },
+  {
+    "nombre": "nexumID SBC MXQ",
+    "descripcion": "",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/nexumid-sbc-mxq.png",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-nexumid-sbc-mxq-v1.1.0\/nexumid-sbc-mxq-1.1.0.apk"
   }
 ]

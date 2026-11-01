@@ -182,5 +182,19 @@
     ],
     "fecha": "2026-11-01T16:01:08Z",
     "codigo_downloader": ""
+  },
+  "nexumid-sbc-mxq": {
+    "nombre": "nexumID SBC MXQ",
+    "version": "1.1.0",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-nexumid-sbc-mxq-v1.1.0\/nexumid-sbc-mxq-1.1.0.apk",
+    "url_downloader": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-publisher-production-current\/nexumid-sbc-mxq.apk",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/nexumid-sbc-mxq.png",
+    "sha256": "8187301d6a6449a4d714d8c83f373fea40be176704a8fea7c18a11282e04b6c3",
+    "size_bytes": 78211296,
+    "objetivos": [
+      "mobile"
+    ],
+    "fecha": "2026-11-01T19:18:13Z",
+    "codigo_downloader": ""
   }
 }
