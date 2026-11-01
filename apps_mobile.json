@@ -1,11 +1,6 @@
 [
   {
-"nombre": "NexumID SBC Movil",
-    "descripcion": "requiere cuenta",
-    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/nexumid-sbc-movil.png",
-    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-nexumid-sbc-movil-v1.1.0\/nexumid-sbc-movil-1.1.0.apk"
-  },
-  {
+
     "nombre": "Xuper Mobile SBC",
     "descripcion": "Xuper modificado por nosotros",
     "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/xuperSBC%20mobile.png",
