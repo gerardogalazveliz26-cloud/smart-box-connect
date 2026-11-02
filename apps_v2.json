@@ -1,5 +1,12 @@
 [
   {
+    "nombre": "boxilink-vpn",
+    "descripcion": "vpn de Smartboxconnect",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/boxilink-vpn.png",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-boxilink-vpn-v0.4.1-BOXILINK-LAB\/boxilink-vpn-0.4.1-BOXILINK-LAB.apk",
+    "categoria": "celular"
+  },
+  {
     "nombre": "actualización tienda tv",
     "descripcion": "actualización de la tienda oficial, se corrigieron varias cosas.",
     "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/actualizacion-tienda-tv.png",
