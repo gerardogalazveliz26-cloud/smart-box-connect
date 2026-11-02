@@ -1,5 +1,12 @@
 [
   {
+    "nombre": "NexumID-SBC-TV-Sin-Antibloqueo",
+    "descripcion": "nuestra sin antibloqueo",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/nexumid-sbc-tv-sin-antibloqueo.png",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-nexumid-sbc-tv-sin-antibloqueo-v1.1.0\/nexumid-sbc-tv-sin-antibloqueo-1.1.0.apk",
+    "categoria": "streaming"
+  },
+  {
     "nombre": "boxilink-vpn",
     "descripcion": "vpn de Smartboxconnect",
     "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/boxilink-vpn.png",

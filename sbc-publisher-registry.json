@@ -225,5 +225,19 @@
     ],
     "fecha": "2026-11-02T10:38:20Z",
     "codigo_downloader": ""
+  },
+  "nexumid-sbc-tv-sin-antibloqueo": {
+    "nombre": "NexumID-SBC-TV-Sin-Antibloqueo",
+    "version": "1.1.0",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-nexumid-sbc-tv-sin-antibloqueo-v1.1.0\/nexumid-sbc-tv-sin-antibloqueo-1.1.0.apk",
+    "url_downloader": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-publisher-production-current\/nexumid-sbc-tv-sin-antibloqueo.apk",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/nexumid-sbc-tv-sin-antibloqueo.png",
+    "sha256": "20c94b414bcbfde1c84b11845e7936fecac8b59f21170e5f1d1e68c69c36ef12",
+    "size_bytes": 82213642,
+    "objetivos": [
+      "tv"
+    ],
+    "fecha": "2026-11-02T10:42:00Z",
+    "codigo_downloader": ""
   }
 }
