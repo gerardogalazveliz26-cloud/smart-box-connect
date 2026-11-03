@@ -1,5 +1,12 @@
 [
   {
+    "nombre": "Chile TV premium",
+    "descripcion": "aplicación modificada, se removieron anuncios y se activo el premium",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/chiletv-premium.png",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-chiletv-premium-v20.9.4\/chiletv-premium-20.9.4.apk",
+    "categoria": "streaming"
+  },
+  {
     "nombre": "NexumID-SBC-TV-Sin-Antibloqueo",
     "descripcion": "nuestra sin antibloqueo",
     "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/nexumid-sbc-tv-sin-antibloqueo.png",

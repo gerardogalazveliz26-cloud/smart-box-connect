@@ -239,5 +239,20 @@
     ],
     "fecha": "2026-11-02T10:42:00Z",
     "codigo_downloader": ""
+  },
+  "chiletv-premium": {
+    "nombre": "Chile TV premium",
+    "version": "20.9.4",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-chiletv-premium-v20.9.4\/chiletv-premium-20.9.4.apk",
+    "url_downloader": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-publisher-production-current\/chiletv-premium.apk",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/chiletv-premium.png",
+    "sha256": "a2a02090aa3ecd477fd17d7924afa85fec1a9c2536b4abf94089ed4c87cdf53a",
+    "size_bytes": 36083685,
+    "objetivos": [
+      "tv",
+      "mobile"
+    ],
+    "fecha": "2026-11-03T04:47:52Z",
+    "codigo_downloader": ""
   }
 }

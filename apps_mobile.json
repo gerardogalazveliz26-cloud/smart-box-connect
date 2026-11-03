@@ -94,5 +94,11 @@
     "descripcion": "vpn de Smartboxconnect",
     "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/boxilink-vpn.png",
     "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-boxilink-vpn-v0.4.1-BOXILINK-LAB\/boxilink-vpn-0.4.1-BOXILINK-LAB.apk"
+  },
+  {
+    "nombre": "Chile TV premium",
+    "descripcion": "aplicación modificada, se removieron anuncios y se activo el premium",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/chiletv-premium.png",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-chiletv-premium-v20.9.4\/chiletv-premium-20.9.4.apk"
   }
 ]
