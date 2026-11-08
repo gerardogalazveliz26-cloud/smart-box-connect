@@ -268,5 +268,19 @@
     ],
     "fecha": "2026-11-06T20:55:40Z",
     "codigo_downloader": ""
+  },
+  "xuper-sbc-nexum-espn": {
+    "nombre": "xuperSBC-Nexum",
+    "version": "3.15",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-xuper-sbc-nexum-espn-v3.15\/xuper-sbc-nexum-espn-3.15.apk",
+    "url_downloader": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-publisher-production-current\/xuper-sbc-nexum-espn.apk",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/xuper-sbc-nexum-espn.png",
+    "sha256": "1be18d2b06f4c3a4ca650b6aae9c119a91dde9431832de9b0867da87feba811a",
+    "size_bytes": 119723675,
+    "objetivos": [
+      "tv"
+    ],
+    "fecha": "2026-11-08T21:07:13Z",
+    "codigo_downloader": ""
   }
 }

@@ -1,5 +1,12 @@
 [
   {
+    "nombre": "xuperSBC-Nexum",
+    "descripcion": "aplicación modificada por Smartboxconnect-nexumID",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/xuper-sbc-nexum-espn.png",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-xuper-sbc-nexum-espn-v3.15\/xuper-sbc-nexum-espn-3.15.apk",
+    "categoria": "streaming"
+  },
+  {
     "nombre": "zuper tv mod",
     "descripcion": "aplicación modificada, se removieron anuncios",
     "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/zuper.jpeg",
