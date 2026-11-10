@@ -1,6 +1,6 @@
 {
   "package": "com.smartboxconnect.store.permissionslab",
   "version": "1.27",
-  "apk": "",
+  "apk": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/v1.0/Tienda-Smartboxconnect-1.27-actualizacion.apk",
   "novedades": "Tienda Smartboxconnect 1.27: nuevo servidor independiente de acceso en Smartboxconnect 03."
 }
