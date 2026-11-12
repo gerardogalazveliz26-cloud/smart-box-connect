@@ -310,5 +310,19 @@
     ],
     "fecha": "2026-11-12T12:09:49Z",
     "codigo_downloader": ""
+  },
+  "nexumid-tv": {
+    "nombre": "NexumID-TV",
+    "version": "1.0.4",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-nexumid-tv-v1.0.4\/nexumid-tv-1.0.4.apk",
+    "url_downloader": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-publisher-production-current\/nexumid-tv.apk",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/nexumid-tv.png",
+    "sha256": "cc5b9d142119b3e71fed8d7b227cb0a3265e9b75e23e7712640e9bd6f40f4fc9",
+    "size_bytes": 82221914,
+    "objetivos": [
+      "tv"
+    ],
+    "fecha": "2026-11-12T20:26:11Z",
+    "codigo_downloader": ""
   }
 }
