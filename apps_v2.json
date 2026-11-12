@@ -1,12 +1,10 @@
 [
   {
-    "nombre": "xuperSBC-Nexum",
-    "descripcion": "aplicación modificada por Smartboxconnect-nexumID",
-    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/xuper-sbc-nexum-espn.png",
-    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-xuper-sbc-nexum-espn-v3.15\/xuper-sbc-nexum-espn-3.15.apk",
-    "categoria": "streaming"
-  },
-  {
+    "nombre": "Xuper",
+    "descripcion": "Versión 4.34.5",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/logo%20xuper%20oficial.png",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/v1.0\/Xuper.4.34.5.apk",
+    "categoria": "Streaming"
     "nombre": "zuper tv mod",
     "descripcion": "aplicación modificada, se removieron anuncios",
     "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/zuper.jpeg",
@@ -19,13 +17,7 @@
     "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/chiletv-premium.png",
     "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-chiletv-premium-v20.9.4\/chiletv-premium-20.9.4.apk",
     "categoria": "streaming"
-  },
-  {
-    "nombre": "NexumID-SBC-TV-Sin-Antibloqueo",
-    "descripcion": "nuestra sin antibloqueo",
-    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/nexumid-sbc-tv-sin-antibloqueo.png",
-    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-nexumid-sbc-tv-sin-antibloqueo-v1.1.0\/nexumid-sbc-tv-sin-antibloqueo-1.1.0.apk",
-    "categoria": "streaming"
+
   },
   {
     "nombre": "boxilink-vpn",
@@ -40,13 +32,7 @@
     "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/actualizacion-tienda-tv.png",
     "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-actualizacion-tienda-tv-v1.19\/actualizacion-tienda-tv-1.19.apk",
     "categoria": "celular"
-  },
-  {
-    "nombre": "nexumID SBC Android TV",
-    "descripcion": "",
-    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/nexumid-sbc-android-tv.png",
-    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-nexumid-sbc-android-tv-v1.1.0\/nexumid-sbc-android-tv-1.1.0.apk",
-    "categoria": "celular"
+  
   },
   {
     "nombre": "Smartboxconnect Retro",
@@ -54,27 +40,6 @@
     "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/smartboxconnect-retro-3-4.png",
     "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-smartboxconnect-retro-3-4-v3.4-gamepad-wifi\/smartboxconnect-retro-3-4-3.4-gamepad-wifi.apk",
     "categoria": "Retro"
-  },
-  {
-    "nombre": "xuper triple",
-    "descripcion": "xuper híbrido con canales especiales",
-    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/sbc-streaming.png",
-    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-sbc-streaming-v1.5\/sbc-streaming-1.5.apk",
-    "categoria": "Streaming"
-  },
-  {
-    "nombre": "Xuper ESPN",
-    "descripcion": "modificacion Smartboxconnect",
-    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/file_00000000589c820e82944502007ff474.png",
-    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/v1.0\/xuperSBC-ESPN-logo-nuevo.apk",
-    "categoria": "Streaming"
-  },
-  {
-    "nombre": "XuperSBC antibloqueo",
-    "descripcion": "modificacion Smartboxconnect",
-    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/xuperSBC.png",
-    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/v1.0\/xuperSBC-vpn-multiservidor.apk",
-    "categoria": "Streaming"
   },
   {
     "nombre": "Film Plus",
@@ -88,13 +53,6 @@
     "descripcion": "multiples plataformas",
     "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/streamflix.webp",
     "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/v1.0\/streamflix-v1.7.230.apk",
-    "categoria": "Streaming"
-  },
-  {
-    "nombre": "TDT Chile",
-    "descripcion": "canales nacionales",
-    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/tdt%20chile.jpeg",
-    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/v1.0\/TDT_Chile.apk",
     "categoria": "Streaming"
   },
   {
@@ -126,27 +84,6 @@
     "categoria": "todas"
   },
   {
-    "nombre": "Nova",
-    "descripcion": "nueva actualización",
-    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/Nova%20logo.webp",
-    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/v1.0\/NOVA.Premium.v1.2.7.-.apk",
-    "categoria": "Streaming"
-  },
-  {
-    "nombre": "xuper oficial 4.99.5",
-    "descripcion": "version 4.99.5",
-    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/logo%20xuper%20oficial.png",
-    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/v1.0\/xuper_4.99.5_release_20260709094006_jiagu_sign.apk",
-    "categoria": "Streaming"
-  },
-  {
-    "nombre": "Xuper smartboxconnect",
-    "descripcion": "version 4.99.2",
-    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/icon_app.png.png",
-    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/v1.0\/xuper.Smart.2.logo.apk",
-    "categoria": "Streaming"
-  },
-  {
     "nombre": "Magma",
     "descripcion": "Versión 1.0.9",
     "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/logo%20magma.png",
@@ -172,13 +109,6 @@
     "descripcion": "Versión 4.0.7",
     "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/logo%20plpro.jpeg",
     "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/v1.0\/PLayer.Pro.4.0.7.apk",
-    "categoria": "Streaming"
-  },
-  {
-    "nombre": "Xuper",
-    "descripcion": "Versión 4.34.5",
-    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/logo%20xuper%20oficial.png",
-    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/v1.0\/Xuper.4.34.5.apk",
     "categoria": "Streaming"
   },
   {
