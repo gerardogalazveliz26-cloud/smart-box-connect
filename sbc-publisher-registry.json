@@ -296,5 +296,19 @@
     ],
     "fecha": "2026-11-12T12:06:01Z",
     "codigo_downloader": ""
+  },
+  "xuper-4-99-20": {
+    "nombre": "Xuper 4.99.20",
+    "version": "4.99.20",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-xuper-4-99-20-v4.99.20\/xuper-4-99-20-4.99.20.apk",
+    "url_downloader": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-publisher-production-current\/xuper-4-99-20.apk",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/xuper-4-99-20.jpg",
+    "sha256": "1d9f860b8630839ea7eb8ec969d7387f7ad32fc5f278858200144d2e89fcf1b1",
+    "size_bytes": 35705638,
+    "objetivos": [
+      "tv"
+    ],
+    "fecha": "2026-11-12T12:09:49Z",
+    "codigo_downloader": ""
   }
 }
