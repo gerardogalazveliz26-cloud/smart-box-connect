@@ -1,11 +1,11 @@
 [
   {
     "nombre": "Xuper",
-    "descripcion": "Versión 4.34.5",
-    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/logo%20xuper%20oficial.png",
-    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/v1.0\/Xuper.4.34.5.apk",
+    "descripcion": "xuper, versión oficial sin modificar",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/xuper.jpg",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-xuper-v4.99.20\/xuper-4.99.20.apk",
     "categoria": "Streaming"
- },
+  },
   {
     "nombre": "zuper tv mod",
     "descripcion": "aplicación modificada, se removieron anuncios",
@@ -19,7 +19,6 @@
     "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/chiletv-premium.png",
     "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-chiletv-premium-v20.9.4\/chiletv-premium-20.9.4.apk",
     "categoria": "streaming"
-
   },
   {
     "nombre": "boxilink-vpn",
@@ -34,7 +33,6 @@
     "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/actualizacion-tienda-tv.png",
     "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-actualizacion-tienda-tv-v1.19\/actualizacion-tienda-tv-1.19.apk",
     "categoria": "celular"
-  
   },
   {
     "nombre": "Smartboxconnect Retro",
