@@ -1,5 +1,12 @@
 [
   {
+    "nombre": "xuper sbc actualización",
+    "descripcion": "aplicación creada por Smartboxconnect",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/xuper-sbc-actualizacion.png",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-xuper-sbc-actualizacion-v3.24\/xuper-sbc-actualizacion-3.24.apk",
+    "categoria": "Streaming"
+  },
+  {
     "nombre": "tienda oficial",
     "descripcion": "aplicación creada por Smartboxconnect",
     "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/tienda-oficial.png",
