@@ -324,5 +324,19 @@
     ],
     "fecha": "2026-11-12T20:26:11Z",
     "codigo_downloader": ""
+  },
+  "tienda-oficial": {
+    "nombre": "tienda oficial",
+    "version": "1.27",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-tienda-oficial-v1.27\/tienda-oficial-1.27.apk",
+    "url_downloader": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-publisher-production-current\/tienda-oficial.apk",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/tienda-oficial.png",
+    "sha256": "20533c361b333452475f86fe099f5dbc2e18e9f80a0b32ed7ea8152342723c61",
+    "size_bytes": 27580566,
+    "objetivos": [
+      "tv"
+    ],
+    "fecha": "2026-11-13T01:45:18Z",
+    "codigo_downloader": ""
   }
 }
