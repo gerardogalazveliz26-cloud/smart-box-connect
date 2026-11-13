@@ -366,5 +366,19 @@
     ],
     "fecha": "2026-11-13T14:30:54Z",
     "codigo_downloader": ""
+  },
+  "boxilink-vpn-sbc": {
+    "nombre": "BoxiLink-vpn-sbc",
+    "version": "0.4.3",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-boxilink-vpn-sbc-v0.4.3\/boxilink-vpn-sbc-0.4.3.apk",
+    "url_downloader": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-publisher-production-current\/boxilink-vpn-sbc.apk",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/boxilink-vpn-sbc.png",
+    "sha256": "49a90fa475b3ce52534e9971389dacbe82e20248dd959c507a02bcae4e45af27",
+    "size_bytes": 9505634,
+    "objetivos": [
+      "tv"
+    ],
+    "fecha": "2026-11-13T20:30:06Z",
+    "codigo_downloader": ""
   }
 }

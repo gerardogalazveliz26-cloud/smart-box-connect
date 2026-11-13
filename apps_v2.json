@@ -1,5 +1,12 @@
 [
   {
+    "nombre": "BoxiLink-vpn-sbc",
+    "descripcion": "aplicación creada por Smartboxconnect",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/boxilink-vpn-sbc.png",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-boxilink-vpn-sbc-v0.4.3\/boxilink-vpn-sbc-0.4.3.apk",
+    "categoria": "Streaming"
+  },
+  {
     "nombre": "xuper multiservidor",
     "descripcion": "aplicación modificada por Smartboxconnect",
     "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/xuper-multiservidor.png",
