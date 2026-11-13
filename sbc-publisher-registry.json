@@ -352,5 +352,19 @@
     ],
     "fecha": "2026-11-13T12:39:14Z",
     "codigo_downloader": ""
+  },
+  "xuper-multiservidor": {
+    "nombre": "xuper multiservidor",
+    "version": "4.99.2",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-xuper-multiservidor-v4.99.2\/xuper-multiservidor-4.99.2.apk",
+    "url_downloader": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-publisher-production-current\/xuper-multiservidor.apk",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/xuper-multiservidor.png",
+    "sha256": "6129b93f06756e3fe1a245a23988f91d588e65f96a238dfd7c6364c2be53cfe8",
+    "size_bytes": 47445957,
+    "objetivos": [
+      "tv"
+    ],
+    "fecha": "2026-11-13T14:30:54Z",
+    "codigo_downloader": ""
   }
 }

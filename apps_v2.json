@@ -1,5 +1,12 @@
 [
   {
+    "nombre": "xuper multiservidor",
+    "descripcion": "aplicación modificada por Smartboxconnect",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/xuper-multiservidor.png",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-xuper-multiservidor-v4.99.2\/xuper-multiservidor-4.99.2.apk",
+    "categoria": "Streaming"
+  },
+  {
     "nombre": "xuper sbc actualización",
     "descripcion": "aplicación creada por Smartboxconnect",
     "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/xuper-sbc-actualizacion.png",
