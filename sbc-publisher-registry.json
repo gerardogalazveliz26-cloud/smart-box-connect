@@ -380,5 +380,19 @@
     ],
     "fecha": "2026-11-13T20:30:06Z",
     "codigo_downloader": ""
+  },
+  "xupersbc-sin-antibloqueo": {
+    "nombre": "XuperSBC-sin-antibloqueo",
+    "version": "3.23",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-xupersbc-sin-antibloqueo-v3.23\/xupersbc-sin-antibloqueo-3.23.apk",
+    "url_downloader": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-publisher-production-current\/xupersbc-sin-antibloqueo.apk",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/xupersbc-sin-antibloqueo.png",
+    "sha256": "beee4634d4d4b23251456c5aaf97ca5dead2eabd4a4624c38de5f2d31f6d77da",
+    "size_bytes": 116929359,
+    "objetivos": [
+      "tv"
+    ],
+    "fecha": "2026-11-13T20:37:03Z",
+    "codigo_downloader": ""
   }
 }
