@@ -394,5 +394,19 @@
     ],
     "fecha": "2026-11-13T20:37:03Z",
     "codigo_downloader": ""
+  },
+  "xupersbc-vpn-integrada": {
+    "nombre": "XuperSBC-VPN-Integrada",
+    "version": "3.23",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-xupersbc-vpn-integrada-v3.23\/xupersbc-vpn-integrada-3.23.apk",
+    "url_downloader": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-publisher-production-current\/xupersbc-vpn-integrada.apk",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/xupersbc-vpn-integrada.png",
+    "sha256": "ad67526a4162009a8fe21de15e6b501b73f63fb81f19567b3830b627ca995fd7",
+    "size_bytes": 116548297,
+    "objetivos": [
+      "tv"
+    ],
+    "fecha": "2026-11-14T10:42:42Z",
+    "codigo_downloader": ""
   }
 }
