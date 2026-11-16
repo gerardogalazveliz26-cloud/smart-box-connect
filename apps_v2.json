@@ -1,27 +1,5 @@
 [
-  {
-    "nombre": "NexumID TV",
-    "descripcion": "aplicación creada por Smartboxconnect",
-    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/nexumid-tv-actualizscion.png",
-    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-nexumid-tv-actualizscion-v1.0.8\/nexumid-tv-actualizscion-1.0.8.apk",
-    "categoria": "Streaming"
-  },
-  {
-    "nombre": "XuperSBC-sin-antibloqueo",
-    "descripcion": "aplicación creada por Smartboxconnect",
-    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/xupersbc-sin-antibloqueo.png",
-    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-xupersbc-sin-antibloqueo-v3.23\/xupersbc-sin-antibloqueo-3.23.apk",
-    "categoria": "Streaming"
-  },
-  {
-    "nombre": "BoxiLink-vpn-sbc",
-    "descripcion": "aplicación creada por Smartboxconnect",
-    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/boxilink-vpn-sbc.png",
-    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-boxilink-vpn-sbc-v0.4.3\/boxilink-vpn-sbc-0.4.3.apk",
-    "categoria": "Streaming"
-  },
-  {
-    "nombre": "xuper multiservidor",
+   "nombre": "xuper multiservidor",
     "descripcion": "aplicación modificada por Smartboxconnect",
     "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/xuper-multiservidor.png",
     "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-xuper-multiservidor-v4.99.2\/xuper-multiservidor-4.99.2.apk",
