@@ -1,5 +1,12 @@
 [
   {
+    "nombre": "NexumID TV",
+    "descripcion": "aplicación creada por Smartboxconnect",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/nexumid-tv-actualizacion-01.png",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-nexumid-tv-actualizacion-01-v1.1.6\/nexumid-tv-actualizacion-01-1.1.6.apk",
+    "categoria": "Streaming"
+  },
+  {
     "nombre": "xuper multiservidor",
     "descripcion": "aplicación modificada por Smartboxconnect",
     "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/xuper-multiservidor.png",

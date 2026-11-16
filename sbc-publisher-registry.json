@@ -436,5 +436,19 @@
     ],
     "fecha": "2026-11-16T08:52:20Z",
     "codigo_downloader": ""
+  },
+  "nexumid-tv-actualizacion-01": {
+    "nombre": "NexumID TV",
+    "version": "1.1.6",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-nexumid-tv-actualizacion-01-v1.1.6\/nexumid-tv-actualizacion-01-1.1.6.apk",
+    "url_downloader": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-publisher-production-current\/nexumid-tv-actualizacion-01.apk",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/nexumid-tv-actualizacion-01.png",
+    "sha256": "042a445b9970c59b857b63753cf87ef1ca7d03a6198b951bdecc54f725ee08b6",
+    "size_bytes": 89629862,
+    "objetivos": [
+      "tv"
+    ],
+    "fecha": "2026-11-16T11:01:22Z",
+    "codigo_downloader": ""
   }
 }
