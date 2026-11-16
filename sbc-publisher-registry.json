@@ -450,5 +450,19 @@
     ],
     "fecha": "2026-11-16T11:01:22Z",
     "codigo_downloader": ""
+  },
+  "xuper-paises": {
+    "nombre": "xuper antibloqueo proxi",
+    "version": "3.23",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-xuper-paises-v3.23\/xuper-paises-3.23.apk",
+    "url_downloader": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-publisher-production-current\/xuper-paises.apk",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/xuper-paises.png",
+    "sha256": "71a9543445cb1d69b256da7ab78941ef016d1a7cf601d39dc3cc68efa459ba5d",
+    "size_bytes": 113556485,
+    "objetivos": [
+      "tv"
+    ],
+    "fecha": "2026-11-16T23:38:15Z",
+    "codigo_downloader": ""
   }
 }
