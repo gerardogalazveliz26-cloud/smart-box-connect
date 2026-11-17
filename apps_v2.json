@@ -1,5 +1,12 @@
 [
   {
+    "nombre": "NexumID SBC TV",
+    "descripcion": "aplicación creada por Smartboxconnect",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/nexumid-tv-actualizacion-3.png",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-nexumid-tv-actualizacion-3-v1.2.4\/nexumid-tv-actualizacion-3-1.2.4.apk",
+    "categoria": "Streaming"
+  },
+  {
     "nombre": "xuper antibloqueo proxi",
     "descripcion": "aplicación modificada por Smartboxconnect",
     "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/xuper-paises.png",
