@@ -492,5 +492,19 @@
     ],
     "fecha": "2026-11-17T05:40:28Z",
     "codigo_downloader": ""
+  },
+  "nexumid-tv-actualizacion-5": {
+    "nombre": "NexumID SBC TV",
+    "version": "1.2.9",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-nexumid-tv-actualizacion-5-v1.2.9\/nexumid-tv-actualizacion-5-1.2.9.apk",
+    "url_downloader": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-publisher-production-current\/nexumid-tv-actualizacion-5.apk",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/nexumid-tv-actualizacion-5.png",
+    "sha256": "bd96f0bd8b6c0b1482003eff54f49f5c41469a66f5ae1edd8c61ac117c882be4",
+    "size_bytes": 89662901,
+    "objetivos": [
+      "tv"
+    ],
+    "fecha": "2026-11-17T05:56:31Z",
+    "codigo_downloader": ""
   }
 }
