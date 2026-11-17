@@ -520,5 +520,19 @@
     ],
     "fecha": "2026-11-17T10:53:50Z",
     "codigo_downloader": ""
+  },
+  "xuper-anti02": {
+    "nombre": "XuperSBC-actulizado-01",
+    "version": "3.23",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-xuper-anti02-v3.23\/xuper-anti02-3.23.apk",
+    "url_downloader": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-publisher-production-current\/xuper-anti02.apk",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/xuper-anti02.png",
+    "sha256": "0cd491f977175ccbc6dc137dc467777dc6aa377d4200e7ef3562afc04ec3ca2a",
+    "size_bytes": 114138316,
+    "objetivos": [
+      "tv"
+    ],
+    "fecha": "2026-11-17T13:56:06Z",
+    "codigo_downloader": ""
   }
 }
