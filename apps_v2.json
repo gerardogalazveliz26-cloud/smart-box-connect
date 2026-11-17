@@ -1,5 +1,12 @@
 [
   {
+    "nombre": "XuperSBC-actulizado",
+    "descripcion": "aplicación modificada por Smartboxconnect",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/xuper-anti01.png",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-xuper-anti01-v4.99.3\/xuper-anti01-4.99.3.apk",
+    "categoria": "Streaming"
+  },
+  {
     "nombre": "NexumID SBC TV",
     "descripcion": "aplicación creada por Smartboxconnect",
     "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/nexumid-tv-actualizacion-5.png",
