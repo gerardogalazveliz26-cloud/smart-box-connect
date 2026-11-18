@@ -548,5 +548,19 @@
     ],
     "fecha": "2026-11-17T22:33:55Z",
     "codigo_downloader": ""
+  },
+  "nuexumid-no-se-cae": {
+    "nombre": "usa esta si están todas bloqueadas",
+    "version": "4.99.3",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-nuexumid-no-se-cae-v4.99.3\/nuexumid-no-se-cae-4.99.3.apk",
+    "url_downloader": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-publisher-production-current\/nuexumid-no-se-cae.apk",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/nuexumid-no-se-cae.png",
+    "sha256": "b1741bc2de9d55ecdd1eead67d9b62806c4dec5b334e17447d131ca4e27126e5",
+    "size_bytes": 52196917,
+    "objetivos": [
+      "tv"
+    ],
+    "fecha": "2026-11-18T09:32:09Z",
+    "codigo_downloader": ""
   }
 }

@@ -1,5 +1,12 @@
 [
   {
+    "nombre": "usa esta si están todas bloqueadas",
+    "descripcion": "aplicación creada por Smartboxconnect",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/nuexumid-no-se-cae.png",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-nuexumid-no-se-cae-v4.99.3\/nuexumid-no-se-cae-4.99.3.apk",
+    "categoria": "Streaming"
+  },
+  {
     "nombre": "XuperSBC-actulizado-01",
     "descripcion": "aplicación modificada por Smartboxconnect",
     "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/xuper-anti02.png",
