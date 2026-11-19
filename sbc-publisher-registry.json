@@ -562,5 +562,19 @@
     ],
     "fecha": "2026-11-18T09:32:09Z",
     "codigo_downloader": ""
+  },
+  "yt-premium": {
+    "nombre": "Youtube tv",
+    "version": "2.0.3",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-yt-premium-v2.0.3\/yt-premium-2.0.3.apk",
+    "url_downloader": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-publisher-production-current\/yt-premium.apk",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/yt-premium.png",
+    "sha256": "42cc027cc5b39312e7f09792dc7bc0301c3d00ed2c6e44ee5520c40d49722144",
+    "size_bytes": 80370320,
+    "objetivos": [
+      "tv"
+    ],
+    "fecha": "2026-11-19T03:51:01Z",
+    "codigo_downloader": ""
   }
 }
