@@ -591,5 +591,20 @@
     ],
     "fecha": "2026-11-22T01:00:49Z",
     "codigo_downloader": ""
+  },
+  "epic": {
+    "nombre": "epic +",
+    "version": "7.34",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-epic-v7.34\/epic-7.34.apk",
+    "url_downloader": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-publisher-production-current\/epic.apk",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/epic.png",
+    "sha256": "bc2d317fe4221064237d3774dbf8f5fa960de5f17a75ad8dc2f8d3fa74469f76",
+    "size_bytes": 7060764,
+    "objetivos": [
+      "tv",
+      "mobile"
+    ],
+    "fecha": "2026-11-22T03:14:27Z",
+    "codigo_downloader": ""
   }
 }

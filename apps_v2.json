@@ -1,5 +1,12 @@
 [
   {
+    "nombre": "epic +",
+    "descripcion": "aplicación compartida por Smartboxconnect",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/epic.png",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-epic-v7.34\/epic-7.34.apk",
+    "categoria": "Streaming"
+  },
+  {
     "nombre": "boxi-link-vpn",
     "descripcion": "aplicación creada por Smartboxconnect",
     "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/vpn-smartboxconnect.png",
