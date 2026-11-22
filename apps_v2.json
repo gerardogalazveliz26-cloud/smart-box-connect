@@ -1,5 +1,12 @@
 [
   {
+    "nombre": "boxi-link-vpn",
+    "descripcion": "aplicación creada por Smartboxconnect",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/vpn-smartboxconnect.png",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-vpn-smartboxconnect-v0.4.3\/vpn-smartboxconnect-0.4.3.apk",
+    "categoria": "Streaming"
+  },
+  {
     "nombre": "Youtube tv",
     "descripcion": "aplicación compartida por Smartboxconnect",
     "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/yt-premium.png",

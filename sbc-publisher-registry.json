@@ -576,5 +576,20 @@
     ],
     "fecha": "2026-11-19T03:51:01Z",
     "codigo_downloader": ""
+  },
+  "vpn-smartboxconnect": {
+    "nombre": "boxi-link-vpn",
+    "version": "0.4.3",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-vpn-smartboxconnect-v0.4.3\/vpn-smartboxconnect-0.4.3.apk",
+    "url_downloader": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-publisher-production-current\/vpn-smartboxconnect.apk",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/vpn-smartboxconnect.png",
+    "sha256": "49a90fa475b3ce52534e9971389dacbe82e20248dd959c507a02bcae4e45af27",
+    "size_bytes": 9505634,
+    "objetivos": [
+      "tv",
+      "mobile"
+    ],
+    "fecha": "2026-11-22T01:00:49Z",
+    "codigo_downloader": ""
   }
 }
