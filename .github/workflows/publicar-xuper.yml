@@ -1,0 +1,58 @@
+name: Anunciar actualización Xuper SBC
+on:
+  release:
+    types: [published]
+permissions:
+  contents: write
+concurrency:
+  group: xuper-sbc-ota
+  cancel-in-progress: false
+jobs:
+  announce:
+    if: startsWith(github.event.release.tag_name, 'xuper-sbc-') && !github.event.release.prerelease
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Descargar y verificar el APK
+        env:
+          TAG: ${{ github.event.release.tag_name }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          [[ "$TAG" =~ ^xuper-sbc-([0-9]+)$ ]]
+          build="${BASH_REMATCH[1]}"
+          gh release download "$TAG" --pattern xuper-sbc.apk --dir "$RUNNER_TEMP"
+          apk="$RUNNER_TEMP/xuper-sbc.apk"
+          tools="$ANDROID_HOME/build-tools/35.0.0"
+          "$tools/apksigner" verify --print-certs "$apk" > "$RUNNER_TEMP/xuper-cert.txt"
+          grep -Fx 'Signer #1 certificate SHA-256 digest: 0502ffdc2766443dcc37f1982248246894c32a02bdc77b81b42ef826398f9141' "$RUNNER_TEMP/xuper-cert.txt"
+          "$tools/aapt2" dump badging "$apk" > "$RUNNER_TEMP/xuper-badging.txt"
+          python3 - "$apk" "$build" "$TAG" <<'PY'
+          import hashlib, json, os, pathlib, re, sys
+          apk = pathlib.Path(sys.argv[1])
+          build = int(sys.argv[2])
+          tag = sys.argv[3]
+          metadata = (pathlib.Path(os.environ["RUNNER_TEMP"]) / "xuper-badging.txt").read_text()
+          package, code, version = re.search(r"package: name='([^']+)' versionCode='(\d+)' versionName='([^']+)'", metadata).groups()
+          if package != "com.xuper.xuper_sbc" or int(code) != build or build <= 43797:
+              raise SystemExit("Revisa el paquete, la build y el tag.")
+          path = pathlib.Path("updates/xuper-sbc-argentina.json")
+          if path.exists() and build <= int(json.loads(path.read_text())["versionCode"]):
+              raise SystemExit("La build debe ser superior a la del canal actual.")
+          data = {
+              "enabled": True, "packageName": package, "versionCode": build,
+              "versionName": version, "minSdk": int(re.search(r"^sdkVersion:'(\d+)'", metadata, re.M)[1]),
+              "url": f"https://github.com/{os.environ['GITHUB_REPOSITORY']}/releases/download/{tag}/xuper-sbc.apk",
+              "sha256": hashlib.sha256(apk.read_bytes()).hexdigest(), "size": apk.stat().st_size,
+              "notes": ""
+          }
+          path.parent.mkdir(exist_ok=True)
+          path.write_text(json.dumps(data, indent=2) + "\n")
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add updates/xuper-sbc-argentina.json
+          git commit -m "Anunciar Xuper SBC build $build"
+          git push origin HEAD:main
