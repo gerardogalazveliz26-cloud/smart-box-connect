@@ -620,5 +620,19 @@
     ],
     "fecha": "2026-11-23T15:03:22Z",
     "codigo_downloader": ""
+  },
+  "bix-plus": {
+    "nombre": "Bix Plus",
+    "version": "1.48",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-bix-plus-v1.48\/bix-plus-1.48.apk",
+    "url_downloader": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-publisher-production-current\/bix-plus.apk",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/bix-plus.png",
+    "sha256": "7b97f4bbcf64b7b8fa98c2a20ef709d14d980fb473692e5dd71d2a390c3620a1",
+    "size_bytes": 30040287,
+    "objetivos": [
+      "tv"
+    ],
+    "fecha": "2026-11-23T20:06:38Z",
+    "codigo_downloader": ""
   }
 }

@@ -1,5 +1,12 @@
 [
   {
+    "nombre": "Bix Plus",
+    "descripcion": "aplicación modificada por Smartboxconnect",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/bix-plus.png",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-bix-plus-v1.48\/bix-plus-1.48.apk",
+    "categoria": "Streaming"
+  },
+  {
     "nombre": "xuper-sbc2.0",
     "descripcion": "aplicación modificada por Smartboxconnect",
     "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/xuper-sbc2-0.png",
