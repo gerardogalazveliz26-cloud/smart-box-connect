@@ -1,0 +1,11 @@
+{
+  "enabled": true,
+  "packageName": "com.xuper.wiwyxuper",
+  "versionCode": 43799,
+  "versionName": "4.35.1",
+  "minSdk": 22,
+  "url": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/xuper-sbc-43799/Xuper-SBC-4.35.1-Audio-Argentina-2-LAB.apk",
+  "sha256": "a6cddcac7cb860fb3837685a1ff9605fe832d378cb0a66fe432b511b4b23473c",
+  "size": 62798578,
+  "notes": "Mejoras de compatibilidad de audio para canales argentinos."
+}
