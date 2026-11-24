@@ -1,11 +1,11 @@
 {
   "enabled": true,
   "packageName": "com.xuper.wiwyxuper",
-  "versionCode": 43801,
+  "versionCode": 43803,
   "versionName": "4.35.1",
   "minSdk": 22,
-  "url": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/ota-43801/Xuper-SBC-43801.apk",
-  "sha256": "44d304321eeb71ab492043a31110a87afd83db40c1d75810197a7fae94928513",
+  "url": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/ota-43803/Xuper-SBC-43803.apk",
+  "sha256": "69bfa1ced41b49f0d31e7e1a0f0d8063f78da12335b2632bc34c8833e24eddfb",
   "size": 62798578,
-  "notes": "Compilación de prueba para verificar el actualizador de Xuper SBC."
+  "notes": "Actualizamos el texto de la pantalla de actualizaciones."
 }
