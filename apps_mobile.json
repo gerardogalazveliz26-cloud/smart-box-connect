@@ -76,5 +76,11 @@
     "descripcion": "aplicación compartida por Smartboxconnect",
     "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/epic.png",
     "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-epic-v7.34\/epic-7.34.apk"
+  },
+  {
+    "nombre": "xuper movil",
+    "descripcion": "aplicación modificada por Smartboxconnect",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/xuper-movil.png",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-xuper-movil-v6.5.7\/xuper-movil-6.5.7.apk"
   }
 ]

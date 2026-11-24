@@ -634,5 +634,19 @@
     ],
     "fecha": "2026-11-23T20:06:38Z",
     "codigo_downloader": ""
+  },
+  "xuper-movil": {
+    "nombre": "xuper movil",
+    "version": "6.5.7",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-xuper-movil-v6.5.7\/xuper-movil-6.5.7.apk",
+    "url_downloader": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-publisher-production-current\/xuper-movil.apk",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/xuper-movil.png",
+    "sha256": "b043983390b98f1bb96fc3e8994fd58c215be66222627efa69c83f37c7aee216",
+    "size_bytes": 52709241,
+    "objetivos": [
+      "mobile"
+    ],
+    "fecha": "2026-11-24T21:12:13Z",
+    "codigo_downloader": ""
   }
 }
