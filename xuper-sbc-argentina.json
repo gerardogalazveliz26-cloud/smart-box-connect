@@ -1,5 +1,5 @@
 {
-  "enabled": true,
+  "enabled": enable,
   "packageName": "com.xuper.wiwyxuper",
   "versionCode": 43802,
   "versionName": "4.35.1",
