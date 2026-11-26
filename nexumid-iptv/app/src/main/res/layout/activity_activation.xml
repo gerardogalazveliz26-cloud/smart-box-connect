@@ -26,7 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:orientation="vertical"
+            android:orientation="horizontal"
             android:padding="20dp">
 
             <LinearLayout
@@ -116,13 +116,13 @@
                     android:layout_width="match_parent"
                     android:layout_marginTop="10dp"
                     android:text="Ingresar mis datos a mano" />
-
-                <include
-                    layout="@layout/view_trial"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp" />
             </LinearLayout>
+
+            <include
+                layout="@layout/view_trial_vertical"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp" />
         </LinearLayout>
     </ScrollView>
 </FrameLayout>

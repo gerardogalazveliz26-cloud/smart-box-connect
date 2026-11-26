@@ -102,6 +102,8 @@ class DesignPreviewTest {
             com.nexumid.iptv.ui.TrialQr.bitmap("https://wa.me/56926097948?text=Hola", 512, null)
         )
         root.findViewById<TextView>(R.id.tvTrialNumber)?.text = "WhatsApp +56 9 2609 7948"
+        root.findViewById<TextView>(R.id.tvTrialTitle)?.text = "¿Quieres probar NexumID?"
+        root.findViewById<TextView>(R.id.tvTrialText)?.text = "Solicita tu prueba gratis escaneando el código QR"
         return root
     }
 
