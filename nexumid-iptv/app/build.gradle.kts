@@ -19,8 +19,8 @@ android {
         applicationId = "com.nexumid.iptv"
         minSdk = 21
         targetSdk = 34
-        versionCode = 9
-        versionName = "2.2.0"
+        versionCode = 10
+        versionName = "2.2.1"
         buildConfigField("String", "DEFAULT_SERVER", "\"$defaultServer\"")
         // Equipos reales (celulares y TV Box) son ARM: se omiten x86 para no agrandar el APK.
         ndk { abiFilters += listOf("armeabi-v7a", "arm64-v8a") }

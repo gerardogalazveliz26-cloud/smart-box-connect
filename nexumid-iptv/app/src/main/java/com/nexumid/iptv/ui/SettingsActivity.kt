@@ -195,9 +195,8 @@ class SettingsActivity : AppCompatActivity() {
                 appendLine("Lista: ${p?.name ?: "-"}")
                 appendLine("Servidor: ${p?.server ?: "-"}")
                 appendLine("Usuario: ${acc.username}")
-                appendLine("Estado: ${acc.status}${if (acc.isTrial) " (prueba)" else ""}")
-                appendLine("Vence: ${acc.expDate?.let { date(it) } ?: "Sin vencimiento"}")
-                append("Conexiones: ${acc.activeCons} de ${acc.maxCons}")
+                append("Estado: ${if (acc.status.equals("Active", true)) "Activa" else acc.status}${if (acc.isTrial) " (prueba)" else ""}")
+                append("")
             }
             if (!isFinishing) AlertDialog.Builder(this@SettingsActivity).setTitle("Cuenta").setMessage(msg).setPositiveButton("OK", null).show()
         }
