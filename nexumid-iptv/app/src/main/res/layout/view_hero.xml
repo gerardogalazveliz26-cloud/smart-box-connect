@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Tarjeta grande del inicio: vidrio + imagen a la derecha + halo azul al enfocar -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="0dp"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:background="@drawable/glow_focus"
+    android:clickable="true"
+    android:focusable="true"
+    android:padding="6dp">
+
+    <FrameLayout
+        android:id="@+id/heroCard"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/glass_card">
+
+        <com.nexumid.iptv.ui.HeroImageView
+            android:id="@+id/heroImage"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="end|bottom"
+            android:adjustViewBounds="true"
+            android:scaleType="fitEnd"
+            android:importantForAccessibility="no" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/hero_fade" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="bottom"
+            android:background="@drawable/hero_bottom" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:background="@drawable/sheen" />
+
+        <LinearLayout
+            android:id="@+id/heroContent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|start"
+            android:gravity="start"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/hero_pad"
+            android:paddingEnd="12dp">
+
+            <ImageView
+                android:id="@+id/heroIcon"
+                android:layout_width="@dimen/hero_icon"
+                android:layout_height="@dimen/hero_icon"
+                android:importantForAccessibility="no" />
+
+            <TextView
+                android:id="@+id/heroTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:fontFamily="sans-serif-medium"
+                android:shadowColor="#CC000000"
+                android:shadowDy="2"
+                android:shadowRadius="8"
+                android:textColor="@color/text"
+                android:textSize="@dimen/hero_title"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/heroSub"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="#CC000000"
+                android:shadowDy="1"
+                android:shadowRadius="6"
+                android:maxLines="2"
+                android:textColor="#C9D8EA"
+                android:textSize="@dimen/hero_sub" />
+        </LinearLayout>
+    </FrameLayout>
+</FrameLayout>

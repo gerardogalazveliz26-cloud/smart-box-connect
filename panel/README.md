@@ -1,6 +1,6 @@
-# Panel DJ Chany IPTV
+# Panel NexumID IPTV
 
-Página para cargar listas en los equipos de tus clientes con su **código de activación** (`DJ-XXXXX-XXXXX`, aparece en la app en «Activar con código de equipo» o en Ajustes).
+Página para cargar listas en los equipos de tus clientes con su **código de activación** (`NX-XXXXX-XXXXX`, aparece en la app en «Activar con código de equipo» o en Ajustes).
 
 ## Cómo abrirlo
 

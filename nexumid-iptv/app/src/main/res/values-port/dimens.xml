@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="hero_title">21sp</dimen>
+    <dimen name="hero_sub">11.5sp</dimen>
+    <dimen name="hero_icon">44dp</dimen>
+    <dimen name="hero_pad">16dp</dimen>
+</resources>
