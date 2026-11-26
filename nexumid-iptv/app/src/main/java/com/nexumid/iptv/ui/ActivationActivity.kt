@@ -52,6 +52,7 @@ class ActivationActivity : AppCompatActivity() {
         btnManual.setOnClickListener { finish() }
         listOf(btnShare, btnManual).forEach { it.focusZoom(1.04f) }
         btnManual.requestFocus()
+        TrialQr.bind(this, window.decorView)
     }
 
     override fun onStart() {

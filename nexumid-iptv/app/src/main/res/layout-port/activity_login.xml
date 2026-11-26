@@ -132,6 +132,12 @@
                     android:layout_marginTop="6dp"
                     android:clipToPadding="false"
                     android:padding="4dp" />
+
+                <include
+                    layout="@layout/view_trial"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp" />
             </LinearLayout>
 
         </LinearLayout>

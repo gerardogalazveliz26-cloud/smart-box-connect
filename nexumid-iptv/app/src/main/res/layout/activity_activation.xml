@@ -116,6 +116,12 @@
                     android:layout_width="match_parent"
                     android:layout_marginTop="10dp"
                     android:text="Ingresar mis datos a mano" />
+
+                <include
+                    layout="@layout/view_trial"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

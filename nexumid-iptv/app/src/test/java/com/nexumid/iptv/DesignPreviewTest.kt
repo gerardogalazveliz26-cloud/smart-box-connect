@@ -97,22 +97,32 @@ class DesignPreviewTest {
         paparazzi.snapshot(root)
     }
 
+    private fun withQr(root: View): View {
+        root.findViewById<ImageView>(R.id.ivQr)?.setImageBitmap(
+            com.nexumid.iptv.ui.TrialQr.bitmap("https://wa.me/56926097948?text=Hola", 512, null)
+        )
+        root.findViewById<TextView>(R.id.tvTrialNumber)?.text = "WhatsApp +56 9 2609 7948"
+        return root
+    }
+
     @Test
     fun login_tv() {
-        paparazzi.snapshot(paparazzi.inflate<View>(R.layout.activity_login))
+        paparazzi.snapshot(withQr(paparazzi.inflate<View>(R.layout.activity_login)))
     }
 
     @Test
     fun login_phone() {
         paparazzi.unsafeUpdateConfig(deviceConfig = phone)
-        paparazzi.snapshot(paparazzi.inflate<View>(R.layout.activity_login))
+        val root = withQr(paparazzi.inflate<View>(R.layout.activity_login))
+        root.findViewById<View>(R.id.btnTrial).visibility = View.VISIBLE
+        paparazzi.snapshot(root)
     }
 
     @Test
     fun activation_tv() {
         val root = paparazzi.inflate<View>(R.layout.activity_activation)
         root.findViewById<TextView>(R.id.tvCode).text = "NX-7K4Q9-XMP2T"
-        paparazzi.snapshot(root)
+        paparazzi.snapshot(withQr(root))
     }
 
     @Test

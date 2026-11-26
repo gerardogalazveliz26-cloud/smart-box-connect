@@ -142,15 +142,15 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="300dp"
-                    android:layout_height="300dp"
+                    android:layout_width="210dp"
+                    android:layout_height="210dp"
                     android:src="@drawable/brand_logo_full"
                     android:contentDescription="NexumID IPTV" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="4dp"
                     android:fontFamily="sans-serif-medium"
                     android:text="Tu entretenimiento, a otro nivel"
                     android:textColor="@color/text"
@@ -164,6 +164,14 @@
                     android:text="TV en vivo · Películas · Series"
                     android:textColor="@color/cyan"
                     android:textSize="14sp" />
+
+                <include
+                    layout="@layout/view_trial"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="28dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
