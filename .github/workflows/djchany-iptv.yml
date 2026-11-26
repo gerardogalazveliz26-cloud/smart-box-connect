@@ -85,6 +85,9 @@ jobs:
               --title "DJ Chany IPTV $NAME" \
               --notes "Reproductor Xtream Codes para Android TV, TV Box y celulares."
           fi
+          if [ "$GITHUB_REF_NAME" = "main" ]; then
+            gh release edit "$tag" --prerelease=false --latest
+          fi
 
       - name: Anunciar actualización (solo main)
         if: github.ref == 'refs/heads/main'
