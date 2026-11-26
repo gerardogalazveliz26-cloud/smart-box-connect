@@ -2,6 +2,7 @@ package com.nexumid.iptv.ui
 
 import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -79,6 +80,7 @@ class LiveActivity : AppCompatActivity() {
     private var focusedChannel: LiveStream? = null
     private var favIds: Set<String> = emptySet()
     private var fullscreen = false
+    private var inflatedPortrait = false
     private var retries = 0
     private var resizeMode = AspectRatioFrameLayout.RESIZE_MODE_FIT
 
@@ -110,6 +112,7 @@ class LiveActivity : AppCompatActivity() {
             startActivity(Intent(this, LoginActivity::class.java)); finish(); return
         }
         setContentView(R.layout.activity_live)
+        inflatedPortrait = Device.portraitUi(this)
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
 
         root = findViewById(R.id.root)
@@ -559,6 +562,19 @@ class LiveActivity : AppCompatActivity() {
     }
 
     // ------------------------------------------------------------------ ciclo de vida
+
+    /**
+     * La pantalla se abre a veces antes de girar a la orientación pedida (por ejemplo, un celular en
+     * modo TV Box): si el diseño cargado no corresponde a la orientación final, se vuelve a cargar.
+     * En pantalla completa el giro es intencional y se ignora.
+     */
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        if (fullscreen) return
+        val nowPortrait = newConfig.orientation == Configuration.ORIENTATION_PORTRAIT
+        if (nowPortrait != inflatedPortrait) recreate()
+    }
+
 
     override fun onStart() {
         super.onStart()
