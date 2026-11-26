@@ -47,7 +47,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Ingresa con tu cuenta Xtream Codes"
+                    android:text="Ingresa los datos de tu línea Xtream Codes o pega tu enlace M3U"
                     android:textColor="@color/text_dim"
                     android:textSize="13sp" />
 
@@ -61,7 +61,7 @@
                 <EditText
                     android:id="@+id/etServer"
                     style="@style/Field"
-                    android:hint="Servidor (ej. http://dominio.com:8080)"
+                    android:hint="Servidor o enlace M3U completo"
                     android:imeOptions="actionNext"
                     android:inputType="textUri" />
 

@@ -20,6 +20,18 @@ class XtreamApi(server: String, val user: String, val pass: String) {
     val baseString: String = base.toString().trimEnd('/')
 
     companion object {
+        /** Si [input] es un enlace M3U/Xtream (get.php?username=..&password=..) devuelve servidor, usuario y contraseña. */
+        fun parseM3uLink(input: String): Triple<String, String, String>? {
+            var s = input.trim()
+            if (!s.contains("username=", true)) return null
+            if (!s.startsWith("http://", true) && !s.startsWith("https://", true)) s = "http://$s"
+            val u = s.toHttpUrlOrNull() ?: return null
+            val user = u.queryParameter("username")?.takeIf { it.isNotBlank() } ?: return null
+            val pass = u.queryParameter("password")?.takeIf { it.isNotBlank() } ?: return null
+            val server = HttpUrl.Builder().scheme(u.scheme).host(u.host).port(u.port).build().toString().trimEnd('/')
+            return Triple(server, user, pass)
+        }
+
         /** Acepta "dominio:puerto", "http://dominio:puerto/login.php", etc. y deja solo esquema, host y puerto. */
         fun normalizeServer(input: String): HttpUrl? {
             var s = input.trim()
@@ -41,6 +53,10 @@ class XtreamApi(server: String, val user: String, val pass: String) {
             val req = Request.Builder().url(b.build()).build()
             Net.client.newCall(req).execute().use { r ->
                 if (r.code == 401 || r.code == 403) throw XtreamException("Usuario o contraseña incorrectos")
+                if (r.code == 404) throw XtreamException(
+                    "Ese servidor no tiene la API de Xtream (error 404). Usa el DNS y los datos de una LÍNEA " +
+                        "(los del enlace M3U), no los del panel de revendedor. También puedes pegar el enlace M3U completo en el campo Servidor."
+                )
                 if (!r.isSuccessful) throw XtreamException("El servidor respondió con error ${r.code}")
                 r.body?.string().orEmpty()
             }

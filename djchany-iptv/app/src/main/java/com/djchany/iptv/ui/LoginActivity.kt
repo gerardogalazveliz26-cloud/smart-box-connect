@@ -69,6 +69,12 @@ class LoginActivity : AppCompatActivity() {
         etServer.setText(Prefs.current?.server ?: BuildConfig.DEFAULT_SERVER)
 
         btnLogin.setOnClickListener {
+            XtreamApi.parseM3uLink(etServer.text.toString())?.let { (server, u, p) ->
+                etServer.setText(server)
+                etUser.setText(u)
+                etPass.setText(p)
+                toast("Datos tomados del enlace M3U")
+            }
             val user = etUser.text.toString().trim()
             login(
                 Prefs.Profile(
