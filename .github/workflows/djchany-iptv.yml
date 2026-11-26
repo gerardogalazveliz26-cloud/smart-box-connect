@@ -1,0 +1,115 @@
+name: DJ Chany IPTV (compilar APK)
+
+on:
+  push:
+    paths:
+      - 'djchany-iptv/**'
+      - '.github/workflows/djchany-iptv.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: djchany-iptv-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: djchany-iptv
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - uses: gradle/actions/setup-gradle@v4
+
+      - name: Preparar la firma
+        env:
+          KEYSTORE_B64: ${{ secrets.DJCHANY_KEYSTORE_B64 }}
+        run: |
+          if [ -n "$KEYSTORE_B64" ]; then
+            echo "$KEYSTORE_B64" | base64 -d > "$RUNNER_TEMP/djchany.jks"
+            echo "DJCHANY_KEYSTORE_PATH=$RUNNER_TEMP/djchany.jks" >> "$GITHUB_ENV"
+          else
+            echo "::warning::Falta el secreto DJCHANY_KEYSTORE_B64: el APK se firma con una clave temporal y no se podrá actualizar encima de versiones anteriores."
+          fi
+
+      - name: Compilar
+        env:
+          DJCHANY_KEYSTORE_PASSWORD: ${{ secrets.DJCHANY_KEYSTORE_PASSWORD }}
+          DJCHANY_KEY_ALIAS: ${{ secrets.DJCHANY_KEY_ALIAS }}
+          DJCHANY_KEY_PASSWORD: ${{ secrets.DJCHANY_KEY_PASSWORD }}
+        run: |
+          chmod +x gradlew
+          ./gradlew --no-daemon --stacktrace assembleRelease
+
+      - name: Preparar el APK
+        id: apk
+        run: |
+          set -euo pipefail
+          name=$(grep -oP 'versionName\s*=\s*"\K[^"]+' app/build.gradle.kts)
+          code=$(grep -oP 'versionCode\s*=\s*\K[0-9]+' app/build.gradle.kts)
+          mkdir -p out
+          cp app/build/outputs/apk/release/app-release.apk "out/djchany-iptv-$name.apk"
+          echo "name=$name" >> "$GITHUB_OUTPUT"
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+          echo "file=djchany-iptv-$name.apk" >> "$GITHUB_OUTPUT"
+          sha256sum "out/djchany-iptv-$name.apk"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: djchany-iptv-apk
+          path: djchany-iptv/out/*.apk
+
+      - name: Publicar en Releases
+        env:
+          GH_TOKEN: ${{ github.token }}
+          NAME: ${{ steps.apk.outputs.name }}
+          FILE: ${{ steps.apk.outputs.file }}
+        run: |
+          set -euo pipefail
+          tag="djchany-iptv-v$NAME"
+          if gh release view "$tag" >/dev/null 2>&1; then
+            gh release upload "$tag" "out/$FILE" --clobber
+          else
+            pre=""
+            [ "$GITHUB_REF_NAME" = "main" ] || pre="--prerelease"
+            gh release create "$tag" "out/$FILE" --target "$GITHUB_SHA" $pre \
+              --title "DJ Chany IPTV $NAME" \
+              --notes "Reproductor Xtream Codes para Android TV, TV Box y celulares."
+          fi
+          if [ "$GITHUB_REF_NAME" = "main" ]; then
+            gh release edit "$tag" --prerelease=false --latest
+          fi
+
+      - name: Anunciar actualización (solo main)
+        if: github.ref == 'refs/heads/main'
+        env:
+          NAME: ${{ steps.apk.outputs.name }}
+          CODE: ${{ steps.apk.outputs.code }}
+          FILE: ${{ steps.apk.outputs.file }}
+        run: |
+          set -euo pipefail
+          sha=$(sha256sum "out/$FILE" | cut -d' ' -f1)
+          url="https://github.com/$GITHUB_REPOSITORY/releases/download/djchany-iptv-v$NAME/$FILE"
+          cd "$GITHUB_WORKSPACE"
+          git pull --ff-only origin main
+          mkdir -p updates
+          python3 - "$CODE" "$NAME" "$url" "$sha" <<'PY'
+          import json, sys
+          code, name, url, sha = sys.argv[1:]
+          data = {"enabled": True, "versionCode": int(code), "versionName": name,
+                  "url": url, "sha256": sha, "notes": f"DJ Chany IPTV {name}"}
+          open("updates/djchany-iptv.json", "w").write(json.dumps(data, indent=2) + "\n")
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add updates/djchany-iptv.json
+          git diff --cached --quiet || { git commit -m "Anunciar DJ Chany IPTV $NAME"; git push origin HEAD:main; }
