@@ -2,3 +2,6 @@
 -dontwarn org.conscrypt.**
 -dontwarn org.bouncycastle.**
 -dontwarn org.openjsse.**
+
+# Decodificador FFmpeg: clases con métodos nativos (JNI).
+-keep class androidx.media3.decoder.ffmpeg.** { *; }

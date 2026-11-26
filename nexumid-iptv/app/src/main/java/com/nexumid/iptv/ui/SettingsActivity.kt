@@ -50,6 +50,13 @@ class SettingsActivity : AppCompatActivity() {
                     Prefs.bufferMode = it
                 }
             },
+            Row("Audio de los canales", { if (Prefs.audioMode == 0) "Máxima compatibilidad (FFmpeg)" else "Decodificador del equipo" }) {
+                choose(
+                    "Audio (si un canal no se escucha, usa «Máxima compatibilidad»)",
+                    listOf("Máxima compatibilidad (FFmpeg) — recomendado", "Decodificador del equipo"),
+                    Prefs.audioMode,
+                ) { Prefs.audioMode = it }
+            },
             Row("Reproducir el siguiente episodio automáticamente", { if (Prefs.autoplayNext) "Sí" else "No" }) {
                 Prefs.autoplayNext = !Prefs.autoplayNext
             },
