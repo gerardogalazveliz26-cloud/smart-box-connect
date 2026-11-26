@@ -74,8 +74,9 @@
   <section id="cfg">
     <details id="cfgDetails">
       <summary><span id="cfgDot" class="status-dot"></span><span id="cfgSummary">Conexión con GitHub (configurar una sola vez)</span></summary>
-      <p class="muted">Crea un <b>token de GitHub</b> (Settings → Developer settings → Fine-grained tokens) con acceso solo al repositorio
-        <b>smart-box-connect</b> y permiso <b>Contents: Read and write</b>. Se guarda únicamente en este navegador.</p>
+      <p class="muted">Crea un <b>token de GitHub</b> con acceso solo al repositorio <b>smart-box-connect</b> y permiso
+        <b>Contents: Read and write</b>. Se guarda únicamente en este equipo.</p>
+      <p><a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener" style="color:var(--gold)">➜ Crear el token en GitHub</a></p>
       <label for="token">Token de GitHub</label>
       <input id="token" type="password" autocomplete="off" placeholder="github_pat_…">
       <div class="row">
@@ -93,7 +94,11 @@
   <section>
     <h2>Activar equipo</h2>
     <label for="code">Código del equipo (aparece en la TV del cliente)</label>
-    <input id="code" class="code-input" placeholder="DJ-XXXXX-XXXXX" autocomplete="off" spellcheck="false">
+    <div style="display:flex;gap:8px">
+      <input id="code" class="code-input" placeholder="DJ-XXXXX-XXXXX" autocomplete="off" spellcheck="false">
+      <button id="paste" type="button" title="Pegar el código copiado">📋 Pegar</button>
+    </div>
+    <p class="muted" id="shareHint" style="display:none;margin:6px 0 0">Tip: en WhatsApp mantén presionado el mensaje del cliente → Compartir → <b>DJ Chany Panel</b>.</p>
     <div class="row">
       <div><label for="client">Cliente (solo para ti, va cifrado)</label><input id="client" placeholder="Ej. Juan Pérez"></div>
       <div><label for="message">Aviso para el cliente (opcional)</label><input id="message" placeholder="Ej. Tu cuenta vence el 30/12"></div>
@@ -442,10 +447,12 @@ $("forgetCfg").addEventListener("click", () => {
   show($("cfgMsg"), "info", "Token borrado de este navegador.");
 });
 $("export").addEventListener("click", () => {
+  const name = `djchany-clientes-${new Date().toISOString().slice(0, 10)}.json`;
+  if (window.DJChanyApp) { window.DJChanyApp.saveFile(name, JSON.stringify(clients(), null, 2)); return; }
   const blob = new Blob([JSON.stringify(clients(), null, 2)], { type: "application/json" });
   const a = document.createElement("a");
   a.href = URL.createObjectURL(blob);
-  a.download = `djchany-clientes-${new Date().toISOString().slice(0, 10)}.json`;
+  a.download = name;
   a.click();
   URL.revokeObjectURL(a.href);
 });
@@ -462,6 +469,32 @@ $("importFile").addEventListener("change", async (ev) => {
   } catch (e) { show($("msg"), "err", "✖ Archivo no válido."); }
   ev.target.value = "";
 });
+function extractCode(text) {
+  const m = /DJ[-\s]?([A-Z0-9]{5})[-\s]?([A-Z0-9]{5})/i.exec(text || "");
+  return normalizeCode(m ? m[1] + m[2] : text);
+}
+async function setCodeAndLoad(code) {
+  $("code").value = displayCode(code);
+  if (cfg().token) {
+    try { await doLoad(); } catch (e) { show($("msg"), "err", "✖ " + (e.message || e)); }
+  } else {
+    show($("msg"), "info", "Código cargado. Configura tu token de GitHub (arriba) para activar el equipo.");
+  }
+}
+$("paste").addEventListener("click", async () => {
+  let text = "";
+  try {
+    text = window.DJChanyApp ? window.DJChanyApp.clipboardCode() : await navigator.clipboard.readText();
+  } catch (e) { /* sin permiso para leer el portapapeles */ }
+  const code = extractCode(text);
+  if (!code) { show($("msg"), "err", "✖ No hay un código DJ-XXXXX-XXXXX copiado. Cópialo del mensaje del cliente."); return; }
+  busy($("paste"), () => setCodeAndLoad(code));
+});
+// La app envía aquí el código recibido al compartir un mensaje de WhatsApp.
+window.djPrefillCode = (text) => {
+  const code = extractCode(text);
+  if (code) busy($("paste"), () => setCodeAndLoad(code));
+};
 $("code").addEventListener("blur", () => { const c = normalizeCode($("code").value); if (c) $("code").value = displayCode(c); });
 
 function updateCfgStatus(ok) {
@@ -481,6 +514,7 @@ function updateCfgStatus(ok) {
     $("branch").value = saved.branch || "main";
   }
   updateCfgStatus(!!saved?.token);
+  if (window.DJChanyApp) $("shareHint").style.display = "block";
   if (!saved?.token) $("cfgDetails").open = true;
   resetForm();
   renderClients();

@@ -1,0 +1,69 @@
+plugins {
+    id("com.android.application")
+    id("org.jetbrains.kotlin.android")
+}
+
+val keystorePath: String? = System.getenv("DJCHANY_KEYSTORE_PATH")?.takeIf { it.isNotBlank() }
+
+// El panel web (../../panel/index.html) se empaqueta dentro de la app.
+val panelAssets = layout.buildDirectory.dir("generated/panelAssets")
+val copyPanel by tasks.registering(Copy::class) {
+    from(rootProject.file("../panel")) { include("index.html") }
+    into(panelAssets.map { it.dir("panel") })
+}
+
+android {
+    namespace = "com.djchany.panel"
+    compileSdk = 35
+
+    defaultConfig {
+        applicationId = "com.djchany.panel"
+        minSdk = 24
+        targetSdk = 34
+        versionCode = 1
+        versionName = "1.0.0"
+    }
+
+    sourceSets["main"].assets.srcDir(panelAssets)
+
+    signingConfigs {
+        if (keystorePath != null) {
+            create("release") {
+                storeFile = file(keystorePath)
+                storePassword = System.getenv("DJCHANY_KEYSTORE_PASSWORD")
+                keyAlias = System.getenv("DJCHANY_KEY_ALIAS")
+                keyPassword = System.getenv("DJCHANY_KEY_PASSWORD")
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            isMinifyEnabled = true
+            isShrinkResources = true
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            signingConfig = if (keystorePath != null) signingConfigs.getByName("release") else signingConfigs.getByName("debug")
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = "17"
+    }
+    lint {
+        checkReleaseBuilds = false
+        abortOnError = false
+    }
+}
+
+tasks.named("preBuild") { dependsOn(copyPanel) }
+
+dependencies {
+    implementation("androidx.core:core-ktx:1.13.1")
+    implementation("androidx.appcompat:appcompat:1.7.0")
+    implementation("androidx.activity:activity-ktx:1.9.3")
+    implementation("androidx.webkit:webkit:1.12.1")
+}
