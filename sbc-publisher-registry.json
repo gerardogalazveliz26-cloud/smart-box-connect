@@ -676,5 +676,19 @@
     ],
     "fecha": "2026-11-26T18:20:16Z",
     "codigo_downloader": ""
+  },
+  "youtube-music-premium": {
+    "nombre": "YouTube music Premium",
+    "version": "9.20.53",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-youtube-music-premium-v9.20.53\/youtube-music-premium-9.20.53.apk",
+    "url_downloader": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-publisher-production-current\/youtube-music-premium.apk",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/youtube-music-premium.jpg",
+    "sha256": "3d212e0cd926c1cf7bf557cca1155394a57ba80c9340d31dde92b7aafe91fca2",
+    "size_bytes": 76256363,
+    "objetivos": [
+      "mobile"
+    ],
+    "fecha": "2026-11-26T18:42:29Z",
+    "codigo_downloader": ""
   }
 }
