@@ -233,7 +233,7 @@ async function gh(method, path, body) {
     let detail = "";
     try { detail = (await r.json()).message || ""; } catch (e) { /* sin cuerpo */ }
     if (r.status === 401) throw new Error("Token inválido o vencido.");
-    if (r.status === 403 || r.status === 404) throw new Error("El token no tiene permiso de escritura en el repositorio. " + detail);
+    if (r.status === 403 || r.status === 404) throw new Error("El token no tiene permiso para guardar. En GitHub edita el token → Permissions → Repository permissions → Contents: «Read and write» (repositorio smart-box-connect).");
     throw new Error(`GitHub respondió ${r.status}. ${detail}`);
   }
   return r.status === 204 ? {} : r.json();
@@ -433,7 +433,16 @@ $("saveCfg").addEventListener("click", () => busy($("saveCfg"), async () => {
     const j = await r.json();
     if (!r.ok) throw new Error(r.status === 401 ? "Token inválido." : (j.message || `Error ${r.status}`));
     if (!j.permissions?.push) throw new Error("El token puede leer pero no escribir. Dale permiso «Contents: Read and write».");
-    show($("cfgMsg"), "ok", "✔ Conectado. Ya puedes activar equipos.");
+    // Prueba real de escritura: los tokens «fine-grained» pueden no tener permiso aunque la cuenta sí lo tenga.
+    const probe = "activaciones/.conexion";
+    let sha;
+    try { sha = (await getFile(probe))?.sha; } catch (e) { /* sin permiso de lectura: lo detecta la escritura */ }
+    try {
+      await putFile(probe, "Prueba de conexión del panel DJ Chany\n", sha, "Prueba de conexión del panel");
+    } catch (e) {
+      throw new Error("El token no puede guardar activaciones. En GitHub edita el token y pon «Contents: Read and write» (Repository permissions) para smart-box-connect.");
+    }
+    show($("cfgMsg"), "ok", "✔ Conectado y con permiso de escritura. Ya puedes activar equipos.");
     updateCfgStatus(true);
   } catch (e) {
     show($("cfgMsg"), "err", "✖ " + e.message);
