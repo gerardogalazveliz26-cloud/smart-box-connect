@@ -19,9 +19,11 @@ android {
         applicationId = "com.nexumid.iptv"
         minSdk = 21
         targetSdk = 34
-        versionCode = 7
-        versionName = "2.0.2"
+        versionCode = 8
+        versionName = "2.1.0"
         buildConfigField("String", "DEFAULT_SERVER", "\"$defaultServer\"")
+        // Equipos reales (celulares y TV Box) son ARM: se omiten x86 para no agrandar el APK.
+        ndk { abiFilters += listOf("armeabi-v7a", "arm64-v8a") }
         buildConfigField(
             "String",
             "UPDATE_URL",
@@ -77,6 +79,8 @@ dependencies {
     implementation("androidx.media3:media3-exoplayer-hls:$media3")
     implementation("androidx.media3:media3-datasource-okhttp:$media3")
     implementation("androidx.media3:media3-ui:$media3")
+    // Decodificador de audio FFmpeg (AC-3, E-AC-3, MP2, DTS…) para canales que no suenan con el decodificador del equipo.
+    implementation("org.jellyfin.media3:media3-ffmpeg-decoder:1.5.0+1")
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
     implementation("io.coil-kt:coil:2.7.0")
     testImplementation("junit:junit:4.13.2")

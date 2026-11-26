@@ -20,7 +20,9 @@ import androidx.activity.addCallback
 import androidx.annotation.OptIn
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import androidx.media3.common.C
 import androidx.media3.common.MediaItem
+import androidx.media3.common.TrackSelectionOverride
 import androidx.media3.common.MimeTypes
 import androidx.media3.common.PlaybackException
 import androidx.media3.common.Player
@@ -200,6 +202,7 @@ class LiveActivity : AppCompatActivity() {
         findViewById<View>(R.id.btnPrevCh).setOnClickListener { zap(-1) }
         findViewById<View>(R.id.btnNextCh).setOnClickListener { zap(+1) }
         findViewById<View>(R.id.btnAspect).setOnClickListener { cycleResize(); showOverlay() }
+        findViewById<View>(R.id.btnAudio).setOnClickListener { cycleAudio(); showOverlay() }
     }
 
     private fun load() {
@@ -308,6 +311,9 @@ class LiveActivity : AppCompatActivity() {
             .setMediaId(ch.id.toString())
             .apply { if (format == "m3u8") setMimeType(MimeTypes.APPLICATION_M3U8) }
             .build()
+        // Cada canal empieza con su pista de audio predeterminada.
+        player.trackSelectionParameters = player.trackSelectionParameters.buildUpon()
+            .clearOverridesOfType(C.TRACK_TYPE_AUDIO).build()
         player.setMediaItem(item)
         player.prepare()
         player.play()
@@ -444,6 +450,25 @@ class LiveActivity : AppCompatActivity() {
         handler.postDelayed(hideOverlay, 5000)
     }
 
+    /** Cambia a la siguiente pista de audio del canal (idiomas o pistas alternativas). */
+    private fun cycleAudio() {
+        val options = player.currentTracks.groups
+            .filter { it.type == C.TRACK_TYPE_AUDIO }
+            .flatMap { g -> (0 until g.length).filter { g.isTrackSupported(it) }.map { g to it } }
+        if (options.size < 2) {
+            toast(if (options.isEmpty()) "Este canal no tiene audio compatible" else "Este canal tiene una sola pista de audio")
+            return
+        }
+        val current = options.indexOfFirst { (g, i) -> g.isTrackSelected(i) }
+        val (group, index) = options[(current + 1) % options.size]
+        player.trackSelectionParameters = player.trackSelectionParameters.buildUpon()
+            .setOverrideForType(TrackSelectionOverride(group.mediaTrackGroup, index))
+            .build()
+        val fmt = group.getTrackFormat(index)
+        val name = fmt.label ?: fmt.language?.let { java.util.Locale(it).displayLanguage.replaceFirstChar { c -> c.uppercase() } }
+        toast("Audio ${options.indexOf(group to index) + 1} de ${options.size}" + (name?.let { ": $it" } ?: ""))
+    }
+
     private fun cycleResize() {
         resizeMode = when (resizeMode) {
             AspectRatioFrameLayout.RESIZE_MODE_FIT -> AspectRatioFrameLayout.RESIZE_MODE_FILL
@@ -544,6 +569,7 @@ class LiveActivity : AppCompatActivity() {
                         return true
                     }
                     KeyEvent.KEYCODE_MENU -> { cycleResize(); return true }
+                    KeyEvent.KEYCODE_MEDIA_AUDIO_TRACK -> { cycleAudio(); showOverlay(); return true }
                 }
             } else if (code == KeyEvent.KEYCODE_MENU) {
                 focusedChannel?.let { toggleFav(it) }

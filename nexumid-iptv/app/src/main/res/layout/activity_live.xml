@@ -141,7 +141,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="OK: ver · OK otra vez: pantalla completa · MENÚ o mantener OK: favorito · Números: ir al canal"
+                android:text="OK: ver · OK otra vez: pantalla completa · MENÚ o mantener OK: favorito · Números: ir al canal · Tecla Audio: cambiar pista"
                 android:textColor="#889DB2CC"
                 android:textSize="10sp" />
         </LinearLayout>

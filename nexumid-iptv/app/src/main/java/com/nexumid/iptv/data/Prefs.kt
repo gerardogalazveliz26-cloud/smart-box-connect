@@ -104,6 +104,11 @@ object Prefs {
         get() = sp.getString("ua", null)?.takeIf { it.isNotBlank() } ?: DEFAULT_UA
         set(v) = sp.edit().putString("ua", v).apply()
 
+    /** 0 = FFmpeg primero (máxima compatibilidad de audio), 1 = decodificador del equipo primero. */
+    var audioMode: Int
+        get() = sp.getInt("audio_mode", 0)
+        set(v) = sp.edit().putInt("audio_mode", v).apply()
+
     var autoplayNext: Boolean
         get() = sp.getBoolean("autoplay_next", true)
         set(v) = sp.edit().putBoolean("autoplay_next", v).apply()
