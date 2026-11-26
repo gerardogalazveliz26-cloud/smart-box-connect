@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.djchany.iptv.BuildConfig
 import com.djchany.iptv.R
+import com.djchany.iptv.data.Activation
 import com.djchany.iptv.data.Prefs
 import com.djchany.iptv.data.Repo
 import kotlinx.coroutines.launch
@@ -32,6 +33,9 @@ class SettingsActivity : AppCompatActivity() {
 
         val rows = listOf(
             Row("Cuenta", { Prefs.current?.let { "${it.user} · ${it.name}" } ?: "-" }) { showAccount() },
+            Row("Código de activación de este equipo", { Activation.display() }) {
+                ActivationActivity.open(this)
+            },
             Row("Tipo de equipo", { if (Device.isMobile) "Celular / Tablet" else "Android TV / TV Box" }) {
                 ModeActivity.change(this)
             },

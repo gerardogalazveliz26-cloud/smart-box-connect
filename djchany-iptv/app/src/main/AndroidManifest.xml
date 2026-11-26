@@ -36,6 +36,7 @@
             android:exported="false"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".ui.ModeActivity" android:exported="false" />
+        <activity android:name=".ui.ActivationActivity" android:exported="false" />
         <activity android:name=".ui.HomeActivity" android:exported="false" />
         <activity
             android:name=".ui.LiveActivity"

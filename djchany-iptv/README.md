@@ -13,6 +13,9 @@ Reproductor Xtream Codes para Android TV, TV Box y celulares (Android 5.0 o supe
 - Control parental con PIN (por defecto `0000`).
 - Ajustes de formato, buffer y User-Agent.
 - Actualizaciones automáticas desde `updates/djchany-iptv.json`.
+- **Activación remota**: cada equipo muestra un código `DJ-XXXXX-XXXXX`; desde el [panel](../panel/) cargas, cambias o das de baja sus listas sin tocar el equipo.
+- Video de presentación al abrir (se puede desactivar en Ajustes).
+- Modo **celular** o **Android TV**, elegido al primer inicio.
 
 ## Compilar
 

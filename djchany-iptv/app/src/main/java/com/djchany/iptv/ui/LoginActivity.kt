@@ -114,6 +114,10 @@ class LoginActivity : AppCompatActivity() {
         }
         refreshProfiles()
         btnLogin.focusZoom(1.03f)
+        findViewById<Button>(R.id.btnActivate).apply {
+            focusZoom(1.03f)
+            setOnClickListener { ActivationActivity.open(this@LoginActivity) }
+        }
         if (Prefs.profiles.isEmpty()) (if (etServer.text.isBlank()) etServer else etUser).requestFocus()
         else findViewById<RecyclerView>(R.id.rvProfiles).post {
             findViewById<RecyclerView>(R.id.rvProfiles).getChildAt(0)?.requestFocus()

@@ -11,6 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.djchany.iptv.R
+import com.djchany.iptv.data.Activation
 import com.djchany.iptv.data.LiveStream
 import com.djchany.iptv.data.Prefs
 import com.djchany.iptv.data.Repo
@@ -83,6 +84,39 @@ class HomeActivity : AppCompatActivity() {
         // Precarga en segundo plano para que TV en vivo abra al instante.
         lifecycleScope.launch { runCatching { Repo.liveCategories(); Repo.liveStreams() } }
         Updater.check(this, false)
+        refreshActivation()
+    }
+
+    /** Si el equipo fue activado a distancia, aplica cambios o bajas hechos desde el panel. */
+    private fun refreshActivation() {
+        if (!Prefs.activated) return
+        lifecycleScope.launch {
+            when (val r = Activation.fetch()) {
+                is Activation.Result.Found -> {
+                    if (r.payload.updated != Prefs.activationStamp) {
+                        val changed = Activation.apply(r.payload)
+                        toast("Tu proveedor actualizó tu lista")
+                        if (changed) {
+                            Repo.account = null
+                            recreate()
+                        }
+                    }
+                    r.payload.message?.let { msg -> warn(msg) }
+                }
+                is Activation.Result.NotFound -> {
+                    Activation.revoke()
+                    if (Repo.api == null) {
+                        toast("Este equipo fue desactivado por tu proveedor")
+                        startActivity(
+                            Intent(this@HomeActivity, LoginActivity::class.java)
+                                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                        )
+                        finish()
+                    } else recreate()
+                }
+                is Activation.Result.Error -> Unit
+            }
+        }
     }
 
     override fun onResume() {

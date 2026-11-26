@@ -16,9 +16,11 @@ object Prefs {
 
     // ---------------- cuentas / listas
 
-    data class Profile(val name: String, val server: String, val user: String, val pass: String) {
+    /** [remote] = cargada por el proveedor con el código de activación. */
+    data class Profile(val name: String, val server: String, val user: String, val pass: String, val remote: Boolean = false) {
         val key: String get() = "${server.lowercase()}|$user"
-        fun toJson(): JSONObject = JSONObject().put("name", name).put("server", server).put("user", user).put("pass", pass)
+        fun toJson(): JSONObject = JSONObject().put("name", name).put("server", server).put("user", user)
+            .put("pass", pass).put("remote", remote)
     }
 
     var profiles: List<Profile>
@@ -26,7 +28,7 @@ object Prefs {
             val a = JSONArray(sp.getString("profiles", "[]"))
             (0 until a.length()).mapNotNull { i ->
                 a.optJSONObject(i)?.let { o ->
-                    Profile(o.optString("name"), o.optString("server"), o.optString("user"), o.optString("pass"))
+                    Profile(o.optString("name"), o.optString("server"), o.optString("user"), o.optString("pass"), o.optBoolean("remote"))
                 }
             }
         } catch (e: Exception) {
@@ -49,6 +51,14 @@ object Prefs {
         activeKey = p.key
     }
 
+    /** Reemplaza las listas cargadas a distancia por [list], conservando las ingresadas a mano. */
+    fun replaceRemoteProfiles(list: List<Profile>) {
+        val keys = list.map { it.key }.toSet()
+        profiles = list + profiles.filter { !it.remote && it.key !in keys }
+        val active = activeKey
+        if (active == null || profiles.none { it.key == active }) activeKey = profiles.firstOrNull()?.key
+    }
+
     fun deleteProfile(p: Profile) {
         profiles = profiles.filter { it.key != p.key }
         if (activeKey == p.key) activeKey = null
@@ -56,6 +66,20 @@ object Prefs {
 
     /** Prefijo para que favoritos e historial sean propios de cada lista. */
     private val scope: String get() = Integer.toHexString((current?.key ?: "none").hashCode())
+
+    // ---------------- activación remota
+
+    var deviceCode: String?
+        get() = sp.getString("device_code", null)
+        set(v) = sp.edit().putString("device_code", v).apply()
+
+    var activated: Boolean
+        get() = sp.getBoolean("activated", false)
+        set(v) = sp.edit().putBoolean("activated", v).apply()
+
+    var activationStamp: Long
+        get() = sp.getLong("activation_stamp", 0L)
+        set(v) = sp.edit().putLong("activation_stamp", v).apply()
 
     // ---------------- tipo de equipo
 

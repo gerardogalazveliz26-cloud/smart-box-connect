@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Panel DJ Chany</title>
+<style>
+  :root {
+    --bg: #0a0614; --surface: #160d26; --surface2: #21123a; --line: #4a2a73;
+    --magenta: #e040fb; --cyan: #2ee6ff; --gold: #ffc83d; --text: #fff; --dim: #b9aed1;
+    --ok: #3ddc97; --danger: #ff5c7a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: radial-gradient(circle at 20% 0%, #2a0f4a 0%, var(--bg) 55%) fixed;
+    color: var(--text); font: 15px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  header { padding: 22px 16px 8px; text-align: center; }
+  header h1 {
+    margin: 0; font-size: 26px; letter-spacing: .5px;
+    background: linear-gradient(90deg, var(--magenta), var(--cyan)); -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  header p { margin: 4px 0 0; color: var(--dim); font-size: 13px; }
+  main { max-width: 860px; margin: 0 auto; padding: 8px 16px 40px; }
+  section {
+    background: rgba(22, 13, 38, .92); border: 1px solid var(--line); border-radius: 16px;
+    padding: 18px; margin-top: 16px;
+  }
+  h2 { margin: 0 0 12px; font-size: 18px; color: var(--cyan); }
+  label { display: block; font-size: 12px; color: var(--dim); margin: 10px 0 4px; }
+  input, textarea {
+    width: 100%; padding: 11px 12px; border-radius: 10px; border: 1px solid var(--line);
+    background: #120a22; color: var(--text); font: inherit;
+  }
+  input:focus, textarea:focus { outline: 2px solid var(--cyan); border-color: transparent; }
+  .code-input { font: 700 22px/1.2 ui-monospace, Menlo, Consolas, monospace; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); }
+  .row { display: grid; gap: 10px; grid-template-columns: 1fr 1fr; }
+  .row3 { display: grid; gap: 10px; grid-template-columns: 2fr 1fr 1fr; }
+  @media (max-width: 640px) { .row, .row3 { grid-template-columns: 1fr; } }
+  .btns { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+  button {
+    border: 1px solid var(--line); background: var(--surface2); color: var(--text);
+    padding: 10px 16px; border-radius: 22px; font: 600 14px system-ui, sans-serif; cursor: pointer;
+  }
+  button:hover { border-color: var(--cyan); }
+  button.primary { background: linear-gradient(90deg, var(--magenta), #2ea8ff); border: 0; }
+  button.danger { border-color: var(--danger); color: var(--danger); background: transparent; }
+  button.small { padding: 6px 12px; font-size: 12px; }
+  button:disabled { opacity: .5; cursor: wait; }
+  .list-card { border: 1px dashed var(--line); border-radius: 12px; padding: 4px 12px 12px; margin-top: 12px; position: relative; }
+  .list-card .remove { position: absolute; top: 8px; right: 8px; }
+  .msg { margin-top: 12px; padding: 10px 12px; border-radius: 10px; display: none; white-space: pre-wrap; }
+  .msg.ok { display: block; background: rgba(61, 220, 151, .12); color: var(--ok); }
+  .msg.err { display: block; background: rgba(255, 92, 122, .12); color: var(--danger); }
+  .msg.info { display: block; background: rgba(46, 230, 255, .10); color: var(--cyan); }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { text-align: left; padding: 8px 6px; border-bottom: 1px solid #2a1846; vertical-align: middle; }
+  th { color: var(--dim); font-weight: 600; font-size: 12px; }
+  td.mono { font-family: ui-monospace, Menlo, Consolas, monospace; color: var(--gold); white-space: nowrap; }
+  .muted { color: var(--dim); font-size: 13px; }
+  details summary { cursor: pointer; color: var(--cyan); font-weight: 600; }
+  .status-dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: var(--danger); margin-right: 6px; }
+  .status-dot.on { background: var(--ok); }
+</style>
+</head>
+<body>
+<header>
+  <h1>DJ Chany IPTV · Panel</h1>
+  <p>Carga listas en los equipos de tus clientes usando su código de activación</p>
+</header>
+
+<main>
+  <section id="cfg">
+    <details id="cfgDetails">
+      <summary><span id="cfgDot" class="status-dot"></span><span id="cfgSummary">Conexión con GitHub (configurar una sola vez)</span></summary>
+      <p class="muted">Crea un <b>token de GitHub</b> (Settings → Developer settings → Fine-grained tokens) con acceso solo al repositorio
+        <b>smart-box-connect</b> y permiso <b>Contents: Read and write</b>. Se guarda únicamente en este navegador.</p>
+      <label for="token">Token de GitHub</label>
+      <input id="token" type="password" autocomplete="off" placeholder="github_pat_…">
+      <div class="row">
+        <div><label for="repo">Repositorio</label><input id="repo" value="gerardogalazveliz26-cloud/smart-box-connect"></div>
+        <div><label for="branch">Rama</label><input id="branch" value="main"></div>
+      </div>
+      <div class="btns">
+        <button class="primary" id="saveCfg">Guardar y probar</button>
+        <button class="danger" id="forgetCfg">Olvidar token</button>
+      </div>
+      <div id="cfgMsg" class="msg"></div>
+    </details>
+  </section>
+
+  <section>
+    <h2>Activar equipo</h2>
+    <label for="code">Código del equipo (aparece en la TV del cliente)</label>
+    <input id="code" class="code-input" placeholder="DJ-XXXXX-XXXXX" autocomplete="off" spellcheck="false">
+    <div class="row">
+      <div><label for="client">Cliente (solo para ti, va cifrado)</label><input id="client" placeholder="Ej. Juan Pérez"></div>
+      <div><label for="message">Aviso para el cliente (opcional)</label><input id="message" placeholder="Ej. Tu cuenta vence el 30/12"></div>
+    </div>
+
+    <div id="lists"></div>
+    <div class="btns">
+      <button id="addList">+ Agregar otra lista</button>
+    </div>
+
+    <div class="btns">
+      <button class="primary" id="send">Enviar al equipo</button>
+      <button id="load">Buscar activación existente</button>
+      <button class="danger" id="revoke">Dar de baja</button>
+      <button id="clear">Limpiar</button>
+    </div>
+    <div id="msg" class="msg"></div>
+  </section>
+
+  <section>
+    <h2>Mis clientes</h2>
+    <p class="muted">Equipos activados desde este navegador. Haz una copia de seguridad con «Exportar» de vez en cuando.</p>
+    <div style="overflow-x:auto">
+      <table>
+        <thead><tr><th>Código</th><th>Cliente</th><th>Listas</th><th>Actualizado</th><th></th></tr></thead>
+        <tbody id="clients"></tbody>
+      </table>
+    </div>
+    <div class="btns">
+      <button id="export">Exportar</button>
+      <button id="import">Importar</button>
+      <input id="importFile" type="file" accept="application/json" hidden>
+    </div>
+  </section>
+
+  <section>
+    <h2>Cambiar servidor a todos</h2>
+    <p class="muted">Si tu DNS cambió, reemplázalo en todos los equipos de «Mis clientes» de una vez.</p>
+    <div class="row">
+      <div><label for="oldServer">Servidor actual</label><input id="oldServer" placeholder="http://dns-viejo.com:8080"></div>
+      <div><label for="newServer">Servidor nuevo</label><input id="newServer" placeholder="http://dns-nuevo.com:8080"></div>
+    </div>
+    <div class="btns"><button class="primary" id="bulk">Cambiar en todos</button></div>
+    <div id="bulkMsg" class="msg"></div>
+  </section>
+</main>
+
+<script>
+"use strict";
+const ALPHABET = "23456789ABCDEFGHJKLMNPQRSTUVWXYZ";
+const ITER = 60000;
+const enc = new TextEncoder();
+const dec = new TextDecoder();
+const $ = (id) => document.getElementById(id);
+
+// ---------------------------------------------------------------- almacenamiento local
+function store(key, value) {
+  try {
+    if (value === undefined) return JSON.parse(localStorage.getItem(key) || "null");
+    if (value === null) localStorage.removeItem(key); else localStorage.setItem(key, JSON.stringify(value));
+  } catch (e) { return null; }
+}
+const cfg = () => ({ token: $("token").value.trim(), repo: $("repo").value.trim(), branch: $("branch").value.trim() || "main" });
+function clients() { return store("djchany_clients") || {}; }
+function saveClients(c) { store("djchany_clients", c); renderClients(); }
+
+// ---------------------------------------------------------------- utilidades
+function show(el, kind, text) { el.className = "msg " + kind; el.textContent = text; }
+function normalizeCode(s) {
+  let c = (s || "").toUpperCase().replace(/[^A-Z0-9]/g, "");
+  if (c.length === 12 && c.startsWith("DJ")) c = c.slice(2);
+  if (c.length !== 10 || [...c].some((ch) => !ALPHABET.includes(ch))) return null;
+  return c;
+}
+const displayCode = (c) => `DJ-${c.slice(0, 5)}-${c.slice(5)}`;
+function b64(bytes) { let s = ""; for (const b of bytes) s += String.fromCharCode(b); return btoa(s); }
+function unb64(s) { const bin = atob(s.replace(/\s/g, "")); return Uint8Array.from(bin, (ch) => ch.charCodeAt(0)); }
+function escapeHtml(s) { return String(s ?? "").replace(/[&<>"']/g, (ch) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[ch]); }
+
+function serverBase(input) {
+  let s = (input || "").trim();
+  if (!s) return null;
+  if (!/^https?:\/\//i.test(s)) s = "http://" + s;
+  try { const u = new URL(s); return `${u.protocol}//${u.host}`; } catch (e) { return null; }
+}
+function parseM3u(input) {
+  let s = (input || "").trim();
+  if (!/username=/i.test(s)) return null;
+  if (!/^https?:\/\//i.test(s)) s = "http://" + s;
+  try {
+    const u = new URL(s);
+    const user = u.searchParams.get("username"), pass = u.searchParams.get("password");
+    if (!user || !pass) return null;
+    return { server: `${u.protocol}//${u.host}`, user, pass };
+  } catch (e) { return null; }
+}
+
+// ---------------------------------------------------------------- cifrado (igual que en la app)
+async function fileId(code) {
+  const h = new Uint8Array(await crypto.subtle.digest("SHA-256", enc.encode("djchany-activacion:" + code)));
+  return [...h].map((b) => b.toString(16).padStart(2, "0")).join("").slice(0, 32);
+}
+async function deriveKey(code, salt, iter) {
+  const base = await crypto.subtle.importKey("raw", enc.encode(code), "PBKDF2", false, ["deriveKey"]);
+  return crypto.subtle.deriveKey({ name: "PBKDF2", salt, iterations: iter, hash: "SHA-256" }, base,
+    { name: "AES-GCM", length: 256 }, false, ["encrypt", "decrypt"]);
+}
+async function encryptPayload(obj, code) {
+  const salt = crypto.getRandomValues(new Uint8Array(16));
+  const iv = crypto.getRandomValues(new Uint8Array(12));
+  const key = await deriveKey(code, salt, ITER);
+  const ct = new Uint8Array(await crypto.subtle.encrypt({ name: "AES-GCM", iv }, key, enc.encode(JSON.stringify(obj))));
+  return { v: 1, iter: ITER, salt: b64(salt), iv: b64(iv), data: b64(ct) };
+}
+async function decryptPayload(file, code) {
+  const key = await deriveKey(code, unb64(file.salt), file.iter || ITER);
+  const pt = await crypto.subtle.decrypt({ name: "AES-GCM", iv: unb64(file.iv) }, key, unb64(file.data));
+  return JSON.parse(dec.decode(pt));
+}
+
+// ---------------------------------------------------------------- API de GitHub
+async function gh(method, path, body) {
+  const { token, repo } = cfg();
+  if (!token) throw new Error("Primero configura tu token de GitHub (arriba).");
+  const r = await fetch(`https://api.github.com/repos/${repo}/${path}`, {
+    method,
+    headers: { Authorization: `Bearer ${token}`, Accept: "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28" },
+    body: body ? JSON.stringify(body) : undefined,
+  });
+  if (r.status === 404 && method === "GET") return null;
+  if (!r.ok) {
+    let detail = "";
+    try { detail = (await r.json()).message || ""; } catch (e) { /* sin cuerpo */ }
+    if (r.status === 401) throw new Error("Token inválido o vencido.");
+    if (r.status === 403 || r.status === 404) throw new Error("El token no tiene permiso de escritura en el repositorio. " + detail);
+    throw new Error(`GitHub respondió ${r.status}. ${detail}`);
+  }
+  return r.status === 204 ? {} : r.json();
+}
+async function getFile(path) {
+  const r = await gh("GET", `contents/${path}?ref=${encodeURIComponent(cfg().branch)}&t=${Date.now()}`);
+  if (!r) return null;
+  return { sha: r.sha, text: dec.decode(unb64(r.content)) };
+}
+async function putFile(path, text, sha, message) {
+  return gh("PUT", `contents/${path}`, { message, content: b64(enc.encode(text)), branch: cfg().branch, ...(sha ? { sha } : {}) });
+}
+async function deleteFile(path, sha, message) {
+  return gh("DELETE", `contents/${path}`, { message, sha, branch: cfg().branch });
+}
+const pathFor = (id) => `activaciones/${id}.json`;
+
+// ---------------------------------------------------------------- formulario de listas
+function addListCard(data = {}) {
+  const card = document.createElement("div");
+  card.className = "list-card";
+  card.innerHTML = `
+    <button class="small danger remove" type="button">Quitar</button>
+    <label>Nombre de la lista</label><input class="f-name" placeholder="Ej. DJ Chany Premium">
+    <label>Servidor o enlace M3U completo</label><input class="f-server" placeholder="http://dominio.com:8080 o http://…/get.php?username=…&password=…">
+    <div class="row">
+      <div><label>Usuario</label><input class="f-user" autocomplete="off"></div>
+      <div><label>Contraseña</label><input class="f-pass" autocomplete="off"></div>
+    </div>`;
+  card.querySelector(".f-name").value = data.name || "";
+  card.querySelector(".f-server").value = data.server || "";
+  card.querySelector(".f-user").value = data.user || "";
+  card.querySelector(".f-pass").value = data.pass || "";
+  const server = card.querySelector(".f-server");
+  server.addEventListener("change", () => {
+    const m = parseM3u(server.value);
+    if (m) {
+      server.value = m.server;
+      card.querySelector(".f-user").value = m.user;
+      card.querySelector(".f-pass").value = m.pass;
+    }
+  });
+  card.querySelector(".remove").addEventListener("click", () => {
+    if ($("lists").children.length > 1) card.remove();
+  });
+  $("lists").appendChild(card);
+}
+function readLists() {
+  return [...document.querySelectorAll(".list-card")].map((c) => {
+    let server = c.querySelector(".f-server").value.trim();
+    let user = c.querySelector(".f-user").value.trim();
+    let pass = c.querySelector(".f-pass").value.trim();
+    const m = parseM3u(server);
+    if (m) ({ server, user, pass } = m);
+    return { name: c.querySelector(".f-name").value.trim() || user, server: serverBase(server) || server, user, pass };
+  }).filter((l) => l.server || l.user || l.pass);
+}
+function resetForm(keepCode) {
+  if (!keepCode) $("code").value = "";
+  $("client").value = "";
+  $("message").value = "";
+  $("lists").innerHTML = "";
+  addListCard();
+}
+
+// ---------------------------------------------------------------- acciones
+async function busy(btn, fn) {
+  const all = document.querySelectorAll("button");
+  all.forEach((b) => (b.disabled = true));
+  try { await fn(); } finally { all.forEach((b) => (b.disabled = false)); }
+}
+function requireCode() {
+  const code = normalizeCode($("code").value);
+  if (!code) throw new Error("El código no es válido. Debe verse así: DJ-XXXXX-XXXXX");
+  $("code").value = displayCode(code);
+  return code;
+}
+
+async function doSend() {
+  const code = requireCode();
+  const lists = readLists();
+  if (!lists.length) throw new Error("Agrega al menos una lista.");
+  for (const l of lists) {
+    if (!serverBase(l.server) || !l.user || !l.pass) throw new Error(`Completa servidor, usuario y contraseña de «${l.name || "la lista"}».`);
+  }
+  const payload = { lists, client: $("client").value.trim(), message: $("message").value.trim(), updated: Date.now() };
+  const id = await fileId(code);
+  const existing = await getFile(pathFor(id));
+  const file = await encryptPayload(payload, code);
+  await putFile(pathFor(id), JSON.stringify(file, null, 1) + "\n", existing?.sha, `Activación ${id.slice(0, 6)}`);
+  const c = clients();
+  c[code] = { client: payload.client, lists: lists.length, updated: payload.updated };
+  saveClients(c);
+  show($("msg"), "ok", `✔ Listo. El equipo ${displayCode(code)} recibirá ${lists.length} lista(s) en menos de un minuto.`);
+}
+
+async function doLoad(codeArg) {
+  if (codeArg) $("code").value = displayCode(codeArg);
+  const code = requireCode();
+  const id = await fileId(code);
+  const f = await getFile(pathFor(id));
+  if (!f) { show($("msg"), "info", "Ese equipo todavía no tiene activación. Completa los datos y pulsa «Enviar al equipo»."); return; }
+  const p = await decryptPayload(JSON.parse(f.text), code);
+  $("client").value = p.client || "";
+  $("message").value = p.message || "";
+  $("lists").innerHTML = "";
+  (p.lists && p.lists.length ? p.lists : [{}]).forEach(addListCard);
+  show($("msg"), "info", `Activación cargada (${(p.lists || []).length} lista(s)). Edítala y pulsa «Enviar al equipo» para actualizarla.`);
+  window.scrollTo({ top: $("code").offsetTop - 80, behavior: "smooth" });
+}
+
+async function doRevoke(codeArg) {
+  if (codeArg) $("code").value = displayCode(codeArg);
+  const code = requireCode();
+  if (!confirm(`¿Dar de baja el equipo ${displayCode(code)}? Dejará de ver la lista cargada.`)) return;
+  const id = await fileId(code);
+  const f = await getFile(pathFor(id));
+  if (f) await deleteFile(pathFor(id), f.sha, `Baja ${id.slice(0, 6)}`);
+  const c = clients(); delete c[code]; saveClients(c);
+  resetForm();
+  show($("msg"), "ok", `✔ Equipo ${displayCode(code)} dado de baja. Se aplica la próxima vez que el cliente abra la app.`);
+}
+
+async function doBulk() {
+  const from = serverBase($("oldServer").value), to = serverBase($("newServer").value);
+  if (!from || !to) throw new Error("Escribe el servidor actual y el nuevo.");
+  const codes = Object.keys(clients());
+  if (!codes.length) throw new Error("No hay clientes en este navegador.");
+  if (!confirm(`¿Cambiar ${from} por ${to} en ${codes.length} equipo(s)?`)) return;
+  let changed = 0, failed = 0;
+  for (const code of codes) {
+    try {
+      show($("bulkMsg"), "info", `Procesando ${displayCode(code)}… (${changed} cambiados)`);
+      const id = await fileId(code);
+      const f = await getFile(pathFor(id));
+      if (!f) continue;
+      const p = await decryptPayload(JSON.parse(f.text), code);
+      let touched = false;
+      for (const l of p.lists || []) {
+        if (serverBase(l.server)?.toLowerCase() === from.toLowerCase()) { l.server = to; touched = true; }
+      }
+      if (!touched) continue;
+      p.updated = Date.now();
+      await putFile(pathFor(id), JSON.stringify(await encryptPayload(p, code), null, 1) + "\n", f.sha, `Activación ${id.slice(0, 6)}`);
+      const c = clients(); if (c[code]) { c[code].updated = p.updated; saveClients(c); }
+      changed++;
+    } catch (e) { failed++; }
+  }
+  show($("bulkMsg"), failed ? "err" : "ok", `✔ ${changed} equipo(s) actualizados${failed ? `, ${failed} con error` : ""}.`);
+}
+
+function renderClients() {
+  const c = clients();
+  const rows = Object.entries(c).sort((a, b) => (b[1].updated || 0) - (a[1].updated || 0));
+  $("clients").innerHTML = rows.length ? rows.map(([code, v]) => `
+    <tr>
+      <td class="mono">${escapeHtml(displayCode(code))}</td>
+      <td>${escapeHtml(v.client || "—")}</td>
+      <td>${escapeHtml(v.lists || 0)}</td>
+      <td class="muted">${v.updated ? escapeHtml(new Date(v.updated).toLocaleString()) : ""}</td>
+      <td style="white-space:nowrap">
+        <button class="small" data-act="edit" data-code="${escapeHtml(code)}">Editar</button>
+        <button class="small danger" data-act="revoke" data-code="${escapeHtml(code)}">Baja</button>
+      </td>
+    </tr>`).join("") : `<tr><td colspan="5" class="muted">Aún no activaste equipos desde este navegador.</td></tr>`;
+}
+
+// ---------------------------------------------------------------- eventos
+function run(btn, fn, msgEl = $("msg")) {
+  btn.addEventListener("click", () => busy(btn, async () => {
+    try { await fn(); } catch (e) { show(msgEl, "err", "✖ " + (e.message || e)); }
+  }));
+}
+run($("send"), doSend);
+run($("load"), () => doLoad());
+run($("revoke"), () => doRevoke());
+run($("bulk"), doBulk, $("bulkMsg"));
+$("clear").addEventListener("click", () => { resetForm(); $("msg").className = "msg"; });
+$("addList").addEventListener("click", () => addListCard());
+$("clients").addEventListener("click", (ev) => {
+  const b = ev.target.closest("button[data-act]");
+  if (!b) return;
+  const code = b.dataset.code;
+  busy(b, async () => {
+    try { b.dataset.act === "edit" ? await doLoad(code) : await doRevoke(code); }
+    catch (e) { show($("msg"), "err", "✖ " + (e.message || e)); }
+  });
+});
+
+$("saveCfg").addEventListener("click", () => busy($("saveCfg"), async () => {
+  const c = cfg();
+  store("djchany_cfg", c);
+  try {
+    const r = await fetch(`https://api.github.com/repos/${c.repo}`, {
+      headers: { Authorization: `Bearer ${c.token}`, Accept: "application/vnd.github+json" },
+    });
+    const j = await r.json();
+    if (!r.ok) throw new Error(r.status === 401 ? "Token inválido." : (j.message || `Error ${r.status}`));
+    if (!j.permissions?.push) throw new Error("El token puede leer pero no escribir. Dale permiso «Contents: Read and write».");
+    show($("cfgMsg"), "ok", "✔ Conectado. Ya puedes activar equipos.");
+    updateCfgStatus(true);
+  } catch (e) {
+    show($("cfgMsg"), "err", "✖ " + e.message);
+    updateCfgStatus(false);
+  }
+}));
+$("forgetCfg").addEventListener("click", () => {
+  store("djchany_cfg", null);
+  $("token").value = "";
+  updateCfgStatus(false);
+  show($("cfgMsg"), "info", "Token borrado de este navegador.");
+});
+$("export").addEventListener("click", () => {
+  const blob = new Blob([JSON.stringify(clients(), null, 2)], { type: "application/json" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = `djchany-clientes-${new Date().toISOString().slice(0, 10)}.json`;
+  a.click();
+  URL.revokeObjectURL(a.href);
+});
+$("import").addEventListener("click", () => $("importFile").click());
+$("importFile").addEventListener("change", async (ev) => {
+  const f = ev.target.files[0];
+  if (!f) return;
+  try {
+    const data = JSON.parse(await f.text());
+    const c = clients();
+    for (const [code, v] of Object.entries(data)) if (normalizeCode(code)) c[normalizeCode(code)] = v;
+    saveClients(c);
+    show($("msg"), "ok", "✔ Clientes importados.");
+  } catch (e) { show($("msg"), "err", "✖ Archivo no válido."); }
+  ev.target.value = "";
+});
+$("code").addEventListener("blur", () => { const c = normalizeCode($("code").value); if (c) $("code").value = displayCode(c); });
+
+function updateCfgStatus(ok) {
+  $("cfgDot").classList.toggle("on", ok);
+  $("cfgSummary").textContent = ok ? "Conectado a GitHub" : "Conexión con GitHub (configurar una sola vez)";
+}
+
+// ---------------------------------------------------------------- inicio
+(function init() {
+  if (!window.crypto?.subtle) {
+    show($("msg"), "err", "Este navegador no permite cifrar aquí. Abre el panel desde https:// (GitHub Pages) o con Chrome actualizado.");
+  }
+  const saved = store("djchany_cfg");
+  if (saved) {
+    $("token").value = saved.token || "";
+    $("repo").value = saved.repo || $("repo").value;
+    $("branch").value = saved.branch || "main";
+  }
+  updateCfgStatus(!!saved?.token);
+  if (!saved?.token) $("cfgDetails").open = true;
+  resetForm();
+  renderClients();
+})();
+</script>
+</body>
+</html>
