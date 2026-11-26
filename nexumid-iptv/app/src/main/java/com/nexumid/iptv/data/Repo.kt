@@ -1,6 +1,8 @@
 package com.nexumid.iptv.data
 
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.withContext
 import kotlinx.coroutines.sync.withLock
 import java.util.concurrent.ConcurrentHashMap
 
@@ -42,7 +44,7 @@ object Repo {
         @Volatile
         private var value: T? = null
 
-        suspend fun get(): T = value ?: mutex.withLock { value ?: loader().also { value = it } }
+        suspend fun get(): T = value ?: mutex.withLock { value ?: withContext(Dispatchers.Default) { loader() }.also { value = it } }
         fun peek(): T? = value
         fun clear() {
             value = null
@@ -106,7 +108,7 @@ object Repo {
             if (now - t < 15 * 60_000 && (l.isEmpty() || l.last().end > now)) return l
         }
         val l = try {
-            requireApi().shortEpg(streamId, 6)
+            withContext(Dispatchers.Default) { requireApi().shortEpg(streamId, 6) }
         } catch (e: Exception) {
             emptyList()
         }

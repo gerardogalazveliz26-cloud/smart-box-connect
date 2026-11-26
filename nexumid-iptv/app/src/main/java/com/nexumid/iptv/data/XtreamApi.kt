@@ -1,6 +1,8 @@
 package com.nexumid.iptv.data
 
 import android.util.Base64
+import android.util.JsonReader
+import android.util.JsonToken
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import okhttp3.HttpUrl
@@ -42,15 +44,19 @@ class XtreamApi(server: String, val user: String, val pass: String) {
         }
     }
 
+    private fun apiUrl(action: String?, vararg params: Pair<String, String>): HttpUrl {
+        val b = base.newBuilder()
+            .addPathSegment("player_api.php")
+            .addQueryParameter("username", user)
+            .addQueryParameter("password", pass)
+        if (action != null) b.addQueryParameter("action", action)
+        params.forEach { b.addQueryParameter(it.first, it.second) }
+        return b.build()
+    }
+
     private suspend fun call(action: String?, vararg params: Pair<String, String>): String =
         withContext(Dispatchers.IO) {
-            val b = base.newBuilder()
-                .addPathSegment("player_api.php")
-                .addQueryParameter("username", user)
-                .addQueryParameter("password", pass)
-            if (action != null) b.addQueryParameter("action", action)
-            params.forEach { b.addQueryParameter(it.first, it.second) }
-            val req = Request.Builder().url(b.build()).build()
+            val req = Request.Builder().url(apiUrl(action, *params)).build()
             Net.client.newCall(req).execute().use { r ->
                 if (r.code == 401 || r.code == 403) throw XtreamException("Usuario o contraseña incorrectos")
                 if (r.code == 404) throw XtreamException(
@@ -82,54 +88,114 @@ class XtreamApi(server: String, val user: String, val pass: String) {
 
     // ---------------- categorías y listas
 
-    private suspend fun categories(action: String): List<Category> =
-        parseArray(call(action)).mapObjects { o ->
-            val id = o.str("category_id") ?: return@mapObjects null
-            Category(id, o.str("category_name") ?: "Sin nombre")
+    /**
+     * Descarga y lee una lista (canales, películas, series) de a un elemento, sin cargar el JSON
+     * entero en memoria y fuera del hilo principal: en TV Box con listas enormes evita que la
+     * pantalla se congele o que la app se cierre por falta de memoria.
+     */
+    private suspend fun <T> streamList(action: String, map: (Map<String, String>) -> T?): List<T> =
+        withContext(Dispatchers.IO) {
+            val req = Request.Builder().url(apiUrl(action)).build()
+            Net.client.newCall(req).execute().use { r ->
+                if (r.code == 401 || r.code == 403) throw XtreamException("Usuario o contraseña incorrectos")
+                if (!r.isSuccessful) throw XtreamException("El servidor respondió con error ${r.code}")
+                val body = r.body ?: return@use emptyList<T>()
+                val out = ArrayList<T>()
+                JsonReader(body.charStream()).use { jr ->
+                    jr.isLenient = true
+                    when (jr.peek()) {
+                        JsonToken.BEGIN_ARRAY -> {
+                            jr.beginArray()
+                            while (jr.hasNext()) readItem(jr)?.let { m -> map(m)?.let { out.add(it) } }
+                            jr.endArray()
+                        }
+                        JsonToken.BEGIN_OBJECT -> {
+                            jr.beginObject()
+                            while (jr.hasNext()) {
+                                jr.nextName()
+                                readItem(jr)?.let { m -> map(m)?.let { out.add(it) } }
+                            }
+                            jr.endObject()
+                        }
+                        else -> Unit
+                    }
+                }
+                out
+            }
         }
+
+    private fun readItem(jr: JsonReader): Map<String, String>? {
+        if (jr.peek() != JsonToken.BEGIN_OBJECT) {
+            jr.skipValue()
+            return null
+        }
+        val m = HashMap<String, String>(24)
+        jr.beginObject()
+        while (jr.hasNext()) {
+            val k = jr.nextName()
+            when (jr.peek()) {
+                JsonToken.STRING, JsonToken.NUMBER -> m[k] = jr.nextString()
+                JsonToken.BOOLEAN -> m[k] = jr.nextBoolean().toString()
+                JsonToken.NULL -> jr.nextNull()
+                else -> jr.skipValue()
+            }
+        }
+        jr.endObject()
+        return m
+    }
+
+    private fun Map<String, String>.s(k: String): String? = this[k]?.trim()?.takeIf { it.isNotEmpty() && it != "null" }
+    private fun Map<String, String>.i(k: String, def: Int = 0): Int = s(k)?.toDoubleOrNull()?.toInt() ?: def
+    private fun Map<String, String>.l(k: String): Long = s(k)?.toDoubleOrNull()?.toLong() ?: 0L
+    private fun Map<String, String>.d(k: String): Double = s(k)?.replace(',', '.')?.toDoubleOrNull() ?: 0.0
+
+    private suspend fun categories(action: String): List<Category> = streamList(action) { o ->
+        val id = o.s("category_id") ?: return@streamList null
+        Category(id, o.s("category_name") ?: "Sin nombre")
+    }
 
     suspend fun liveCategories() = categories("get_live_categories")
     suspend fun vodCategories() = categories("get_vod_categories")
     suspend fun seriesCategories() = categories("get_series_categories")
 
-    suspend fun liveStreams(): List<LiveStream> = parseArray(call("get_live_streams")).mapObjects { o ->
-        val id = o.int("stream_id", -1)
-        if (id < 0) return@mapObjects null
+    suspend fun liveStreams(): List<LiveStream> = streamList("get_live_streams") { o ->
+        val id = o.i("stream_id", -1)
+        if (id < 0) return@streamList null
         LiveStream(
             id = id,
-            num = o.int("num"),
-            name = o.str("name") ?: "Canal $id",
-            icon = o.str("stream_icon"),
-            categoryId = o.str("category_id"),
-            epgId = o.str("epg_channel_id"),
-            archive = o.int("tv_archive") == 1,
+            num = o.i("num"),
+            name = o.s("name") ?: "Canal $id",
+            icon = o.s("stream_icon"),
+            categoryId = o.s("category_id"),
+            epgId = o.s("epg_channel_id"),
+            archive = o.i("tv_archive") == 1,
         )
     }
 
-    suspend fun vodStreams(): List<Poster> = parseArray(call("get_vod_streams")).mapObjects { o ->
-        val id = o.int("stream_id", -1)
-        if (id < 0) return@mapObjects null
+    suspend fun vodStreams(): List<Poster> = streamList("get_vod_streams") { o ->
+        val id = o.i("stream_id", -1)
+        if (id < 0) return@streamList null
         Poster(
             id = id,
-            name = o.str("name") ?: "Película $id",
-            image = o.str("stream_icon"),
-            categoryId = o.str("category_id"),
-            rating = o.double("rating"),
-            added = o.long("added"),
-            ext = o.str("container_extension") ?: "mp4",
+            name = o.s("name") ?: "Película $id",
+            image = o.s("stream_icon"),
+            categoryId = o.s("category_id"),
+            rating = o.d("rating"),
+            added = o.l("added"),
+            ext = o.s("container_extension") ?: "mp4",
         )
     }
 
-    suspend fun series(): List<Poster> = parseArray(call("get_series")).mapObjects { o ->
-        val id = o.int("series_id", -1)
-        if (id < 0) return@mapObjects null
+    suspend fun series(): List<Poster> = streamList("get_series") { o ->
+        val id = o.i("series_id", -1)
+        if (id < 0) return@streamList null
         Poster(
             id = id,
-            name = o.str("name") ?: "Serie $id",
-            image = o.str("cover"),
-            categoryId = o.str("category_id"),
-            rating = o.double("rating"),
-            added = o.long("last_modified"),
+            name = o.s("name") ?: "Serie $id",
+            image = o.s("cover"),
+            categoryId = o.s("category_id"),
+            rating = o.d("rating"),
+            added = o.l("last_modified"),
             ext = "",
         )
     }

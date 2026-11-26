@@ -201,7 +201,7 @@ class LiveActivity : AppCompatActivity() {
 
     private fun load() {
         tvMsg.visibility = View.VISIBLE
-        tvMsg.text = "Cargando canales…"
+        tvMsg.text = "Cargando canales…\nCon listas grandes puede tardar unos segundos"
         lifecycleScope.launch {
             try {
                 val categories = Repo.liveCategories()
@@ -390,10 +390,17 @@ class LiveActivity : AppCompatActivity() {
         val s = IntArray(2)
         root.getLocationInWindow(r)
         previewSlot.getLocationInWindow(s)
-        val lp = FrameLayout.LayoutParams(previewSlot.width.coerceAtLeast(1), previewSlot.height.coerceAtLeast(1))
+        val w = previewSlot.width.coerceAtLeast(1)
+        val h = previewSlot.height.coerceAtLeast(1)
+        val left = s[0] - r[0]
+        val top = s[1] - r[1]
+        val cur = playerFrame.layoutParams as? FrameLayout.LayoutParams
+        // Solo se reubica si cambió, para no provocar un ciclo de re-dibujos.
+        if (cur != null && cur.width == w && cur.height == h && cur.leftMargin == left && cur.topMargin == top) return
+        val lp = FrameLayout.LayoutParams(w, h)
         lp.gravity = Gravity.TOP or Gravity.START
-        lp.leftMargin = s[0] - r[0]
-        lp.topMargin = s[1] - r[1]
+        lp.leftMargin = left
+        lp.topMargin = top
         playerFrame.layoutParams = lp
     }
 
