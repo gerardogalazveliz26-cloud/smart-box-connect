@@ -1,0 +1,32 @@
+name: Limpiar versiones
+
+# Borra versiones publicadas (Releases) y sus tags. Se ejecuta a mano desde Actions.
+on:
+  workflow_dispatch:
+    inputs:
+      tags:
+        description: "Tags a borrar, separados por espacios (ej.: nexumid-iptv-v2.0.1 nexumid-iptv-v2.0.2)"
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  limpiar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Borrar versiones
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          TAGS: ${{ inputs.tags }}
+        run: |
+          set -u
+          for t in $TAGS; do
+            if ! [[ "$t" =~ ^[A-Za-z0-9._-]+$ ]]; then echo "::warning::Tag no válido: $t"; continue; fi
+            if gh release view "$t" >/dev/null 2>&1; then
+              gh release delete "$t" --yes --cleanup-tag && echo "Borrada: $t"
+            else
+              echo "No existe: $t"
+            fi
+          done
