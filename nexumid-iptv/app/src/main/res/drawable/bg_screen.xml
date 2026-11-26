@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <gradient android:angle="315" android:startColor="#04080F" android:centerColor="#081428" android:endColor="#050C18" />
-</shape>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape><gradient android:angle="315" android:startColor="#02060E" android:endColor="#0A1A32" /></shape>
+    </item>
+    <item>
+        <bitmap android:gravity="fill" android:src="@drawable/brand_bg" />
+    </item>
+    <item android:drawable="@drawable/tex_noise_tile" />
+</layer-list>
