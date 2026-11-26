@@ -662,5 +662,19 @@
     ],
     "fecha": "2026-11-25T13:14:35Z",
     "codigo_downloader": ""
+  },
+  "youtube-premium": {
+    "nombre": "YouTube Premium",
+    "version": "21.20.405",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-youtube-premium-v21.20.405\/youtube-premium-21.20.405.apk",
+    "url_downloader": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-publisher-production-current\/youtube-premium.apk",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/youtube-premium.jpg",
+    "sha256": "55b8870296b752cfae73965f6b80b0a1145bbe223cee4f56aacd9f7eaaa0824b",
+    "size_bytes": 197365976,
+    "objetivos": [
+      "mobile"
+    ],
+    "fecha": "2026-11-26T18:20:16Z",
+    "codigo_downloader": ""
   }
 }
