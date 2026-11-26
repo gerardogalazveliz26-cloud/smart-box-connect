@@ -122,7 +122,12 @@
     // "iframe": el sitio se ve dentro de la app (pantalla completa, sin barra de Safari).
     // "directo": la app abre el sitio directamente (usar si el sitio bloquea iframes).
     // También se puede forzar con ?modo=directo en la URL.
-    const MODO = new URLSearchParams(location.search).get("modo") || "iframe";
+    const PARAMS = new URLSearchParams(location.search);
+    const MODO = PARAMS.get("modo") || "iframe";
+    // Bloquea los anuncios emergentes: ventanas/pestañas nuevas (pop-ups),
+    // redirecciones que sacan de la app, descargas y alertas falsas.
+    // Si el reproductor del sitio deja de funcionar, desactivar con ?bloqueo=0
+    const BLOQUEAR_ANUNCIOS = PARAMS.get("bloqueo") !== "0";
     // ==========================
 
     const splash = document.getElementById("splash");
@@ -156,6 +161,13 @@
         iframe.classList.add("listo");
         splash.classList.add("oculto");
       }, { once: true });
+      if (BLOQUEAR_ANUNCIOS) {
+        // Sin allow-popups, allow-top-navigation, allow-modals ni allow-downloads:
+        // el sitio funciona, pero no puede abrir pestañas, redirigir la app,
+        // mostrar alertas ni descargar archivos. Debe ir ANTES de asignar src.
+        iframe.setAttribute("sandbox",
+          "allow-scripts allow-same-origin allow-forms allow-presentation allow-orientation-lock");
+      }
       iframe.src = URL_SITIO;
       // Si tarda demasiado, ofrecer abrirlo directo.
       setTimeout(() => {
