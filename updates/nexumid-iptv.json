@@ -1,8 +1,8 @@
 {
   "enabled": true,
-  "versionCode": 5,
-  "versionName": "2.0.0",
-  "url": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/nexumid-iptv-v2.0.0/nexumid-iptv-2.0.0.apk",
-  "sha256": "b49c99c4302993d0d15c33bab397b359fc0bd2ad3b74affd2b208fff043ffcc9",
-  "notes": "NexumID IPTV 2.0.0"
+  "versionCode": 6,
+  "versionName": "2.0.1",
+  "url": "https://github.com/gerardogalazveliz26-cloud/smart-box-connect/releases/download/nexumid-iptv-v2.0.1/nexumid-iptv-2.0.1.apk",
+  "sha256": "22e5ad2a2f1d0bb39fba1bfd28c3cc1f2a409093471dfd7807b660f5198edde4",
+  "notes": "NexumID IPTV 2.0.1"
 }
