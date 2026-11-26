@@ -4,16 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>Panel DJ Chany</title>
+<title>Panel NexumID</title>
 <style>
   :root {
-    --bg: #0a0614; --surface: #160d26; --surface2: #21123a; --line: #4a2a73;
-    --magenta: #e040fb; --cyan: #2ee6ff; --gold: #ffc83d; --text: #fff; --dim: #b9aed1;
+    --bg: #050b16; --surface: #0b1a2e; --surface2: #10243f; --line: #1f4f86;
+    --magenta: #1ea0ff; --cyan: #3fd4ff; --gold: #ffc83d; --text: #fff; --dim: #9db2cc;
     --ok: #3ddc97; --danger: #ff5c7a;
   }
   * { box-sizing: border-box; }
   body {
-    margin: 0; background: radial-gradient(circle at 20% 0%, #2a0f4a 0%, var(--bg) 55%) fixed;
+    margin: 0; background: radial-gradient(circle at 15% 0%, #0f2f5a 0%, var(--bg) 55%) fixed;
     color: var(--text); font: 15px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   }
   header { padding: 22px 16px 8px; text-align: center; }
@@ -24,14 +24,14 @@
   header p { margin: 4px 0 0; color: var(--dim); font-size: 13px; }
   main { max-width: 860px; margin: 0 auto; padding: 8px 16px 40px; }
   section {
-    background: rgba(22, 13, 38, .92); border: 1px solid var(--line); border-radius: 16px;
+    background: linear-gradient(160deg, rgba(19, 46, 82, .92), rgba(8, 20, 38, .94)); box-shadow: 0 10px 30px rgba(0, 0, 0, .35), inset 0 1px 0 rgba(255, 255, 255, .06); border: 1px solid var(--line); border-radius: 16px;
     padding: 18px; margin-top: 16px;
   }
   h2 { margin: 0 0 12px; font-size: 18px; color: var(--cyan); }
   label { display: block; font-size: 12px; color: var(--dim); margin: 10px 0 4px; }
   input, textarea {
     width: 100%; padding: 11px 12px; border-radius: 10px; border: 1px solid var(--line);
-    background: #120a22; color: var(--text); font: inherit;
+    background: #0b1a30; color: var(--text); font: inherit;
   }
   input:focus, textarea:focus { outline: 2px solid var(--cyan); border-color: transparent; }
   .code-input { font: 700 22px/1.2 ui-monospace, Menlo, Consolas, monospace; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); }
@@ -44,7 +44,7 @@
     padding: 10px 16px; border-radius: 22px; font: 600 14px system-ui, sans-serif; cursor: pointer;
   }
   button:hover { border-color: var(--cyan); }
-  button.primary { background: linear-gradient(90deg, var(--magenta), #2ea8ff); border: 0; }
+  button.primary { background: linear-gradient(90deg, #1e8bff, #3fd4ff); color: #04101f; border: 0; }
   button.danger { border-color: var(--danger); color: var(--danger); background: transparent; }
   button.small { padding: 6px 12px; font-size: 12px; }
   button:disabled { opacity: .5; cursor: wait; }
@@ -55,7 +55,7 @@
   .msg.err { display: block; background: rgba(255, 92, 122, .12); color: var(--danger); }
   .msg.info { display: block; background: rgba(46, 230, 255, .10); color: var(--cyan); }
   table { width: 100%; border-collapse: collapse; font-size: 14px; }
-  th, td { text-align: left; padding: 8px 6px; border-bottom: 1px solid #2a1846; vertical-align: middle; }
+  th, td { text-align: left; padding: 8px 6px; border-bottom: 1px solid #16345a; vertical-align: middle; }
   th { color: var(--dim); font-weight: 600; font-size: 12px; }
   td.mono { font-family: ui-monospace, Menlo, Consolas, monospace; color: var(--gold); white-space: nowrap; }
   .muted { color: var(--dim); font-size: 13px; }
@@ -66,7 +66,7 @@
 </head>
 <body>
 <header>
-  <h1>DJ Chany IPTV · Panel</h1>
+  <h1>NexumID IPTV · Panel</h1>
   <p>Carga listas en los equipos de tus clientes usando su código de activación</p>
 </header>
 
@@ -95,10 +95,10 @@
     <h2>Activar equipo</h2>
     <label for="code">Código del equipo (aparece en la TV del cliente)</label>
     <div style="display:flex;gap:8px">
-      <input id="code" class="code-input" placeholder="DJ-XXXXX-XXXXX" autocomplete="off" spellcheck="false">
+      <input id="code" class="code-input" placeholder="NX-XXXXX-XXXXX" autocomplete="off" spellcheck="false">
       <button id="paste" type="button" title="Pegar el código copiado">📋 Pegar</button>
     </div>
-    <p class="muted" id="shareHint" style="display:none;margin:6px 0 0">Tip: en WhatsApp mantén presionado el mensaje del cliente → Compartir → <b>DJ Chany Panel</b>.</p>
+    <p class="muted" id="shareHint" style="display:none;margin:6px 0 0">Tip: en WhatsApp mantén presionado el mensaje del cliente → Compartir → <b>NexumID Panel</b>.</p>
     <div class="row">
       <div><label for="client">Cliente (solo para ti, va cifrado)</label><input id="client" placeholder="Ej. Juan Pérez"></div>
       <div><label for="message">Aviso para el cliente (opcional)</label><input id="message" placeholder="Ej. Tu cuenta vence el 30/12"></div>
@@ -162,18 +162,18 @@ function store(key, value) {
   } catch (e) { return null; }
 }
 const cfg = () => ({ token: $("token").value.trim(), repo: $("repo").value.trim(), branch: $("branch").value.trim() || "main" });
-function clients() { return store("djchany_clients") || {}; }
-function saveClients(c) { store("djchany_clients", c); renderClients(); }
+function clients() { return store("nexumid_clients") || {}; }
+function saveClients(c) { store("nexumid_clients", c); renderClients(); }
 
 // ---------------------------------------------------------------- utilidades
 function show(el, kind, text) { el.className = "msg " + kind; el.textContent = text; }
 function normalizeCode(s) {
   let c = (s || "").toUpperCase().replace(/[^A-Z0-9]/g, "");
-  if (c.length === 12 && c.startsWith("DJ")) c = c.slice(2);
+  if (c.length === 12 && (c.startsWith("NX") || c.startsWith("DJ"))) c = c.slice(2);
   if (c.length !== 10 || [...c].some((ch) => !ALPHABET.includes(ch))) return null;
   return c;
 }
-const displayCode = (c) => `DJ-${c.slice(0, 5)}-${c.slice(5)}`;
+const displayCode = (c) => `NX-${c.slice(0, 5)}-${c.slice(5)}`;
 function b64(bytes) { let s = ""; for (const b of bytes) s += String.fromCharCode(b); return btoa(s); }
 function unb64(s) { const bin = atob(s.replace(/\s/g, "")); return Uint8Array.from(bin, (ch) => ch.charCodeAt(0)); }
 function escapeHtml(s) { return String(s ?? "").replace(/[&<>"']/g, (ch) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[ch]); }
@@ -198,7 +198,7 @@ function parseM3u(input) {
 
 // ---------------------------------------------------------------- cifrado (igual que en la app)
 async function fileId(code) {
-  const h = new Uint8Array(await crypto.subtle.digest("SHA-256", enc.encode("djchany-activacion:" + code)));
+  const h = new Uint8Array(await crypto.subtle.digest("SHA-256", enc.encode("nexumid-activacion:" + code)));
   return [...h].map((b) => b.toString(16).padStart(2, "0")).join("").slice(0, 32);
 }
 async function deriveKey(code, salt, iter) {
@@ -257,7 +257,7 @@ function addListCard(data = {}) {
   card.className = "list-card";
   card.innerHTML = `
     <button class="small danger remove" type="button">Quitar</button>
-    <label>Nombre de la lista</label><input class="f-name" placeholder="Ej. DJ Chany Premium">
+    <label>Nombre de la lista</label><input class="f-name" placeholder="Ej. NexumID Premium">
     <label>Servidor o enlace M3U completo</label><input class="f-server" placeholder="http://dominio.com:8080 o http://…/get.php?username=…&password=…">
     <div class="row">
       <div><label>Usuario</label><input class="f-user" autocomplete="off"></div>
@@ -307,7 +307,7 @@ async function busy(btn, fn) {
 }
 function requireCode() {
   const code = normalizeCode($("code").value);
-  if (!code) throw new Error("El código no es válido. Debe verse así: DJ-XXXXX-XXXXX");
+  if (!code) throw new Error("El código no es válido. Debe verse así: NX-XXXXX-XXXXX");
   $("code").value = displayCode(code);
   return code;
 }
@@ -425,7 +425,7 @@ $("clients").addEventListener("click", (ev) => {
 
 $("saveCfg").addEventListener("click", () => busy($("saveCfg"), async () => {
   const c = cfg();
-  store("djchany_cfg", c);
+  store("nexumid_cfg", c);
   try {
     const r = await fetch(`https://api.github.com/repos/${c.repo}`, {
       headers: { Authorization: `Bearer ${c.token}`, Accept: "application/vnd.github+json" },
@@ -438,7 +438,7 @@ $("saveCfg").addEventListener("click", () => busy($("saveCfg"), async () => {
     let sha;
     try { sha = (await getFile(probe))?.sha; } catch (e) { /* sin permiso de lectura: lo detecta la escritura */ }
     try {
-      await putFile(probe, "Prueba de conexión del panel DJ Chany\n", sha, "Prueba de conexión del panel");
+      await putFile(probe, "Prueba de conexión del panel NexumID\n", sha, "Prueba de conexión del panel");
     } catch (e) {
       throw new Error("El token no puede guardar activaciones. En GitHub edita el token y pon «Contents: Read and write» (Repository permissions) para smart-box-connect.");
     }
@@ -450,14 +450,14 @@ $("saveCfg").addEventListener("click", () => busy($("saveCfg"), async () => {
   }
 }));
 $("forgetCfg").addEventListener("click", () => {
-  store("djchany_cfg", null);
+  store("nexumid_cfg", null);
   $("token").value = "";
   updateCfgStatus(false);
   show($("cfgMsg"), "info", "Token borrado de este navegador.");
 });
 $("export").addEventListener("click", () => {
-  const name = `djchany-clientes-${new Date().toISOString().slice(0, 10)}.json`;
-  if (window.DJChanyApp) { window.DJChanyApp.saveFile(name, JSON.stringify(clients(), null, 2)); return; }
+  const name = `nexumid-clientes-${new Date().toISOString().slice(0, 10)}.json`;
+  if (window.NexumApp) { window.NexumApp.saveFile(name, JSON.stringify(clients(), null, 2)); return; }
   const blob = new Blob([JSON.stringify(clients(), null, 2)], { type: "application/json" });
   const a = document.createElement("a");
   a.href = URL.createObjectURL(blob);
@@ -479,7 +479,7 @@ $("importFile").addEventListener("change", async (ev) => {
   ev.target.value = "";
 });
 function extractCode(text) {
-  const m = /DJ[-\s]?([A-Z0-9]{5})[-\s]?([A-Z0-9]{5})/i.exec(text || "");
+  const m = /(?:NX|DJ)[-\s]?([A-Z0-9]{5})[-\s]?([A-Z0-9]{5})/i.exec(text || "");
   return normalizeCode(m ? m[1] + m[2] : text);
 }
 async function setCodeAndLoad(code) {
@@ -493,14 +493,14 @@ async function setCodeAndLoad(code) {
 $("paste").addEventListener("click", async () => {
   let text = "";
   try {
-    text = window.DJChanyApp ? window.DJChanyApp.clipboardCode() : await navigator.clipboard.readText();
+    text = window.NexumApp ? window.NexumApp.clipboardCode() : await navigator.clipboard.readText();
   } catch (e) { /* sin permiso para leer el portapapeles */ }
   const code = extractCode(text);
-  if (!code) { show($("msg"), "err", "✖ No hay un código DJ-XXXXX-XXXXX copiado. Cópialo del mensaje del cliente."); return; }
+  if (!code) { show($("msg"), "err", "✖ No hay un código NX-XXXXX-XXXXX copiado. Cópialo del mensaje del cliente."); return; }
   busy($("paste"), () => setCodeAndLoad(code));
 });
 // La app envía aquí el código recibido al compartir un mensaje de WhatsApp.
-window.djPrefillCode = (text) => {
+window.nxPrefillCode = (text) => {
   const code = extractCode(text);
   if (code) busy($("paste"), () => setCodeAndLoad(code));
 };
@@ -516,14 +516,14 @@ function updateCfgStatus(ok) {
   if (!window.crypto?.subtle) {
     show($("msg"), "err", "Este navegador no permite cifrar aquí. Abre el panel desde https:// (GitHub Pages) o con Chrome actualizado.");
   }
-  const saved = store("djchany_cfg");
+  const saved = store("nexumid_cfg");
   if (saved) {
     $("token").value = saved.token || "";
     $("repo").value = saved.repo || $("repo").value;
     $("branch").value = saved.branch || "main";
   }
   updateCfgStatus(!!saved?.token);
-  if (window.DJChanyApp) $("shareHint").style.display = "block";
+  if (window.NexumApp) $("shareHint").style.display = "block";
   if (!saved?.token) $("cfgDetails").open = true;
   resetForm();
   renderClients();
