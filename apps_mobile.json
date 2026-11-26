@@ -100,5 +100,11 @@
     "descripcion": "aplicación modificada por Smartboxconnect",
     "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/youtube-music-premium.jpg",
     "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-youtube-music-premium-v9.20.53\/youtube-music-premium-9.20.53.apk"
+  },
+  {
+    "nombre": "micro-G",
+    "descripcion": "necesario para YouTube premium en movil",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/youtube-micro-g.png",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-youtube-micro-g-v7.4.0\/youtube-micro-g-7.4.0.apk"
   }
 ]

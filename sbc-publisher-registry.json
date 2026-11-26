@@ -690,5 +690,19 @@
     ],
     "fecha": "2026-11-26T18:42:29Z",
     "codigo_downloader": ""
+  },
+  "youtube-micro-g": {
+    "nombre": "micro-G",
+    "version": "7.4.0",
+    "apk": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-prod-youtube-micro-g-v7.4.0\/youtube-micro-g-7.4.0.apk",
+    "url_downloader": "https:\/\/github.com\/gerardogalazveliz26-cloud\/smart-box-connect\/releases\/download\/sbc-publisher-production-current\/youtube-micro-g.apk",
+    "logo": "https:\/\/raw.githubusercontent.com\/gerardogalazveliz26-cloud\/smart-box-connect\/main\/logos\/sbc-publisher\/youtube-micro-g.png",
+    "sha256": "23ecd17cb7a604b9db61e6c0df9b35507a294cb0cf4cbd3335863e3efc399963",
+    "size_bytes": 113361268,
+    "objetivos": [
+      "mobile"
+    ],
+    "fecha": "2026-11-26T18:59:38Z",
+    "codigo_downloader": ""
   }
 }
