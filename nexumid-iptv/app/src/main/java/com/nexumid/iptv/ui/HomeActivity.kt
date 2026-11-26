@@ -240,8 +240,7 @@ class HomeActivity : AppCompatActivity() {
                 tvAccount.text = "${p?.name ?: ""} · sin conexión con el servidor"
                 return@launch
             }
-            val exp = acc.expDate?.let { "Vence ${date(it)}" } ?: "Sin vencimiento"
-            tvAccount.text = "${p?.name ?: acc.username}\n$exp · ${acc.activeCons}/${acc.maxCons} conexiones"
+            tvAccount.text = p?.name ?: acc.username
             val daysLeft = acc.expDate?.let { (it - System.currentTimeMillis()) / 86_400_000L }
             when {
                 !acc.status.equals("Active", true) -> warn("Tu cuenta está ${acc.status}. Contacta a tu proveedor.")

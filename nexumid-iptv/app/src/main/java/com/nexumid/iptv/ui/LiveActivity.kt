@@ -6,6 +6,11 @@ import android.content.res.Configuration
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.text.Editable
+import android.text.TextWatcher
+import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
+import android.widget.EditText
 import android.view.Gravity
 import android.view.KeyEvent
 import android.view.View
@@ -69,6 +74,9 @@ class LiveActivity : AppCompatActivity() {
     private lateinit var touchBar: View
     private lateinit var tvZap: TextView
     private lateinit var tvMsg: TextView
+    private lateinit var etSearch: EditText
+    private var searching = false
+    private val searchDebounce by lazy { Debouncer(lifecycleScope, 250) }
 
     private lateinit var player: ExoPlayer
     private lateinit var catAdapter: SimpleAdapter<Cat>
@@ -131,6 +139,7 @@ class LiveActivity : AppCompatActivity() {
         touchBar = findViewById(R.id.touchBar)
         tvZap = findViewById(R.id.tvZap)
         tvMsg = findViewById(R.id.tvMsg)
+        etSearch = findViewById(R.id.etSearch)
 
         player = Players.build(this)
         playerView.useController = false
@@ -143,8 +152,13 @@ class LiveActivity : AppCompatActivity() {
 
         setupLists()
         setupTouch()
+        setupSearch()
         onBackPressedDispatcher.addCallback(this) {
-            if (fullscreen) exitFullscreen() else finish()
+            when {
+                fullscreen -> exitFullscreen()
+                searching -> closeSearch()
+                else -> finish()
+            }
         }
         tvMsg.setOnClickListener { load() }
         load()
@@ -186,6 +200,66 @@ class LiveActivity : AppCompatActivity() {
         rvChannels.layoutManager = LinearLayoutManager(this)
         rvChannels.adapter = chAdapter
         rvChannels.itemAnimator = null
+    }
+
+    // ------------------------------------------------------------------ búsqueda de canales
+
+    private fun setupSearch() {
+        findViewById<View>(R.id.btnSearch).setOnClickListener { if (searching) closeSearch() else openSearch() }
+        etSearch.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) = Unit
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) = Unit
+            override fun afterTextChanged(s: Editable?) {
+                if (searching) searchDebounce.run { applySearch(s?.toString().orEmpty()) }
+            }
+        })
+        etSearch.setOnEditorActionListener { _, id, _ ->
+            if (id == EditorInfo.IME_ACTION_SEARCH || id == EditorInfo.IME_ACTION_DONE) {
+                hideKeyboard()
+                if (currentList.isNotEmpty()) rvChannels.focusPosition(0)
+                true
+            } else false
+        }
+    }
+
+    private fun openSearch() {
+        searching = true
+        etSearch.visibility = View.VISIBLE
+        etSearch.setText("")
+        tvCatTitle.text = "Buscar en todos los canales"
+        etSearch.requestFocus()
+        (getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager).showSoftInput(etSearch, InputMethodManager.SHOW_IMPLICIT)
+    }
+
+    private fun closeSearch() {
+        searching = false
+        hideKeyboard()
+        etSearch.setText("")
+        etSearch.visibility = View.GONE
+        currentCat?.let { showCategory(it) }
+        if (Device.isTv) rvChannels.post { rvChannels.focusPosition(0) }
+    }
+
+    private fun hideKeyboard() {
+        (getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager).hideSoftInputFromWindow(etSearch.windowToken, 0)
+    }
+
+    private fun applySearch(raw: String) {
+        val words = normalize(raw.trim()).split(Regex("\\s+")).filter { it.isNotEmpty() }
+        if (words.isEmpty()) {
+            currentCat?.let { showCategory(it) }
+            tvCatTitle.text = "Buscar en todos los canales"
+            return
+        }
+        val numberQuery = raw.trim().toIntOrNull()
+        val found = all.filter { ch ->
+            val n = normalize(ch.name)
+            words.all { n.contains(it) } || (numberQuery != null && ch.num == numberQuery)
+        }
+        currentList = found
+        chAdapter.items = found
+        rvChannels.scrollToPosition(0)
+        tvCatTitle.text = if (found.isEmpty()) "Sin resultados para \"${raw.trim()}\"" else "Resultados · ${found.size}"
     }
 
     private fun setupTouch() {
@@ -266,6 +340,12 @@ class LiveActivity : AppCompatActivity() {
     }
 
     private fun showCategory(catId: String) {
+        if (searching && etSearch.text.isNotEmpty()) {
+            searching = false
+            hideKeyboard()
+            etSearch.setText("")
+            etSearch.visibility = View.GONE
+        }
         val oldIdx = cats.indexOfFirst { it.id == currentCat }
         currentCat = catId
         if (!catId.startsWith("__")) Prefs.lastLiveCategory = catId
@@ -542,7 +622,7 @@ class LiveActivity : AppCompatActivity() {
     // ------------------------------------------------------------------ control remoto
 
     override fun dispatchKeyEvent(event: KeyEvent): Boolean {
-        if (event.action == KeyEvent.ACTION_DOWN && tvMsg.visibility != View.VISIBLE) {
+        if (event.action == KeyEvent.ACTION_DOWN && tvMsg.visibility != View.VISIBLE && !etSearch.hasFocus()) {
             val code = event.keyCode
             if (code in KeyEvent.KEYCODE_0..KeyEvent.KEYCODE_9) {
                 numberInput(code - KeyEvent.KEYCODE_0); return true
