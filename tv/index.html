@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>SB TV</title>
+
+  <!-- PWA / iPhone -->
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#000000">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="SB TV">
+  <link rel="apple-touch-icon" href="icons/icon-180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+
+  <style>
+    :root { --azul: #1ea7ff; --fondo: #000; --texto: #e8f4ff; }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    html, body {
+      margin: 0; height: 100%; background: var(--fondo); color: var(--texto);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      overflow: hidden; overscroll-behavior: none;
+    }
+
+    /* Sitio a pantalla completa, respetando notch / Dynamic Island */
+    #sitio {
+      position: fixed;
+      top: env(safe-area-inset-top); left: 0; right: 0; bottom: 0;
+      width: 100%; height: calc(100% - env(safe-area-inset-top));
+      border: 0; background: var(--fondo);
+      opacity: 0; transition: opacity .3s;
+    }
+    #sitio.listo { opacity: 1; }
+
+    /* Pantalla de carga */
+    #splash {
+      position: fixed; inset: 0; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 22px;
+      background: var(--fondo); transition: opacity .3s; z-index: 5;
+      padding: 24px;
+    }
+    #splash.oculto { opacity: 0; pointer-events: none; }
+    #splash img { width: 128px; height: 128px; border-radius: 28px; box-shadow: 0 0 40px #1ea7ff55; }
+    .spinner {
+      width: 34px; height: 34px; border-radius: 50%;
+      border: 3px solid #1ea7ff33; border-top-color: var(--azul);
+      animation: girar .8s linear infinite;
+    }
+    @keyframes girar { to { transform: rotate(360deg); } }
+    #aviso { display: none; text-align: center; max-width: 300px; line-height: 1.4; font-size: 15px; }
+    #aviso.visible { display: block; }
+
+    .boton {
+      display: inline-block; margin-top: 14px; padding: 13px 22px;
+      background: var(--azul); color: #00121f; font-weight: 700; font-size: 15px;
+      border: 0; border-radius: 12px; text-decoration: none;
+    }
+
+    /* Botón flotante para abrir el sitio directo (por si no carga dentro) */
+    #abrir {
+      position: fixed; z-index: 6;
+      right: calc(10px + env(safe-area-inset-right));
+      bottom: calc(10px + env(safe-area-inset-bottom));
+      width: 40px; height: 40px; border-radius: 50%;
+      background: #0b1c2acc; color: var(--azul); border: 1px solid #1ea7ff66;
+      font-size: 18px; display: flex; align-items: center; justify-content: center;
+      text-decoration: none; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+    }
+
+    /* Instrucciones de instalación (solo Safari, fuera de la app) */
+    #instalar {
+      position: fixed; left: 12px; right: 12px; z-index: 10;
+      bottom: calc(12px + env(safe-area-inset-bottom));
+      background: #0b1c2a; border: 1px solid #1ea7ff66; border-radius: 16px;
+      padding: 16px 16px 14px; display: none; font-size: 15px; line-height: 1.45;
+      box-shadow: 0 10px 40px #000a;
+    }
+    #instalar.visible { display: block; }
+    #instalar b { color: var(--azul); }
+    #instalar .cerrar {
+      position: absolute; top: 6px; right: 10px; background: none; border: 0;
+      color: var(--texto); font-size: 22px; padding: 4px;
+    }
+    .icono-compartir {
+      display: inline-block; width: 18px; height: 18px; vertical-align: -3px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="splash">
+    <img src="icons/icon-180.png" alt="SB TV">
+    <div class="spinner" id="spinner"></div>
+    <div id="aviso">
+      <span id="aviso-texto">Sin conexión. Revisa tu internet.</span><br>
+      <a class="boton" id="reintentar" href="./">Reintentar</a>
+    </div>
+  </div>
+
+  <iframe id="sitio" title="SB TV"
+          allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
+          allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+  <a id="abrir" aria-label="Abrir sitio directo" title="Abrir directo">↗</a>
+
+  <div id="instalar" role="dialog" aria-label="Instalar app">
+    <button class="cerrar" id="cerrar-instalar" aria-label="Cerrar">×</button>
+    <strong>Instala SB TV en tu iPhone</strong><br>
+    1. Toca
+    <svg class="icono-compartir" viewBox="0 0 24 24" fill="none" stroke="#1ea7ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M8 7l4-4 4 4"/><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/></svg>
+    <b>Compartir</b> en Safari.<br>
+    2. Elige <b>Agregar a pantalla de inicio</b>.<br>
+    3. Abre <b>SB TV</b> desde tu pantalla de inicio.
+  </div>
+
+  <script>
+    // ===== CONFIGURACIÓN =====
+    // URL del sitio que se muestra dentro de la app.
+    const URL_SITIO = "https://tv.chocopopflow.com/?m=1";
+    // "iframe": el sitio se ve dentro de la app (pantalla completa, sin barra de Safari).
+    // "directo": la app abre el sitio directamente (usar si el sitio bloquea iframes).
+    // También se puede forzar con ?modo=directo en la URL.
+    const MODO = new URLSearchParams(location.search).get("modo") || "iframe";
+    // ==========================
+
+    const splash = document.getElementById("splash");
+    const iframe = document.getElementById("sitio");
+    const aviso = document.getElementById("aviso");
+    const avisoTexto = document.getElementById("aviso-texto");
+    const spinner = document.getElementById("spinner");
+    const abrir = document.getElementById("abrir");
+    abrir.href = URL_SITIO;
+
+    const enApp = window.navigator.standalone === true ||
+                  window.matchMedia("(display-mode: standalone)").matches;
+
+    function mostrarAviso(texto) {
+      avisoTexto.textContent = texto;
+      spinner.style.display = "none";
+      aviso.classList.add("visible");
+      splash.classList.remove("oculto");
+    }
+
+    function cargar() {
+      if (!navigator.onLine) {
+        mostrarAviso("Sin conexión. Revisa tu internet.");
+        return;
+      }
+      if (MODO === "directo") {
+        location.replace(URL_SITIO);
+        return;
+      }
+      iframe.addEventListener("load", () => {
+        iframe.classList.add("listo");
+        splash.classList.add("oculto");
+      }, { once: true });
+      iframe.src = URL_SITIO;
+      // Si tarda demasiado, ofrecer abrirlo directo.
+      setTimeout(() => {
+        if (!iframe.classList.contains("listo")) {
+          mostrarAviso("El sitio está tardando en cargar.");
+          const r = document.getElementById("reintentar");
+          r.textContent = "Abrir directo";
+          r.href = URL_SITIO;
+        }
+      }, 15000);
+    }
+
+    window.addEventListener("online", () => {
+      if (!iframe.classList.contains("listo")) location.reload();
+    });
+
+    // Instrucciones de instalación: solo en Safari de iPhone/iPad, fuera de la app.
+    const esIOS = /iphone|ipad|ipod/i.test(navigator.userAgent) ||
+                  (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+    let cerrado = false;
+    try { cerrado = localStorage.getItem("sbtv-instalar-cerrado") === "1"; } catch (e) {}
+    if (esIOS && !enApp && !cerrado) {
+      document.getElementById("instalar").classList.add("visible");
+    }
+    document.getElementById("cerrar-instalar").addEventListener("click", () => {
+      document.getElementById("instalar").classList.remove("visible");
+      try { localStorage.setItem("sbtv-instalar-cerrado", "1"); } catch (e) {}
+    });
+
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("sw.js").catch(() => {});
+    }
+
+    cargar();
+  </script>
+</body>
+</html>
