@@ -13,14 +13,14 @@ App web instalable que abre `https://tv.chocopopflow.com/?m=1` a pantalla comple
 
 ## Configuración (`index.html`)
 - `URL_SITIO`: el sitio que se muestra.
-- `MODO`: `"iframe"` (dentro de la app, recomendado) o `"directo"` (si el sitio bloquea iframes).
-  También se puede probar sin editar con `.../tv/?modo=directo`.
+- `MODO`: `"directo"` (por defecto: la app abre el sitio) o `"iframe"` (el sitio dentro de la app,
+  solo si el sitio lo permite). Probar sin editar con `.../tv/?modo=iframe`.
 - El botón ↗ abajo a la derecha abre el sitio directo si algo no carga.
 
 Ícono: `logos/logo smartboxTV.png` (regenerado en `icons/`).
 
 ## Bloqueo de anuncios
-Activo por defecto. El sitio corre dentro de un iframe con `sandbox`, sin permiso para:
+Solo en modo `iframe`. El sitio corre dentro de un iframe con `sandbox`, sin permiso para:
 abrir pestañas o ventanas (pop-ups), redirigir/sacar al usuario de la app, mostrar alertas, ni descargar archivos.
 
 - Siempre activo: sin el bloqueo el sitio no carga dentro de la app.

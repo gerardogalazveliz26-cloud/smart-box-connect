@@ -1,7 +1,7 @@
 // Service worker de SB TV: guarda la "cáscara" de la app para que abra
 // rápido y muestre la pantalla de carga/aviso aunque no haya internet.
 // El contenido del sitio (iframe) no se cachea: siempre viene en vivo.
-const VERSION = "sbtv-v3";
+const VERSION = "sbtv-v4";
 const ARCHIVOS = [
   "./",
   "./index.html",

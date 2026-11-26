@@ -119,14 +119,13 @@
     // ===== CONFIGURACIÓN =====
     // URL del sitio que se muestra dentro de la app.
     const URL_SITIO = "https://tv.chocopopflow.com/?m=1";
-    // "iframe": el sitio se ve dentro de la app (pantalla completa, sin barra de Safari).
-    // "directo": la app abre el sitio directamente (usar si el sitio bloquea iframes).
-    // También se puede forzar con ?modo=directo en la URL.
+    // "directo": la app abre el sitio directamente (el sitio no permite mostrarse
+    //            dentro de otra página, así que este es el modo por defecto).
+    // "iframe":  el sitio se ve dentro de la app, con bloqueo de pop-ups.
+    //            Solo funciona si el sitio lo permite. Probar con ?modo=iframe
     const PARAMS = new URLSearchParams(location.search);
-    const MODO = PARAMS.get("modo") || "iframe";
-    // Bloquea los anuncios emergentes: ventanas/pestañas nuevas (pop-ups),
-    // redirecciones que sacan de la app, descargas y alertas falsas.
-    // Siempre activo: sin esto el sitio no carga dentro de la app.
+    const MODO = PARAMS.get("modo") || "directo";
+    // Solo en modo iframe: bloquea pop-ups, redirecciones, descargas y alertas.
     const BLOQUEAR_ANUNCIOS = true;
     // ==========================
 
@@ -154,7 +153,17 @@
         return;
       }
       if (MODO === "directo") {
-        location.replace(URL_SITIO);
+        abrir.style.display = "none";
+        if (enApp) {
+          // Abierta desde el ícono: ir directo al sitio.
+          location.replace(URL_SITIO);
+        } else {
+          // En el navegador: no redirigir, para poder instalar la app desde aquí.
+          mostrarAviso("Instala SB TV en tu pantalla de inicio o ábrela ahora.");
+          const r = document.getElementById("reintentar");
+          r.textContent = "▶ Abrir TV";
+          r.href = URL_SITIO;
+        }
         return;
       }
       iframe.addEventListener("load", () => {
