@@ -126,8 +126,8 @@
     const MODO = PARAMS.get("modo") || "iframe";
     // Bloquea los anuncios emergentes: ventanas/pestañas nuevas (pop-ups),
     // redirecciones que sacan de la app, descargas y alertas falsas.
-    // Si el reproductor del sitio deja de funcionar, desactivar con ?bloqueo=0
-    const BLOQUEAR_ANUNCIOS = PARAMS.get("bloqueo") !== "0";
+    // Siempre activo: sin esto el sitio no carga dentro de la app.
+    const BLOQUEAR_ANUNCIOS = true;
     // ==========================
 
     const splash = document.getElementById("splash");

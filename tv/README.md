@@ -23,7 +23,7 @@ App web instalable que abre `https://tv.chocopopflow.com/?m=1` a pantalla comple
 Activo por defecto. El sitio corre dentro de un iframe con `sandbox`, sin permiso para:
 abrir pestañas o ventanas (pop-ups), redirigir/sacar al usuario de la app, mostrar alertas, ni descargar archivos.
 
-- Si el reproductor de video deja de funcionar: abrir `.../tv/?bloqueo=0`.
+- Siempre activo: sin el bloqueo el sitio no carga dentro de la app.
 - Los banners que el sitio dibuja dentro de su propia página no se pueden quitar desde la app
   (el navegador no permite modificar una página de otro dominio). Para eso: quitarlos del
   código del sitio (si es tuyo) o usar un DNS con bloqueo de anuncios en el teléfono.
