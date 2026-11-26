@@ -116,6 +116,16 @@ class DesignPreviewTest {
     }
 
     @Test
+    fun settings_tv() {
+        paparazzi.snapshot(paparazzi.inflate<View>(R.layout.activity_settings))
+    }
+
+    @Test
+    fun browse_tv() {
+        paparazzi.snapshot(paparazzi.inflate<View>(R.layout.activity_browse))
+    }
+
+    @Test
     fun live_tv() {
         paparazzi.snapshot(paparazzi.inflate<View>(R.layout.activity_live))
     }

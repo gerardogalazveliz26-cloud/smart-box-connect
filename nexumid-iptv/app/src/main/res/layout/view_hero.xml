@@ -40,6 +40,14 @@
             android:layout_height="46dp"
             android:background="@drawable/sheen" />
 
+        <ImageView
+            android:layout_width="190dp"
+            android:layout_height="70dp"
+            android:layout_gravity="bottom|end"
+            android:scaleType="fitXY"
+            android:src="@drawable/card_streak"
+            android:importantForAccessibility="no" />
+
         <LinearLayout
             android:id="@+id/heroContent"
             android:layout_width="wrap_content"
