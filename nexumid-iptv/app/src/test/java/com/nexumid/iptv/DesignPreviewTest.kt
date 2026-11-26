@@ -28,10 +28,10 @@ class DesignPreviewTest {
     val paparazzi = Paparazzi(deviceConfig = tv, theme = "Theme.Nexum", maxPercentDifference = 100.0)
 
     private fun fillHome(root: View) {
-        fun hero(id: Int, icon: Int, img: Int, title: String, sub: String) {
+        fun hero(id: Int, icon: Int, img: Int, frac: Float, title: String, sub: String) {
             val v = root.findViewById<View>(id)
             v.findViewById<ImageView>(R.id.heroIcon).setImageResource(icon)
-            v.findViewById<ImageView>(R.id.heroImage).setImageResource(img)
+            v.findViewById<com.nexumid.iptv.ui.HeroImageView>(R.id.heroImage).apply { setImageResource(img); fraction = frac }
             v.findViewById<TextView>(R.id.heroTitle).text = title
             v.findViewById<TextView>(R.id.heroSub).text = sub
             v.findViewById<View>(R.id.heroCard).clipToOutline = true
@@ -41,9 +41,9 @@ class DesignPreviewTest {
             v.findViewById<ImageView>(R.id.tileIcon).setImageResource(icon)
             v.findViewById<TextView>(R.id.tileText).text = title
         }
-        hero(R.id.tileLive, R.drawable.ic_hero_live, R.drawable.hero_live, "TV en vivo", "Canales y deportes")
-        hero(R.id.tileMovies, R.drawable.ic_hero_movie, R.drawable.hero_movies, "Películas", "Estrenos y clásicos")
-        hero(R.id.tileSeries, R.drawable.ic_hero_series, R.drawable.hero_series, "Series", "Temporadas completas")
+        hero(R.id.tileLive, R.drawable.ic_hero_live, R.drawable.hero_live, 0.70f, "TV en vivo", "Canales y deportes")
+        hero(R.id.tileMovies, R.drawable.ic_hero_movie, R.drawable.hero_movies, 0.50f, "Películas", "Estrenos y clásicos")
+        hero(R.id.tileSeries, R.drawable.ic_hero_series, R.drawable.hero_series, 0.62f, "Series", "Temporadas completas")
         tile(R.id.tileSearch, R.drawable.ic_search, "Buscar")
         tile(R.id.tileFav, R.drawable.ic_star, "Favoritos")
         tile(R.id.tileAccounts, R.drawable.ic_list, "Listas")

@@ -54,13 +54,13 @@ class HomeActivity : AppCompatActivity() {
         tvAccount = findViewById(R.id.tvAccount)
         tvWarn = findViewById(R.id.tvWarn)
 
-        hero(R.id.tileLive, R.drawable.ic_hero_live, R.drawable.hero_live, "TV en vivo", "Canales y deportes") {
+        hero(R.id.tileLive, R.drawable.ic_hero_live, R.drawable.hero_live, 0.70f, "TV en vivo", "Canales y deportes") {
             startActivity(Intent(this, LiveActivity::class.java))
         }
-        hero(R.id.tileMovies, R.drawable.ic_hero_movie, R.drawable.hero_movies, "Películas", "Estrenos y clásicos") {
+        hero(R.id.tileMovies, R.drawable.ic_hero_movie, R.drawable.hero_movies, 0.50f, "Películas", "Estrenos y clásicos") {
             BrowseActivity.open(this, BrowseActivity.TYPE_VOD)
         }
-        hero(R.id.tileSeries, R.drawable.ic_hero_series, R.drawable.hero_series, "Series", "Temporadas completas") {
+        hero(R.id.tileSeries, R.drawable.ic_hero_series, R.drawable.hero_series, 0.62f, "Series", "Temporadas completas") {
             BrowseActivity.open(this, BrowseActivity.TYPE_SERIES)
         }
         tile(R.id.tileSearch, R.drawable.ic_search, "Buscar") { SearchActivity.open(this, false) }
@@ -95,10 +95,13 @@ class HomeActivity : AppCompatActivity() {
 
     // ------------------------------------------------------------------ tarjetas
 
-    private fun hero(id: Int, icon: Int, image: Int, title: String, sub: String, action: () -> Unit) {
+    private fun hero(id: Int, icon: Int, image: Int, fraction: Float, title: String, sub: String, action: () -> Unit) {
         val v = findViewById<View>(id)
         v.findViewById<ImageView>(R.id.heroIcon).setImageResource(icon)
-        v.findViewById<ImageView>(R.id.heroImage).setImageResource(image)
+        v.findViewById<HeroImageView>(R.id.heroImage).apply {
+            setImageResource(image)
+            this.fraction = fraction
+        }
         v.findViewById<TextView>(R.id.heroTitle).text = title
         v.findViewById<TextView>(R.id.heroSub).text = sub
         v.findViewById<View>(R.id.heroCard).clipToOutline = true

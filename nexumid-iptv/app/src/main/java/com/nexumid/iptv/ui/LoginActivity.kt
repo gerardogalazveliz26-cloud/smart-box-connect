@@ -66,6 +66,7 @@ class LoginActivity : AppCompatActivity() {
         progress = findViewById(R.id.progress)
         tvSaved = findViewById(R.id.tvSaved)
 
+        etPass.typeface = android.graphics.Typeface.DEFAULT
         etServer.setText(Prefs.current?.server ?: BuildConfig.DEFAULT_SERVER)
 
         btnLogin.setOnClickListener {

@@ -134,10 +134,37 @@
                     android:padding="4dp" />
             </LinearLayout>
 
-            <View
+            <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_weight="1" />
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="230dp"
+                    android:layout_height="230dp"
+                    android:src="@drawable/brand_icon"
+                    android:importantForAccessibility="no" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Tu entretenimiento, a otro nivel"
+                    android:textColor="@color/text"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="TV en vivo · Películas · Series"
+                    android:textColor="@color/cyan"
+                    android:textSize="14sp" />
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 </FrameLayout>

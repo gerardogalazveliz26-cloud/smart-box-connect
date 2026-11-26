@@ -82,6 +82,30 @@ class RatioFrameLayout @JvmOverloads constructor(c: Context, a: AttributeSet? = 
     }
 }
 
+/** Imagen de las tarjetas grandes: ocupa como máximo [fraction] del ancho de la tarjeta, alineada abajo a la derecha. */
+class HeroImageView @JvmOverloads constructor(c: Context, a: AttributeSet? = null) : AppCompatImageView(c, a) {
+    var fraction = 0.65f
+        set(v) {
+            field = v
+            requestLayout()
+        }
+
+    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec)
+        val d = drawable ?: return
+        if (d.intrinsicWidth <= 0 || d.intrinsicHeight <= 0) return
+        val maxW = (MeasureSpec.getSize(widthMeasureSpec) * fraction).toInt()
+        val h = MeasureSpec.getSize(heightMeasureSpec)
+        var w = h * d.intrinsicWidth / d.intrinsicHeight
+        var hh = h
+        if (w > maxW) {
+            w = maxW
+            hh = maxW * d.intrinsicHeight / d.intrinsicWidth
+        }
+        setMeasuredDimension(w, hh)
+    }
+}
+
 /** Imagen con proporción de póster (2:3). */
 class PosterImageView @JvmOverloads constructor(c: Context, a: AttributeSet? = null) : AppCompatImageView(c, a) {
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
