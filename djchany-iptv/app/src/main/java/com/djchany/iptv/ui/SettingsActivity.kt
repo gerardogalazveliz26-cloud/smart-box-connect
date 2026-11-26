@@ -35,6 +35,9 @@ class SettingsActivity : AppCompatActivity() {
             Row("Tipo de equipo", { if (Device.isMobile) "Celular / Tablet" else "Android TV / TV Box" }) {
                 ModeActivity.change(this)
             },
+            Row("Video de inicio", { if (Prefs.showSplash) "Activado" else "Desactivado" }) {
+                Prefs.showSplash = !Prefs.showSplash
+            },
             Row("Cambiar de lista / cuenta", { "${Prefs.profiles.size} guardada(s)" }) { LoginActivity.manage(this) },
             Row("Formato de TV en vivo", { if (Prefs.liveFormat == "m3u8") "HLS (.m3u8)" else "MPEG-TS (.ts)" }) {
                 choose("Formato de TV en vivo", listOf("MPEG-TS (.ts) — recomendado", "HLS (.m3u8)"), if (Prefs.liveFormat == "m3u8") 1 else 0) {

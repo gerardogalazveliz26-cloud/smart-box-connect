@@ -20,10 +20,10 @@
         android:usesCleartextTraffic="true">
 
         <activity
-            android:name=".ui.LoginActivity"
+            android:name=".ui.SplashActivity"
+            android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboard|keyboardHidden|navigation"
             android:exported="true"
-           
-            android:windowSoftInputMode="adjustPan">
+            android:theme="@style/Theme.DJChany.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -31,25 +31,26 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".ui.LoginActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".ui.ModeActivity" android:exported="false" />
         <activity android:name=".ui.HomeActivity" android:exported="false" />
         <activity
             android:name=".ui.LiveActivity"
             android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboard|keyboardHidden|navigation"
-            android:exported="false"
-            />
+            android:exported="false" />
         <activity android:name=".ui.BrowseActivity" android:exported="false" />
         <activity android:name=".ui.VodDetailActivity" android:exported="false" />
         <activity android:name=".ui.SeriesDetailActivity" android:exported="false" />
         <activity
             android:name=".ui.PlayerActivity"
             android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboard|keyboardHidden|navigation"
-            android:exported="false"
-            />
+            android:exported="false" />
         <activity
             android:name=".ui.SearchActivity"
             android:exported="false"
-           
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".ui.SettingsActivity" android:exported="false" />
 

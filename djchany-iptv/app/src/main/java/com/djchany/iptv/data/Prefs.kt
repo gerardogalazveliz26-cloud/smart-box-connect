@@ -64,6 +64,10 @@ object Prefs {
         get() = sp.getString("device_mode", null)
         set(v) = sp.edit().putString("device_mode", v).apply()
 
+    var showSplash: Boolean
+        get() = sp.getBoolean("show_splash", true)
+        set(v) = sp.edit().putBoolean("show_splash", v).apply()
+
     // ---------------- reproducción
 
     /** "ts" o "m3u8" */
