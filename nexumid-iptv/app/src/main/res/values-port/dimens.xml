@@ -4,4 +4,5 @@
     <dimen name="hero_sub">11.5sp</dimen>
     <dimen name="hero_icon">44dp</dimen>
     <dimen name="hero_pad">16dp</dimen>
+    <dimen name="qr_size">112dp</dimen>
 </resources>

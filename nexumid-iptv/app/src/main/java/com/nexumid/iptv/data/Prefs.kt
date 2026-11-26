@@ -81,6 +81,11 @@ object Prefs {
         get() = sp.getLong("activation_stamp", 0L)
         set(v) = sp.edit().putLong("activation_stamp", v).apply()
 
+    // ---------------- configuración remota (WhatsApp de pruebas)
+
+    fun cfg(key: String): String? = sp.getString("cfg_$key", null)?.takeIf { it.isNotBlank() }
+    fun setCfg(key: String, value: String?) = sp.edit().putString("cfg_$key", value).apply()
+
     // ---------------- tipo de equipo
 
     /** null = aún no elegido, "tv" o "mobile". */

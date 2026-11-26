@@ -104,6 +104,7 @@ class LoginActivity : AppCompatActivity() {
                     Prefs.deleteProfile(p)
                     if (Prefs.current == null) Repo.logout()
                     refreshProfiles()
+        TrialQr.bind(this, window.decorView)
                 }
                 .setNegativeButton("Cancelar", null)
                 .show()

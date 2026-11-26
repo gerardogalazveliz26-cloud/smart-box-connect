@@ -12,6 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import com.nexumid.iptv.R
 import com.nexumid.iptv.data.Activation
 import com.nexumid.iptv.data.Prefs
+import com.nexumid.iptv.data.RemoteConfig
 import com.nexumid.iptv.data.Repo
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -42,6 +43,17 @@ class ActivationActivity : AppCompatActivity() {
         btnShare.visibility = if (Device.isMobile) View.VISIBLE else View.GONE
         btnShare.setOnClickListener {
             val text = "Hola, este es el código de mi equipo para NexumID IPTV: $code"
+            // Directo al WhatsApp del proveedor; si no hay número configurado, se elige el contacto.
+            if (RemoteConfig.hasWhatsapp) {
+                val url = "https://wa.me/${RemoteConfig.whatsapp}?text=" +
+                    java.net.URLEncoder.encode(text, "UTF-8").replace("+", "%20")
+                try {
+                    startActivity(Intent(Intent.ACTION_VIEW, android.net.Uri.parse(url)))
+                    return@setOnClickListener
+                } catch (e: Exception) {
+                    // sin WhatsApp ni navegador: se usa el selector
+                }
+            }
             val send = Intent(Intent.ACTION_SEND).setType("text/plain").putExtra(Intent.EXTRA_TEXT, text)
             try {
                 startActivity(Intent(send).setPackage("com.whatsapp"))
@@ -52,6 +64,7 @@ class ActivationActivity : AppCompatActivity() {
         btnManual.setOnClickListener { finish() }
         listOf(btnShare, btnManual).forEach { it.focusZoom(1.04f) }
         btnManual.requestFocus()
+        TrialQr.bind(this, window.decorView)
     }
 
     override fun onStart() {

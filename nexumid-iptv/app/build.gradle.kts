@@ -10,6 +10,7 @@ if (project.hasProperty("previews")) {
 
 val keystorePath: String? = System.getenv("NEXUMID_KEYSTORE_PATH")?.takeIf { it.isNotBlank() }
 val defaultServer = (project.findProperty("nexumid.defaultServer") as String?).orEmpty()
+val whatsapp = (project.findProperty("nexumid.whatsapp") as String?).orEmpty()
 
 android {
     namespace = "com.nexumid.iptv"
@@ -19,9 +20,15 @@ android {
         applicationId = "com.nexumid.iptv"
         minSdk = 21
         targetSdk = 34
-        versionCode = 10
-        versionName = "2.2.1"
+        versionCode = 11
+        versionName = "2.3.0"
         buildConfigField("String", "DEFAULT_SERVER", "\"$defaultServer\"")
+        buildConfigField("String", "WHATSAPP", "\"$whatsapp\"")
+        buildConfigField(
+            "String",
+            "CONFIG_URL",
+            "\"https://raw.githubusercontent.com/gerardogalazveliz26-cloud/smart-box-connect/main/updates/nexumid-config.json\""
+        )
         // Equipos reales (celulares y TV Box) son ARM: se omiten x86 para no agrandar el APK.
         ndk { abiFilters += listOf("armeabi-v7a", "arm64-v8a") }
         buildConfigField(
@@ -83,5 +90,6 @@ dependencies {
     implementation("org.jellyfin.media3:media3-ffmpeg-decoder:1.5.0+1")
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
     implementation("io.coil-kt:coil:2.7.0")
+    implementation("com.google.zxing:core:3.5.3")
     testImplementation("junit:junit:4.13.2")
 }

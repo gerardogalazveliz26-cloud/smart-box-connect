@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Tarjeta para pedir una prueba por WhatsApp (QR + texto) -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/trialCard"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_panel"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="14dp">
+
+    <ImageView
+        android:id="@+id/ivQr"
+        android:layout_width="@dimen/qr_size"
+        android:layout_height="@dimen/qr_size"
+        android:background="@drawable/bg_qr"
+        android:contentDescription="Código QR de WhatsApp para pedir una prueba"
+        android:padding="7dp"
+        android:scaleType="fitCenter" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvTrialTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:shadowColor="#991EA0FF"
+            android:shadowRadius="12"
+            android:text="¿Quieres probar NexumID?"
+            android:textColor="@color/text"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvTrialText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Solicita tu prueba gratis escaneando el código QR"
+            android:textColor="#D6E2F2"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tvTrialNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="@color/cyan"
+            android:textSize="13sp" />
+
+        <Button
+            android:id="@+id/btnTrial"
+            style="@style/Btn"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:text="💬  Pedir prueba por WhatsApp"
+            android:textSize="13sp"
+            android:visibility="gone" />
+    </LinearLayout>
+</LinearLayout>
