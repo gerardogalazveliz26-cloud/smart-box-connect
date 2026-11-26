@@ -25,6 +25,7 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Device.applyOrientation(this)
         if (Repo.api == null) {
             startActivity(Intent(this, LoginActivity::class.java))
             finish()

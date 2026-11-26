@@ -63,6 +63,7 @@ class LiveActivity : AppCompatActivity() {
     private lateinit var rvCats: RecyclerView
     private lateinit var rvChannels: RecyclerView
     private lateinit var overlay: LinearLayout
+    private lateinit var touchBar: View
     private lateinit var tvZap: TextView
     private lateinit var tvMsg: TextView
 
@@ -84,7 +85,10 @@ class LiveActivity : AppCompatActivity() {
     private val handler = Handler(Looper.getMainLooper())
     private val catDebounce by lazy { Debouncer(lifecycleScope, 220) }
     private val infoDebounce by lazy { Debouncer(lifecycleScope, 320) }
-    private val hideOverlay = Runnable { overlay.visibility = View.GONE }
+    private val hideOverlay = Runnable {
+        overlay.visibility = View.GONE
+        touchBar.visibility = View.GONE
+    }
     private val retryRunnable = Runnable {
         if (playing != null) {
             player.prepare()
@@ -101,6 +105,7 @@ class LiveActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Device.applyOrientation(this)
         if (Repo.api == null) {
             startActivity(Intent(this, LoginActivity::class.java)); finish(); return
         }
@@ -118,6 +123,7 @@ class LiveActivity : AppCompatActivity() {
         rvCats = findViewById(R.id.rvCats)
         rvChannels = findViewById(R.id.rvChannels)
         overlay = findViewById(R.id.overlay)
+        touchBar = findViewById(R.id.touchBar)
         tvZap = findViewById(R.id.tvZap)
         tvMsg = findViewById(R.id.tvMsg)
 
@@ -131,6 +137,7 @@ class LiveActivity : AppCompatActivity() {
         previewSlot.addOnLayoutChangeListener { _, _, _, _, _, _, _, _, _ -> previewSlot.post { syncPreviewBounds() } }
 
         setupLists()
+        setupTouch()
         onBackPressedDispatcher.addCallback(this) {
             if (fullscreen) exitFullscreen() else finish()
         }
@@ -141,7 +148,8 @@ class LiveActivity : AppCompatActivity() {
     // ------------------------------------------------------------------ listas
 
     private fun setupLists() {
-        catAdapter = SimpleAdapter(R.layout.item_category) { v, c, _ ->
+        val portrait = Device.portraitUi(this)
+        catAdapter = SimpleAdapter(if (portrait) R.layout.item_chip else R.layout.item_category) { v, c, _ ->
             v.findViewById<TextView>(R.id.tvName).text = c.name
             v.findViewById<TextView>(R.id.tvCount).text = c.count.toString()
             v.isActivated = c.id == currentCat
@@ -149,9 +157,9 @@ class LiveActivity : AppCompatActivity() {
         catAdapter.onFocus = { c, _ -> if (c.id != currentCat) catDebounce.run { showCategory(c.id) } }
         catAdapter.onClick = { c, _ ->
             showCategory(c.id)
-            rvChannels.post { rvChannels.focusPosition(0) }
+            if (Device.isTv) rvChannels.post { rvChannels.focusPosition(0) }
         }
-        rvCats.layoutManager = LinearLayoutManager(this)
+        rvCats.layoutManager = LinearLayoutManager(this, if (portrait) RecyclerView.HORIZONTAL else RecyclerView.VERTICAL, false)
         rvCats.adapter = catAdapter
         rvCats.itemAnimator = null
 
@@ -173,6 +181,22 @@ class LiveActivity : AppCompatActivity() {
         rvChannels.layoutManager = LinearLayoutManager(this)
         rvChannels.adapter = chAdapter
         rvChannels.itemAnimator = null
+    }
+
+    private fun setupTouch() {
+        // Tocar el video: pantalla completa, o mostrar/ocultar controles si ya lo está.
+        playerFrame.setOnClickListener {
+            when {
+                playing == null -> Unit
+                !fullscreen -> enterFullscreen()
+                overlay.visibility == View.VISIBLE -> hideOverlay.run()
+                else -> showOverlay()
+            }
+        }
+        findViewById<View>(R.id.btnExitFull).setOnClickListener { exitFullscreen() }
+        findViewById<View>(R.id.btnPrevCh).setOnClickListener { zap(-1) }
+        findViewById<View>(R.id.btnNextCh).setOnClickListener { zap(+1) }
+        findViewById<View>(R.id.btnAspect).setOnClickListener { cycleResize(); showOverlay() }
     }
 
     private fun load() {
@@ -221,7 +245,8 @@ class LiveActivity : AppCompatActivity() {
         }
         showCategory(initial)
         val idx = cats.indexOfFirst { it.id == initial }
-        rvChannels.post { if (currentList.isNotEmpty()) rvChannels.focusPosition(0) else rvCats.focusPosition(idx) }
+        if (Device.isTv) rvChannels.post { if (currentList.isNotEmpty()) rvChannels.focusPosition(0) else rvCats.focusPosition(idx) }
+        else rvCats.scrollToPosition(idx.coerceAtLeast(0))
     }
 
     private fun listFor(catId: String): List<LiveStream> = when (catId) {
@@ -375,6 +400,8 @@ class LiveActivity : AppCompatActivity() {
     private fun enterFullscreen() {
         if (playing == null) return
         fullscreen = true
+        if (Device.isMobile) Device.landscape(this)
+        Device.immersive(this, true)
         panes.visibility = View.INVISIBLE
         playerFrame.layoutParams = FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
         showOverlay()
@@ -382,13 +409,19 @@ class LiveActivity : AppCompatActivity() {
 
     private fun exitFullscreen() {
         fullscreen = false
+        if (Device.isMobile) {
+            Device.applyOrientation(this)
+            Device.immersive(this, false)
+        }
         handler.removeCallbacks(hideOverlay)
         overlay.visibility = View.GONE
+        touchBar.visibility = View.GONE
         panes.visibility = View.VISIBLE
         syncPreviewBounds()
         playing?.let { ch ->
             showInfo(ch)
-            rvChannels.focusPosition(currentList.indexOfFirst { it.id == ch.id })
+            val i = currentList.indexOfFirst { it.id == ch.id }
+            if (Device.isTv) rvChannels.focusPosition(i) else if (i >= 0) rvChannels.scrollToPosition(i)
         }
     }
 
@@ -396,6 +429,7 @@ class LiveActivity : AppCompatActivity() {
         if (!fullscreen) return
         playing?.let { bindOverlay(it) }
         overlay.visibility = View.VISIBLE
+        if (Device.isMobile) touchBar.visibility = View.VISIBLE
         handler.removeCallbacks(hideOverlay)
         handler.postDelayed(hideOverlay, 5000)
     }

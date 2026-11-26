@@ -109,6 +109,8 @@ class PlayerActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Device.landscape(this)
+        Device.immersive(this, true)
         if (Repo.api == null) {
             finish(); return
         }

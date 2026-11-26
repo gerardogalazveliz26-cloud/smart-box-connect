@@ -57,6 +57,7 @@ class BrowseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Device.applyOrientation(this)
         if (Repo.api == null) {
             startActivity(Intent(this, LoginActivity::class.java)); finish(); return
         }
@@ -70,7 +71,8 @@ class BrowseActivity : AppCompatActivity() {
         tvEmpty = findViewById(R.id.tvEmpty)
         findViewById<TextView>(R.id.tvTitle).text = if (type == TYPE_VOD) "Películas" else "Series"
 
-        catAdapter = SimpleAdapter(R.layout.item_category) { v, c, _ ->
+        val portrait = Device.portraitUi(this)
+        catAdapter = SimpleAdapter(if (portrait) R.layout.item_chip else R.layout.item_category) { v, c, _ ->
             v.findViewById<TextView>(R.id.tvName).text = c.name
             v.findViewById<TextView>(R.id.tvCount).text = c.count.toString()
             v.isActivated = c.id == currentCat
@@ -80,7 +82,7 @@ class BrowseActivity : AppCompatActivity() {
             showCategory(c.id)
             rvGrid.post { rvGrid.focusPosition(0) }
         }
-        rvCats.layoutManager = LinearLayoutManager(this)
+        rvCats.layoutManager = LinearLayoutManager(this, if (portrait) RecyclerView.HORIZONTAL else RecyclerView.VERTICAL, false)
         rvCats.adapter = catAdapter
         rvCats.itemAnimator = null
 
@@ -105,7 +107,8 @@ class BrowseActivity : AppCompatActivity() {
             if (type == TYPE_VOD) VodDetailActivity.open(this, p) else SeriesDetailActivity.open(this, p.id, p.name, p.image)
         }
         gridAdapter.onLongClick = { p, pos -> toggleFav(p, pos) }
-        val spans = (resources.configuration.screenWidthDp - 260).coerceAtLeast(300) / 125
+        val width = resources.configuration.screenWidthDp
+        val spans = if (portrait) (width - 12) / 112 else (width - 260).coerceAtLeast(300) / 125
         rvGrid.layoutManager = GridLayoutManager(this, spans.coerceIn(3, 8))
         rvGrid.adapter = gridAdapter
         rvGrid.itemAnimator = null

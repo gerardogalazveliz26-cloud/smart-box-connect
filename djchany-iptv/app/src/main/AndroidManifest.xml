@@ -22,7 +22,7 @@
         <activity
             android:name=".ui.LoginActivity"
             android:exported="true"
-            android:screenOrientation="sensorLandscape"
+           
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,26 +31,27 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.HomeActivity" android:exported="false" android:screenOrientation="sensorLandscape" />
+        <activity android:name=".ui.ModeActivity" android:exported="false" />
+        <activity android:name=".ui.HomeActivity" android:exported="false" />
         <activity
             android:name=".ui.LiveActivity"
             android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboard|keyboardHidden|navigation"
             android:exported="false"
-            android:screenOrientation="sensorLandscape" />
-        <activity android:name=".ui.BrowseActivity" android:exported="false" android:screenOrientation="sensorLandscape" />
-        <activity android:name=".ui.VodDetailActivity" android:exported="false" android:screenOrientation="sensorLandscape" />
-        <activity android:name=".ui.SeriesDetailActivity" android:exported="false" android:screenOrientation="sensorLandscape" />
+            />
+        <activity android:name=".ui.BrowseActivity" android:exported="false" />
+        <activity android:name=".ui.VodDetailActivity" android:exported="false" />
+        <activity android:name=".ui.SeriesDetailActivity" android:exported="false" />
         <activity
             android:name=".ui.PlayerActivity"
             android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboard|keyboardHidden|navigation"
             android:exported="false"
-            android:screenOrientation="sensorLandscape" />
+            />
         <activity
             android:name=".ui.SearchActivity"
             android:exported="false"
-            android:screenOrientation="sensorLandscape"
+           
             android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".ui.SettingsActivity" android:exported="false" android:screenOrientation="sensorLandscape" />
+        <activity android:name=".ui.SettingsActivity" android:exported="false" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

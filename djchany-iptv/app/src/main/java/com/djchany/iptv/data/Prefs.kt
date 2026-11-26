@@ -57,6 +57,13 @@ object Prefs {
     /** Prefijo para que favoritos e historial sean propios de cada lista. */
     private val scope: String get() = Integer.toHexString((current?.key ?: "none").hashCode())
 
+    // ---------------- tipo de equipo
+
+    /** null = aún no elegido, "tv" o "mobile". */
+    var deviceMode: String?
+        get() = sp.getString("device_mode", null)
+        set(v) = sp.edit().putString("device_mode", v).apply()
+
     // ---------------- reproducción
 
     /** "ts" o "m3u8" */

@@ -36,6 +36,7 @@ class VodDetailActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Device.applyOrientation(this)
         if (Repo.api == null) {
             finish(); return
         }

@@ -26,11 +26,15 @@ class SettingsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Device.applyOrientation(this)
         setContentView(R.layout.activity_settings)
         findViewById<TextView>(R.id.tvVersion).text = "Versión ${BuildConfig.VERSION_NAME}"
 
         val rows = listOf(
             Row("Cuenta", { Prefs.current?.let { "${it.user} · ${it.name}" } ?: "-" }) { showAccount() },
+            Row("Tipo de equipo", { if (Device.isMobile) "Celular / Tablet" else "Android TV / TV Box" }) {
+                ModeActivity.change(this)
+            },
             Row("Cambiar de lista / cuenta", { "${Prefs.profiles.size} guardada(s)" }) { LoginActivity.manage(this) },
             Row("Formato de TV en vivo", { if (Prefs.liveFormat == "m3u8") "HLS (.m3u8)" else "MPEG-TS (.ts)" }) {
                 choose("Formato de TV en vivo", listOf("MPEG-TS (.ts) — recomendado", "HLS (.m3u8)"), if (Prefs.liveFormat == "m3u8") 1 else 0) {

@@ -45,6 +45,12 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        if (Prefs.deviceMode == null) {
+            startActivity(Intent(this, ModeActivity::class.java))
+            finish()
+            return
+        }
+        Device.applyOrientation(this)
         val manage = intent.getBooleanExtra(EXTRA_MANAGE, false)
         if (!manage && Prefs.current != null && Repo.api != null) {
             goHome()
