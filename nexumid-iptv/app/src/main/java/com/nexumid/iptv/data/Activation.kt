@@ -41,7 +41,21 @@ object Activation {
 
     fun display(c: String = code) = "NX-${c.substring(0, 5)}-${c.substring(5)}"
 
+    /**
+     * Código fijo por equipo: se deriva del identificador del equipo para esta app (ANDROID_ID, que con la
+     * firma fija no cambia al reinstalar). Así, si el cliente desinstala y vuelve a instalar, conserva su
+     * código y la activación vuelve sola. Si el equipo no da un identificador válido, se genera uno al azar.
+     */
     private fun generate(): String {
+        val id = try {
+            android.provider.Settings.Secure.getString(Prefs.appContext.contentResolver, android.provider.Settings.Secure.ANDROID_ID)
+        } catch (e: Exception) {
+            null
+        }
+        if (!id.isNullOrBlank() && id != "9774d56d682e549c" && id.any { it != '0' }) {
+            val h = MessageDigest.getInstance("SHA-256").digest("nexumid-equipo:$id".toByteArray(Charsets.UTF_8))
+            return (0 until CODE_LEN).map { ALPHABET[(h[it].toInt() and 0xFF) % ALPHABET.length] }.joinToString("")
+        }
         val r = SecureRandom()
         return (1..CODE_LEN).map { ALPHABET[r.nextInt(ALPHABET.length)] }.joinToString("")
     }
