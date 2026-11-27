@@ -104,7 +104,6 @@ class LoginActivity : AppCompatActivity() {
                     Prefs.deleteProfile(p)
                     if (Prefs.current == null) Repo.logout()
                     refreshProfiles()
-        TrialQr.bind(this, window.decorView)
                 }
                 .setNegativeButton("Cancelar", null)
                 .show()
@@ -115,6 +114,7 @@ class LoginActivity : AppCompatActivity() {
             itemAnimator = null
         }
         refreshProfiles()
+        TrialQr.bind(this, window.decorView)
         btnLogin.focusZoom(1.03f)
         findViewById<Button>(R.id.btnActivate).apply {
             focusZoom(1.03f)
