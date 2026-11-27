@@ -46,7 +46,16 @@ object Repo {
 
         suspend fun get(): T = value ?: mutex.withLock { value ?: withContext(Dispatchers.Default) { loader() }.also { value = it } }
         fun peek(): T? = value
-        fun clear() {
+        /** Equipo con poca memoria: no se guardan películas y series a la vez. */
+    @Volatile
+    var lowRam = false
+
+    /** Libera lo que no se está usando cuando Android avisa que falta memoria. */
+    fun trim() {
+        vod.clear(); series.clear(); epg.clear()
+    }
+
+    fun clear() {
             value = null
         }
     }
@@ -89,12 +98,14 @@ object Repo {
     }
 
     suspend fun vodStreams(): List<Poster> {
+        if (lowRam) series.clear()
         val h = hidden(vodCats.get())
         val all = vod.get()
         return if (h.isEmpty()) all else all.filter { it.categoryId !in h }
     }
 
     suspend fun series(): List<Poster> {
+        if (lowRam) vod.clear()
         val h = hidden(seriesCats.get())
         val all = series.get()
         return if (h.isEmpty()) all else all.filter { it.categoryId !in h }

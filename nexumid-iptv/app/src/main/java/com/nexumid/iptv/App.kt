@@ -20,6 +20,22 @@ class App : Application(), ImageLoaderFactory {
         CrashReporter.install(this)
         Prefs.init(this)
         Repo.restore()
+        Repo.lowRam = lowRam
+    }
+
+    override fun onTrimMemory(level: Int) {
+        super.onTrimMemory(level)
+        // Android avisa que falta memoria: se vacía lo que no se usa en vez de dejar que cierre la app.
+        if (level >= android.content.ComponentCallbacks2.TRIM_MEMORY_RUNNING_LOW) {
+            Repo.trim()
+            runCatching { coil.Coil.imageLoader(this).memoryCache?.clear() }
+        }
+    }
+
+    override fun onLowMemory() {
+        super.onLowMemory()
+        Repo.trim()
+        runCatching { coil.Coil.imageLoader(this).memoryCache?.clear() }
     }
 
     override fun newImageLoader(): ImageLoader = ImageLoader.Builder(this)
