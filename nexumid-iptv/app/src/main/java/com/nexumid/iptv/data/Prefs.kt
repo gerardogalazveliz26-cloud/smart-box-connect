@@ -80,6 +80,10 @@ object Prefs {
         get() = sp.getBoolean("activated", false)
         set(v) = sp.edit().putBoolean("activated", v).apply()
 
+    var activationExpires: Long
+        get() = sp.getLong("activation_expires", 0L)
+        set(v) = sp.edit().putLong("activation_expires", v).apply()
+
     var activationStamp: Long
         get() = sp.getLong("activation_stamp", 0L)
         set(v) = sp.edit().putLong("activation_stamp", v).apply()
