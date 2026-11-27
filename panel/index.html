@@ -376,6 +376,12 @@ async function doLoad(codeArg) {
   $("lists").innerHTML = "";
   (p.lists && p.lists.length ? p.lists : [{}]).forEach(addListCard);
   loadedCode = code;
+  // Si no estaba en «Mis clientes» (por ejemplo, tras reinstalar), se agrega.
+  const reg = clients();
+  if (!reg[code]) {
+    reg[code] = { client: p.client || "", lists: (p.lists || []).length, updated: p.updated || Date.now() };
+    saveClients(reg);
+  }
   show($("msg"), "info", `Activación cargada (${(p.lists || []).length} lista(s)). Edítala y pulsa «Enviar al equipo» para actualizarla. Si le cambias el código, el panel te ofrecerá dar de baja el equipo anterior.`);
   window.scrollTo({ top: $("code").offsetTop - 80, behavior: "smooth" });
 }
