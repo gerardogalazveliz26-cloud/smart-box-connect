@@ -63,6 +63,11 @@
   details summary { cursor: pointer; color: var(--cyan); font-weight: 600; }
   .status-dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: var(--danger); margin-right: 6px; }
   .status-dot.on { background: var(--ok); }
+  input.chk { width: 22px; height: 22px; padding: 0; accent-color: #1ea0ff; cursor: pointer; }
+  td .code-sm { display: block; font: 12px ui-monospace, Menlo, Consolas, monospace; color: var(--gold); margin-top: 2px; }
+  tr.sel td { background: rgba(30, 160, 255, .10); }
+  td.acts { display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; }
+  @media (max-width: 480px) { td.acts { flex-direction: column; align-items: stretch; } th, td { padding: 8px 4px; } }
 </style>
 </head>
 <body>
@@ -122,10 +127,13 @@
 
   <section>
     <h2>Mis clientes</h2>
-    <p class="muted">Equipos activados desde este navegador. Haz una copia de seguridad con «Exportar» de vez en cuando.</p>
+    <p class="muted">Equipos activados desde este navegador. Marca varios para darlos de baja juntos. Haz una copia de seguridad con «Exportar» de vez en cuando.</p>
+    <div class="btns" style="margin-top:4px">
+      <button class="danger" id="revokeSel" disabled>Dar de baja seleccionados</button>
+    </div>
     <div style="overflow-x:auto">
       <table>
-        <thead><tr><th>Código</th><th>Cliente</th><th>Listas</th><th>Actualizado</th><th></th></tr></thead>
+        <thead><tr><th style="width:34px"><input type="checkbox" id="selAll" title="Seleccionar todos" class="chk"></th><th>Cliente</th><th>Listas</th><th>Actualizado</th><th></th></tr></thead>
         <tbody id="clients"></tbody>
       </table>
     </div>
@@ -134,6 +142,7 @@
       <button id="import">Importar</button>
       <input id="importFile" type="file" accept="application/json" hidden>
     </div>
+    <div id="clientsMsg" class="msg"></div>
   </section>
 
   <section>
@@ -387,20 +396,59 @@ async function doBulk() {
   show($("bulkMsg"), failed ? "err" : "ok", `✔ ${changed} equipo(s) actualizados${failed ? `, ${failed} con error` : ""}.`);
 }
 
+function shortDate(ms) {
+  const d = new Date(ms), z = (n) => String(n).padStart(2, "0");
+  return `${z(d.getDate())}/${z(d.getMonth() + 1)} ${z(d.getHours())}:${z(d.getMinutes())}`;
+}
+
 function renderClients() {
   const c = clients();
   const rows = Object.entries(c).sort((a, b) => (b[1].updated || 0) - (a[1].updated || 0));
   $("clients").innerHTML = rows.length ? rows.map(([code, v]) => `
     <tr>
-      <td class="mono">${escapeHtml(displayCode(code))}</td>
-      <td>${escapeHtml(v.client || "—")}</td>
+      <td><input type="checkbox" class="chk" data-sel="${escapeHtml(code)}"></td>
+      <td><b>${escapeHtml(v.client || "—")}</b><span class="code-sm">${escapeHtml(displayCode(code))}</span></td>
       <td>${escapeHtml(v.lists || 0)}</td>
-      <td class="muted">${v.updated ? escapeHtml(new Date(v.updated).toLocaleString()) : ""}</td>
-      <td style="white-space:nowrap">
+      <td class="muted">${v.updated ? escapeHtml(shortDate(v.updated)) : ""}</td>
+      <td class="acts">
         <button class="small" data-act="edit" data-code="${escapeHtml(code)}">Editar</button>
         <button class="small danger" data-act="revoke" data-code="${escapeHtml(code)}">Baja</button>
       </td>
     </tr>`).join("") : `<tr><td colspan="5" class="muted">Aún no activaste equipos desde este navegador.</td></tr>`;
+  $("selAll").checked = false;
+  updateSelection();
+}
+
+function selectedCodes() {
+  return [...document.querySelectorAll("input[data-sel]:checked")].map((c) => c.dataset.sel);
+}
+
+function updateSelection() {
+  const sel = selectedCodes();
+  document.querySelectorAll("input[data-sel]").forEach((c) => c.closest("tr").classList.toggle("sel", c.checked));
+  $("revokeSel").disabled = sel.length === 0;
+  $("revokeSel").textContent = sel.length ? `Dar de baja seleccionados (${sel.length})` : "Dar de baja seleccionados";
+}
+
+async function doRevokeMany() {
+  const codes = selectedCodes();
+  if (!codes.length) return;
+  const c0 = clients();
+  const names = codes.map((c) => c0[c]?.client || displayCode(c));
+  if (!confirm(`¿Dar de baja ${codes.length} equipo(s)?\n\n${names.join(", ")}\n\nDejarán de ver la lista cargada.`)) return;
+  let ok = 0, failed = 0;
+  for (const code of codes) {
+    try {
+      show($("clientsMsg"), "info", `Dando de baja ${displayCode(code)}… (${ok + failed + 1} de ${codes.length})`);
+      const id = await fileId(code);
+      const f = await getFile(pathFor(id));
+      if (f) await deleteFile(pathFor(id), f.sha, `Baja ${id.slice(0, 6)}`);
+      const c = clients(); delete c[code]; store("nexumid_clients", c);
+      ok++;
+    } catch (e) { failed++; }
+  }
+  renderClients();
+  show($("clientsMsg"), failed ? "err" : "ok", `✔ ${ok} equipo(s) dados de baja${failed ? `, ${failed} con error (revisa la conexión y vuelve a intentar)` : ""}.`);
 }
 
 // ---------------------------------------------------------------- eventos
@@ -415,6 +463,14 @@ run($("revoke"), () => doRevoke());
 run($("bulk"), doBulk, $("bulkMsg"));
 $("clear").addEventListener("click", () => { resetForm(); $("msg").className = "msg"; });
 $("addList").addEventListener("click", () => addListCard());
+$("clients").addEventListener("change", (ev) => {
+  if (ev.target.matches("input[data-sel]")) updateSelection();
+});
+$("selAll").addEventListener("change", () => {
+  document.querySelectorAll("input[data-sel]").forEach((c) => (c.checked = $("selAll").checked));
+  updateSelection();
+});
+run($("revokeSel"), doRevokeMany, $("clientsMsg"));
 $("clients").addEventListener("click", (ev) => {
   const b = ev.target.closest("button[data-act]");
   if (!b) return;
