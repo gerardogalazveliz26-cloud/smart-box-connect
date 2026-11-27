@@ -68,6 +68,7 @@ class VodDetailActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        ActivationGuard.check(this)
         if (::btnPlay.isInitialized) updateResume()
     }
 

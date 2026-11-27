@@ -93,6 +93,7 @@ class SearchActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        ActivationGuard.check(this)
         if (favMode && ::liveAdapter.isInitialized) showFavorites()
     }
 

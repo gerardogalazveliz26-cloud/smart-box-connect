@@ -103,6 +103,7 @@ class SeriesDetailActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        ActivationGuard.check(this)
         if (::episodeAdapter.isInitialized && info != null) {
             episodeAdapter.notifyItemRangeChanged(0, episodeAdapter.itemCount, "state")
             updateContinue()
