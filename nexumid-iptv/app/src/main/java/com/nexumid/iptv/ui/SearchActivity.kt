@@ -164,8 +164,10 @@ class SearchActivity : AppCompatActivity() {
                 tvStatus.text = if (total == 0) "Sin resultados para \"$raw\"" else "$total resultado(s)"
             } catch (e: CancellationException) {
                 throw e
-            } catch (e: Exception) {
-                tvStatus.text = "Error al buscar: ${e.message ?: ""}"
+            } catch (e: Throwable) {
+                if (e is OutOfMemoryError) Repo.clear()
+                val reason = if (e is OutOfMemoryError) "La lista es muy grande para la memoria de este equipo." else (e.message ?: "")
+                tvStatus.text = "Error al buscar: $reason"
             }
         }
     }

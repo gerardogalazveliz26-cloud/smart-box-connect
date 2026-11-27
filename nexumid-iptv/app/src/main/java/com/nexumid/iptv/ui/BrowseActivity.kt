@@ -153,9 +153,11 @@ class BrowseActivity : AppCompatActivity() {
                 rvCats.focusPosition(cats.indexOfFirst { it.id == first })
             } catch (e: CancellationException) {
                 throw e
-            } catch (e: Exception) {
+            } catch (e: Throwable) {
+                if (e is OutOfMemoryError) Repo.clear()
+                val reason = if (e is OutOfMemoryError) "La lista es muy grande para la memoria de este equipo." else (e.message ?: "")
                 pbLoading.visibility = View.GONE
-                tvEmpty.text = "No se pudo cargar el catálogo\n${e.message ?: ""}"
+                tvEmpty.text = "No se pudo cargar el catálogo\n$reason"
                 tvEmpty.visibility = View.VISIBLE
             }
         }
