@@ -130,6 +130,7 @@
     <p class="muted">Equipos activados desde este navegador. Marca varios para darlos de baja juntos. Haz una copia de seguridad con «Exportar» de vez en cuando.</p>
     <div class="btns" style="margin-top:4px">
       <button class="danger" id="revokeSel" disabled>Dar de baja seleccionados</button>
+      <button id="syncClients">↻ Sincronizar</button>
     </div>
     <div style="overflow-x:auto">
       <table>
@@ -430,6 +431,27 @@ function updateSelection() {
   $("revokeSel").textContent = sel.length ? `Dar de baja seleccionados (${sel.length})` : "Dar de baja seleccionados";
 }
 
+/** Quita de «Mis clientes» los equipos cuya activación ya no existe en GitHub (dados de baja). */
+async function syncClients(silent) {
+  if (!cfg().token) { if (!silent) show($("clientsMsg"), "err", "✖ Primero configura tu token de GitHub."); return; }
+  const codes = Object.keys(clients());
+  if (!codes.length) { if (!silent) show($("clientsMsg"), "info", "No hay clientes para sincronizar."); return; }
+  let removed = [];
+  for (const code of codes) {
+    if (!silent) show($("clientsMsg"), "info", `Revisando ${displayCode(code)}…`);
+    const f = await getFile(pathFor(await fileId(code)));
+    if (!f) {
+      const c = clients();
+      removed.push(c[code]?.client || displayCode(code));
+      delete c[code];
+      store("nexumid_clients", c);
+    }
+  }
+  renderClients();
+  if (removed.length) show($("clientsMsg"), "ok", `✔ Se quitaron ${removed.length} equipo(s) que ya estaban dados de baja: ${removed.join(", ")}.`);
+  else if (!silent) show($("clientsMsg"), "ok", "✔ La lista ya estaba al día.");
+}
+
 async function doRevokeMany() {
   const codes = selectedCodes();
   if (!codes.length) return;
@@ -471,6 +493,7 @@ $("selAll").addEventListener("change", () => {
   updateSelection();
 });
 run($("revokeSel"), doRevokeMany, $("clientsMsg"));
+run($("syncClients"), () => syncClients(false), $("clientsMsg"));
 $("clients").addEventListener("click", (ev) => {
   const b = ev.target.closest("button[data-act]");
   if (!b) return;
@@ -533,6 +556,7 @@ $("importFile").addEventListener("change", async (ev) => {
     for (const [code, v] of Object.entries(data)) if (normalizeCode(code)) c[normalizeCode(code)] = v;
     saveClients(c);
     show($("msg"), "ok", "✔ Clientes importados.");
+    syncClients(true).catch(() => {});
   } catch (e) { show($("msg"), "err", "✖ Archivo no válido."); }
   ev.target.value = "";
 });
@@ -585,6 +609,8 @@ function updateCfgStatus(ok) {
   if (!saved?.token) $("cfgDetails").open = true;
   resetForm();
   renderClients();
+  // Al abrir, quita de la lista los equipos que ya fueron dados de baja.
+  if (saved?.token) setTimeout(() => syncClients(true).catch(() => {}), 600);
 })();
 </script>
 </body>
