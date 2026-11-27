@@ -10,8 +10,14 @@ import com.nexumid.iptv.data.Prefs
 import com.nexumid.iptv.data.Repo
 
 class App : Application(), ImageLoaderFactory {
+    private val lowRam: Boolean by lazy {
+        val am = getSystemService(ACTIVITY_SERVICE) as android.app.ActivityManager
+        am.isLowRamDevice || am.memoryClass <= 128
+    }
+
     override fun onCreate() {
         super.onCreate()
+        CrashReporter.install(this)
         Prefs.init(this)
         Repo.restore()
     }
@@ -20,7 +26,9 @@ class App : Application(), ImageLoaderFactory {
         .okHttpClient { Net.client }
         .crossfade(true)
         .respectCacheHeaders(false)
-        .memoryCache { MemoryCache.Builder(this).maxSizePercent(0.2).build() }
+        // En equipos con poca memoria se usa menos caché de imágenes y colores de 16 bits.
+        .memoryCache { MemoryCache.Builder(this).maxSizePercent(if (lowRam) 0.10 else 0.2).build() }
+        .allowRgb565(lowRam)
         .diskCache {
             DiskCache.Builder()
                 .directory(cacheDir.resolve("images"))

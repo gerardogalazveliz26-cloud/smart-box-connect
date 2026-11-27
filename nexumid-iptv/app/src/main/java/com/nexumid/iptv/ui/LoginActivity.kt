@@ -115,6 +115,7 @@ class LoginActivity : AppCompatActivity() {
         }
         refreshProfiles()
         TrialQr.bind(this, window.decorView)
+        com.nexumid.iptv.CrashReporter.offer(this)
         btnLogin.focusZoom(1.03f)
         findViewById<Button>(R.id.btnActivate).apply {
             focusZoom(1.03f)

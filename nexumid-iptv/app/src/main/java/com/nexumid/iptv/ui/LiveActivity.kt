@@ -305,8 +305,10 @@ class LiveActivity : AppCompatActivity() {
                 start()
             } catch (e: CancellationException) {
                 throw e
-            } catch (e: Exception) {
-                tvMsg.text = "No se pudieron cargar los canales\n${e.message ?: ""}\n\nPulsa OK para reintentar"
+            } catch (e: Throwable) {
+                if (e is OutOfMemoryError) Repo.clear()
+                val reason = if (e is OutOfMemoryError) "La lista es muy grande para la memoria de este equipo." else (e.message ?: "")
+                tvMsg.text = "No se pudieron cargar los canales\n$reason\n\nPulsa OK para reintentar"
                 tvMsg.requestFocus()
             }
         }

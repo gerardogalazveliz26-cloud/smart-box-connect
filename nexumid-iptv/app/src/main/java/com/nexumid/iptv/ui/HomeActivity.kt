@@ -77,6 +77,7 @@ class HomeActivity : AppCompatActivity() {
         // Precarga en segundo plano para que TV en vivo abra al instante.
         lifecycleScope.launch { runCatching { Repo.liveCategories(); Repo.liveStreams() } }
         Updater.check(this, false)
+        com.nexumid.iptv.CrashReporter.offer(this)
         lifecycleScope.launch {
             pendingUpdate = Updater.pending()
             pendingUpdate?.let { addNotice("update", "Nueva versión ${it.name} disponible. Toca para actualizar.") }
