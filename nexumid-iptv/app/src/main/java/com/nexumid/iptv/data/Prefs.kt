@@ -9,8 +9,11 @@ object Prefs {
     const val DEFAULT_UA = "Mozilla/5.0 (Linux; Android 10) AppleWebKit/537.36 (KHTML, like Gecko) NexumIDIPTV/1.0"
 
     private lateinit var sp: SharedPreferences
+    lateinit var appContext: Context
+        private set
 
     fun init(c: Context) {
+        appContext = c.applicationContext
         sp = c.getSharedPreferences("nexumid", Context.MODE_PRIVATE)
     }
 
