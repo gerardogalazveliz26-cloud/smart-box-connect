@@ -26,7 +26,11 @@ class App : Application(), ImageLoaderFactory {
     override fun onTrimMemory(level: Int) {
         super.onTrimMemory(level)
         // Android avisa que falta memoria: se vacía lo que no se usa en vez de dejar que cierre la app.
-        if (level >= android.content.ComponentCallbacks2.TRIM_MEMORY_RUNNING_LOW) {
+        val c = android.content.ComponentCallbacks2.TRIM_MEMORY_RUNNING_LOW
+        val critical = android.content.ComponentCallbacks2.TRIM_MEMORY_RUNNING_CRITICAL
+        val moderate = android.content.ComponentCallbacks2.TRIM_MEMORY_MODERATE
+        // Solo con falta real de memoria (no cada vez que la app pasa a segundo plano).
+        if (level == c || level == critical || level >= moderate) {
             Repo.trim()
             runCatching { coil.Coil.imageLoader(this).memoryCache?.clear() }
         }
