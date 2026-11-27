@@ -37,17 +37,18 @@ jobs:
         run: |
           if [ -n "$KEYSTORE_B64" ]; then
             echo "$KEYSTORE_B64" | base64 -d > "$RUNNER_TEMP/nexumid.jks"
-            echo "NEXUMID_KEYSTORE_PATH=$RUNNER_TEMP/nexumid.jks" >> "$GITHUB_ENV"
-            echo "Firma: clave definitiva de NexumID"
+            echo "Firma: clave de los secretos de GitHub"
           else
-            echo "::warning::Falta el secreto NEXUMID_KEYSTORE_B64: el APK se firma con una clave temporal."
+            cp "$GITHUB_WORKSPACE/.github/firma/nexumid.jks" "$RUNNER_TEMP/nexumid.jks"
+            echo "Firma: clave fija del repositorio (.github/firma/nexumid.jks)"
           fi
+          echo "NEXUMID_KEYSTORE_PATH=$RUNNER_TEMP/nexumid.jks" >> "$GITHUB_ENV"
 
       - name: Compilar
         env:
-          NEXUMID_KEYSTORE_PASSWORD: ${{ secrets.NEXUMID_KEYSTORE_PASSWORD || secrets.DJCHANY_KEYSTORE_PASSWORD }}
-          NEXUMID_KEY_ALIAS: ${{ secrets.NEXUMID_KEY_ALIAS || secrets.DJCHANY_KEY_ALIAS }}
-          NEXUMID_KEY_PASSWORD: ${{ secrets.NEXUMID_KEY_PASSWORD || secrets.DJCHANY_KEY_PASSWORD }}
+          NEXUMID_KEYSTORE_PASSWORD: ${{ secrets.NEXUMID_KEYSTORE_PASSWORD || 'HDYnJtCbzhehoswK5rDzQxAY' }}
+          NEXUMID_KEY_ALIAS: ${{ secrets.NEXUMID_KEY_ALIAS || 'nexumid' }}
+          NEXUMID_KEY_PASSWORD: ${{ secrets.NEXUMID_KEY_PASSWORD || 'HDYnJtCbzhehoswK5rDzQxAY' }}
         run: |
           chmod +x gradlew
           ./gradlew --no-daemon --stacktrace assembleRelease
