@@ -124,6 +124,7 @@ class BrowseActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        ActivationGuard.check(this)
         if (::gridAdapter.isInitialized && all.isNotEmpty()) {
             favIds = Prefs.favorites(type)
             gridAdapter.notifyItemRangeChanged(0, gridAdapter.itemCount, "state")

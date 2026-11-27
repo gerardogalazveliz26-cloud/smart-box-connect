@@ -87,6 +87,7 @@ class HomeActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         if (!::resumeAdapter.isInitialized) return
+        ActivationGuard.check(this)
         refreshRows()
         updateWifi()
     }

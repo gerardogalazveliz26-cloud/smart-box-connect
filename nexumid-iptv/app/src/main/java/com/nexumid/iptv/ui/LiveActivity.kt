@@ -95,6 +95,12 @@ class LiveActivity : AppCompatActivity() {
     private var resizeMode = AspectRatioFrameLayout.RESIZE_MODE_FIT
 
     private val handler = Handler(Looper.getMainLooper())
+    private val guardTick: Runnable = object : Runnable {
+        override fun run() {
+            ActivationGuard.check(this@LiveActivity)
+            handler.postDelayed(this, ActivationGuard.INTERVAL_MS)
+        }
+    }
     private val catDebounce by lazy { Debouncer(lifecycleScope, 220) }
     private val infoDebounce by lazy { Debouncer(lifecycleScope, 320) }
     private val hideOverlay = Runnable {
@@ -684,6 +690,7 @@ class LiveActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
+        handler.post(guardTick)
         if (::player.isInitialized && playing != null && player.playbackState == Player.STATE_IDLE) {
             player.prepare()
             player.play()
@@ -692,6 +699,7 @@ class LiveActivity : AppCompatActivity() {
 
     override fun onStop() {
         super.onStop()
+        handler.removeCallbacks(guardTick)
         handler.removeCallbacks(retryRunnable)
         // Libera la conexión con el servidor al salir de la pantalla.
         if (::player.isInitialized) player.stop()

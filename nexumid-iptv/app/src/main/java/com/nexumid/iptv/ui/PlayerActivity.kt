@@ -99,6 +99,12 @@ class PlayerActivity : AppCompatActivity() {
     private var resizeMode = AspectRatioFrameLayout.RESIZE_MODE_FIT
 
     private val handler = Handler(Looper.getMainLooper())
+    private val guardTick: Runnable = object : Runnable {
+        override fun run() {
+            ActivationGuard.check(this@PlayerActivity)
+            handler.postDelayed(this, ActivationGuard.INTERVAL_MS)
+        }
+    }
     private val saver = object : Runnable {
         override fun run() {
             saveProgress()
@@ -270,11 +276,13 @@ class PlayerActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
+        handler.post(guardTick)
         if (::player.isInitialized) handler.postDelayed(saver, 10_000)
     }
 
     override fun onStop() {
         super.onStop()
+        handler.removeCallbacks(guardTick)
         handler.removeCallbacks(saver)
         if (::player.isInitialized) {
             saveProgress()
