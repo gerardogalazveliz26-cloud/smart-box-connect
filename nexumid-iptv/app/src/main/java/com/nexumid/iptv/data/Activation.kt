@@ -27,7 +27,22 @@ object Activation {
     private const val CODE_LEN = 10
 
     data class RemoteList(val name: String, val server: String, val user: String, val pass: String)
-    data class Payload(val lists: List<RemoteList>, val updated: Long, val message: String?)
+    /** [expires] = fecha de vencimiento (milisegundos) o 0 si no vence. */
+    data class Payload(val lists: List<RemoteList>, val updated: Long, val message: String?, val expires: Long = 0)
+
+    /** Hora del servidor de GitHub (no la del equipo, que se puede cambiar a mano). */
+    @Volatile
+    private var serverOffset = 0L
+
+    fun now(): Long = System.currentTimeMillis() + serverOffset
+
+    fun isExpired(expires: Long): Boolean = expires > 0 && now() > expires
+
+    fun isExpired(p: Payload): Boolean = isExpired(p.expires)
+
+    private fun syncClock(r: okhttp3.Response) {
+        r.headers.getDate("Date")?.let { serverOffset = it.time - System.currentTimeMillis() }
+    }
 
     sealed class Result {
         data class Found(val payload: Payload) : Result()
@@ -79,6 +94,7 @@ object Activation {
                     .header("X-GitHub-Api-Version", "2022-11-28")
                     .build()
             ).execute().use { r ->
+                syncClock(r)
                 when {
                     r.code == 404 -> return@withContext Result.NotFound
                     r.isSuccessful -> r.body?.string()
@@ -92,6 +108,7 @@ object Activation {
         if (text == null) {
             text = try {
                 Net.client.newCall(Request.Builder().url(raw).header("Cache-Control", "no-cache").build()).execute().use { r ->
+                    syncClock(r)
                     when {
                         r.code == 404 -> return@withContext Result.NotFound
                         r.isSuccessful -> r.body?.string()
@@ -131,6 +148,7 @@ object Activation {
         Prefs.replaceRemoteProfiles(profiles)
         Prefs.activated = true
         Prefs.activationStamp = p.updated
+        Prefs.activationExpires = p.expires
         val after = Prefs.current
         if (after != null && after != before) {
             Repo.use(after, null)
@@ -165,7 +183,7 @@ object Activation {
                 RemoteList(it.optString("name"), it.optString("server"), it.optString("user"), it.optString("pass"))
             }
         }
-        return Payload(lists, plain.optLong("updated"), plain.optString("message").ifBlank { null })
+        return Payload(lists, plain.optLong("updated"), plain.optString("message").ifBlank { null }, plain.optLong("expires"))
     }
 
     /** PBKDF2-HMAC-SHA256 propio: SecretKeyFactory solo lo trae desde Android 8. */

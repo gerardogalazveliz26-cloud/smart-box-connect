@@ -23,6 +23,7 @@ import kotlinx.coroutines.launch
 class ActivationActivity : AppCompatActivity() {
 
     companion object {
+        const val EXTRA_EXPIRED = "expired"
         fun open(ctx: Context) = ctx.startActivity(Intent(ctx, ActivationActivity::class.java))
     }
 
@@ -61,7 +62,14 @@ class ActivationActivity : AppCompatActivity() {
                 startActivity(Intent.createChooser(send, "Enviar código"))
             }
         }
-        btnManual.setOnClickListener { finish() }
+        btnManual.setOnClickListener {
+            if (isTaskRoot) startActivity(Intent(this, LoginActivity::class.java).putExtra("manage", true))
+            finish()
+        }
+        if (intent.getBooleanExtra(EXTRA_EXPIRED, false)) {
+            tvStatus.text = "Tu servicio venció. Escríbenos para renovarlo."
+            toast("Tu servicio venció")
+        }
         listOf(btnShare, btnManual).forEach { it.focusZoom(1.04f) }
         btnManual.requestFocus()
         TrialQr.bind(this, window.decorView)
@@ -73,6 +81,11 @@ class ActivationActivity : AppCompatActivity() {
             while (isActive) {
                 when (val r = Activation.fetch()) {
                     is Activation.Result.Found -> {
+                        if (Activation.isExpired(r.payload)) {
+                            tvStatus.text = "Tu servicio venció. Escríbenos para renovarlo."
+                            delay(30_000)
+                            continue
+                        }
                         Activation.apply(r.payload)
                         if (Prefs.profiles.any { it.remote } && Repo.api != null) {
                             tvStatus.text = "¡Equipo activado!"

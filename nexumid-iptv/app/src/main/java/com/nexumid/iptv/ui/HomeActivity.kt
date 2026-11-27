@@ -266,6 +266,10 @@ class HomeActivity : AppCompatActivity() {
         lifecycleScope.launch {
             when (val r = Activation.fetch()) {
                 is Activation.Result.Found -> {
+                    if (Activation.isExpired(r.payload)) {
+                        ActivationGuard.expire(this@HomeActivity)
+                        return@launch
+                    }
                     if (r.payload.updated != Prefs.activationStamp) {
                         val changed = Activation.apply(r.payload)
                         toast("Tu proveedor actualizó tu lista")
@@ -288,7 +292,8 @@ class HomeActivity : AppCompatActivity() {
                         finish()
                     } else recreate()
                 }
-                is Activation.Result.Error -> Unit
+                is Activation.Result.Error ->
+                    if (Activation.isExpired(Prefs.activationExpires)) ActivationGuard.expire(this@HomeActivity)
             }
         }
     }
