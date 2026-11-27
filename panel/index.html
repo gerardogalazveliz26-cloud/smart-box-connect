@@ -303,7 +303,11 @@ function readLists() {
     return { name: c.querySelector(".f-name").value.trim() || user, server: serverBase(server) || server, user, pass };
   }).filter((l) => l.server || l.user || l.pass);
 }
+// Código de la activación cargada con «Editar»/«Buscar» (para detectar cambios de equipo).
+let loadedCode = null;
+
 function resetForm(keepCode) {
+  loadedCode = null;
   if (!keepCode) $("code").value = "";
   $("client").value = "";
   $("message").value = "";
@@ -339,7 +343,25 @@ async function doSend() {
   const c = clients();
   c[code] = { client: payload.client, lists: lists.length, updated: payload.updated };
   saveClients(c);
-  show($("msg"), "ok", `✔ Listo. El equipo ${displayCode(code)} recibirá ${lists.length} lista(s) en menos de un minuto.`);
+
+  // ¿Este cliente estaba en otro equipo? Ofrecer dar de baja el anterior para que no queden dos activos.
+  const previous = new Set();
+  if (loadedCode && loadedCode !== code) previous.add(loadedCode);
+  const name = payload.client.toLowerCase();
+  if (name) for (const [k, v] of Object.entries(clients())) if (k !== code && (v.client || "").trim().toLowerCase() === name) previous.add(k);
+  const revoked = [];
+  for (const old of previous) {
+    const label = clients()[old]?.client || payload.client || "este cliente";
+    if (!confirm(`«${label}» también está activo en el equipo ${displayCode(old)}.\n\n¿Dar de baja ese equipo anterior? (Si no, los dos seguirán funcionando.)`)) continue;
+    const oid = await fileId(old);
+    const f = await getFile(pathFor(oid));
+    if (f) await deleteFile(pathFor(oid), f.sha, `Baja ${oid.slice(0, 6)}`);
+    const cc = clients(); delete cc[old]; saveClients(cc);
+    revoked.push(displayCode(old));
+  }
+  loadedCode = code;
+  show($("msg"), "ok", `✔ Listo. El equipo ${displayCode(code)} recibirá ${lists.length} lista(s) en menos de un minuto.` +
+    (revoked.length ? `\nDado(s) de baja: ${revoked.join(", ")}.` : ""));
 }
 
 async function doLoad(codeArg) {
@@ -347,13 +369,14 @@ async function doLoad(codeArg) {
   const code = requireCode();
   const id = await fileId(code);
   const f = await getFile(pathFor(id));
-  if (!f) { show($("msg"), "info", "Ese equipo todavía no tiene activación. Completa los datos y pulsa «Enviar al equipo»."); return; }
+  if (!f) { loadedCode = null; show($("msg"), "info", "Ese equipo todavía no tiene activación. Completa los datos y pulsa «Enviar al equipo»."); return; }
   const p = await decryptPayload(JSON.parse(f.text), code);
   $("client").value = p.client || "";
   $("message").value = p.message || "";
   $("lists").innerHTML = "";
   (p.lists && p.lists.length ? p.lists : [{}]).forEach(addListCard);
-  show($("msg"), "info", `Activación cargada (${(p.lists || []).length} lista(s)). Edítala y pulsa «Enviar al equipo» para actualizarla.`);
+  loadedCode = code;
+  show($("msg"), "info", `Activación cargada (${(p.lists || []).length} lista(s)). Edítala y pulsa «Enviar al equipo» para actualizarla. Si le cambias el código, el panel te ofrecerá dar de baja el equipo anterior.`);
   window.scrollTo({ top: $("code").offsetTop - 80, behavior: "smooth" });
 }
 
