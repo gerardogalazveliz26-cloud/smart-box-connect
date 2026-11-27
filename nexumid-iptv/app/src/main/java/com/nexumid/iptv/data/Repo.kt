@@ -46,18 +46,18 @@ object Repo {
 
         suspend fun get(): T = value ?: mutex.withLock { value ?: withContext(Dispatchers.Default) { loader() }.also { value = it } }
         fun peek(): T? = value
-        /** Equipo con poca memoria: no se guardan películas y series a la vez. */
+        fun clear() {
+            value = null
+        }
+    }
+
+    /** Equipo con poca memoria: no se guardan películas y series a la vez. */
     @Volatile
     var lowRam = false
 
     /** Libera lo que no se está usando cuando Android avisa que falta memoria. */
     fun trim() {
         vod.clear(); series.clear(); epg.clear()
-    }
-
-    fun clear() {
-            value = null
-        }
     }
 
     private val liveCats = Cache { requireApi().liveCategories() }
