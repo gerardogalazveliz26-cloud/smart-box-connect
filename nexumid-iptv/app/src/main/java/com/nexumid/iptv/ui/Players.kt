@@ -20,6 +20,7 @@ import androidx.media3.extractor.DefaultExtractorsFactory
 import androidx.media3.extractor.ts.DefaultTsPayloadReaderFactory
 import com.nexumid.iptv.data.Net
 import com.nexumid.iptv.data.Prefs
+import com.nexumid.iptv.data.Repo
 
 /**
  * Renderizadores con audio FFmpeg incluido. Muchos canales IPTV usan AC-3/E-AC-3 (Dolby), MP2 o DTS,
@@ -64,7 +65,15 @@ object Players {
             2 -> 60_000 to 180_000
             else -> 15_000 to 50_000
         }
-        val load = DefaultLoadControl.Builder()
+        val load = if (Repo.lowRam) {
+            // Poca RAM: el búfer se limita por tamaño (16 MB). Con canales de alta calidad, 50 s de video
+            // pueden pasar de 50 MB y Android cierra la app.
+            DefaultLoadControl.Builder()
+                .setBufferDurationsMs(8_000, 20_000, 1_500, 3_000)
+                .setTargetBufferBytes(16 * 1024 * 1024)
+                .setPrioritizeTimeOverSizeThresholds(false)
+                .build()
+        } else DefaultLoadControl.Builder()
             .setBufferDurationsMs(minBuf, maxBuf, 2_000, 4_000)
             .setPrioritizeTimeOverSizeThresholds(true)
             .build()

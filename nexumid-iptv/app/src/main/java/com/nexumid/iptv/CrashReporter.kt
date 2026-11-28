@@ -43,7 +43,7 @@ object CrashReporter {
             appendLine("NexumID IPTV ${BuildConfig.VERSION_NAME} (${BuildConfig.VERSION_CODE})")
             appendLine("Equipo: ${Build.MANUFACTURER} ${Build.MODEL}")
             appendLine("Android: ${Build.VERSION.RELEASE} (API ${Build.VERSION.SDK_INT})")
-            appendLine("RAM equipo: ${mi.totalMem / 1_048_576} MB · clase ${am.memoryClass}/${am.largeMemoryClass} MB${if (am.isLowRamDevice) " · gama baja" else ""}")
+            appendLine("RAM equipo: ${mi.totalMem / 1_048_576} MB · clase ${am.memoryClass}/${am.largeMemoryClass} MB${if (am.isLowRamDevice) " · gama baja" else ""}${if (com.nexumid.iptv.data.Repo.lowRam) " · modo liviano" else ""}")
             appendLine("Memoria app: usada ${(rt.totalMemory() - rt.freeMemory()) / 1_048_576} de ${rt.maxMemory() / 1_048_576} MB")
             appendLine("Modo: ${runCatching { Prefs.deviceMode }.getOrNull() ?: "-"}")
             appendLine("Último paso: ${lastStep()}")

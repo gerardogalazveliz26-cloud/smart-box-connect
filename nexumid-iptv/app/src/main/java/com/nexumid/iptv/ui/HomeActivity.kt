@@ -77,7 +77,7 @@ class HomeActivity : AppCompatActivity() {
         loadAccount()
         // Precarga en segundo plano para que TV en vivo abra al instante.
         // Si la app se cerró la vez anterior, no se precarga (se carga recién al entrar a TV en vivo).
-        if (!com.nexumid.iptv.CrashReporter.recovering) {
+        if (!com.nexumid.iptv.CrashReporter.recovering && !Repo.lowRam) {
             lifecycleScope.launch { runCatching { Repo.liveCategories(); Repo.liveStreams() } }
         }
         Updater.check(this, false)
@@ -188,8 +188,10 @@ class HomeActivity : AppCompatActivity() {
         findViewById<View>(R.id.tvResume).visibility = if (res.isEmpty()) View.GONE else View.VISIBLE
         lifecycleScope.launch {
             val ids = Prefs.recentLive()
-            val list = if (ids.isEmpty() || com.nexumid.iptv.CrashReporter.recovering) emptyList() else runCatching {
-                val byId = Repo.liveStreams().associateBy { it.id }
+            // En gama baja solo se muestran si los canales ya están cargados (no se carga la lista solo para esto).
+            val light = com.nexumid.iptv.CrashReporter.recovering || Repo.lowRam
+            val list = if (ids.isEmpty() || (light && Repo.cachedLive() == null)) emptyList() else runCatching {
+                val byId = (if (light) Repo.cachedLive().orEmpty() else Repo.liveStreams()).associateBy { it.id }
                 ids.mapNotNull { byId[it] }.take(15)
             }.getOrDefault(emptyList())
             recentAdapter.items = list

@@ -37,7 +37,9 @@ class SplashActivity : AppCompatActivity() {
             com.nexumid.iptv.CrashReporter.offer(this, then = { next() }, sent = { done = true; finish() })
             return
         }
-        if (!Prefs.showSplash) {
+        // En equipos con poca RAM el video de inicio se salta: decodificarlo justo antes de cargar la lista
+        // deja al equipo sin memoria.
+        if (!Prefs.showSplash || com.nexumid.iptv.data.Repo.lowRam) {
             next(); return
         }
         setContentView(R.layout.activity_splash)
