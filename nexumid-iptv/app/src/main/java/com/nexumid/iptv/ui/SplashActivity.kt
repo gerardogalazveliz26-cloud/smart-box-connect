@@ -30,7 +30,16 @@ class SplashActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if (!Prefs.showSplash) {
+        // Si la app se cerró la vez anterior, el reporte se ofrece aquí, antes de entrar al inicio
+        // (si el inicio vuelve a cerrarse, en otra pantalla no alcanzaría a verse).
+        if (com.nexumid.iptv.CrashReporter.hasPending(this)) {
+            setContentView(R.layout.activity_splash)
+            com.nexumid.iptv.CrashReporter.offer(this, then = { next() }, sent = { done = true; finish() })
+            return
+        }
+        // En equipos con poca RAM el video de inicio se salta: decodificarlo justo antes de cargar la lista
+        // deja al equipo sin memoria.
+        if (!Prefs.showSplash || com.nexumid.iptv.data.Repo.lowRam) {
             next(); return
         }
         setContentView(R.layout.activity_splash)
