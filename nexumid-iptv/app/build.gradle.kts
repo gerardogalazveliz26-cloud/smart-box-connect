@@ -20,8 +20,8 @@ android {
         applicationId = "com.nexumid.iptv"
         minSdk = 21
         targetSdk = 34
-        versionCode = 20
-        versionName = "2.4.3"
+        versionCode = 21
+        versionName = "2.4.4"
         buildConfigField("String", "DEFAULT_SERVER", "\"$defaultServer\"")
         buildConfigField("String", "WHATSAPP", "\"$whatsapp\"")
         buildConfigField(
