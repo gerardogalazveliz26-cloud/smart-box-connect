@@ -74,6 +74,7 @@ class SettingsActivity : AppCompatActivity() {
                 confirm("¿Borrar el historial de reproducción?") { Prefs.clearResumes() }
             },
             Row("Buscar actualizaciones", { "v${BuildConfig.VERSION_NAME}" }) { Updater.check(this, true) },
+            Row("Ver último reporte de error", { "" }) { com.nexumid.iptv.CrashReporter.showLast(this) },
             Row("Cerrar sesión", { "" }) {
                 confirm("¿Cerrar la sesión de esta lista?") {
                     Prefs.activeKey = null

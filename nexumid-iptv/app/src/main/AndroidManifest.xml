@@ -8,6 +8,12 @@
     <uses-feature android:name="android.software.leanback" android:required="false" />
     <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
 
+    <!-- Para saber si el equipo tiene WhatsApp (los TV box no): si no, el reporte se envía escaneando un QR. -->
+    <queries>
+        <package android:name="com.whatsapp" />
+        <package android:name="com.whatsapp.w4b" />
+    </queries>
+
     <application
         android:name=".App"
         android:allowBackup="false"
