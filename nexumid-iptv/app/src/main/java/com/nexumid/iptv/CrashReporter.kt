@@ -97,9 +97,61 @@ object CrashReporter {
         }
     }
 
+    /** true si la sesión anterior terminó en un cierre: esta vez se evita la precarga pesada. */
+    @Volatile
+    var recovering = false
+        private set
+
+    /**
+     * Para Android < 11 (y como respaldo): si la app estaba en pantalla y el proceso murió sin pasar por
+     * segundo plano, Android la cerró (casi siempre por falta de memoria).
+     */
+    private fun checkSilentExit() {
+        try {
+            val sp = app.getSharedPreferences(SP, Context.MODE_PRIVATE)
+            if (sp.getBoolean("running", false) && !File(app.filesDir, FILE).exists()) {
+                val text = buildString {
+                    append(header())
+                    appendLine("Motivo: la app se cerró sin aviso mientras estaba en pantalla (posible falta de memoria)")
+                }
+                File(app.filesDir, FILE).writeText(text)
+            }
+            sp.edit().putBoolean("running", false).commit()
+        } catch (ignored: Throwable) {
+        }
+    }
+
+    private fun trackForeground() {
+        app.registerActivityLifecycleCallbacks(object : Application.ActivityLifecycleCallbacks {
+            private var started = 0
+            private fun mark(on: Boolean) = runCatching {
+                app.getSharedPreferences(SP, Context.MODE_PRIVATE).edit().putBoolean("running", on).commit()
+            }
+            override fun onActivityStarted(a: android.app.Activity) {
+                if (started++ == 0) mark(true)
+            }
+            override fun onActivityStopped(a: android.app.Activity) {
+                if (--started <= 0) {
+                    started = 0
+                    mark(false)
+                }
+            }
+            override fun onActivityCreated(a: android.app.Activity, b: android.os.Bundle?) {}
+            override fun onActivityResumed(a: android.app.Activity) {}
+            override fun onActivityPaused(a: android.app.Activity) {}
+            override fun onActivitySaveInstanceState(a: android.app.Activity, b: android.os.Bundle) {}
+            override fun onActivityDestroyed(a: android.app.Activity) {}
+        })
+    }
+
+    fun hasPending(ctx: Context): Boolean = File(ctx.filesDir, FILE).exists()
+
     fun install(app: Application) {
         this.app = app
         checkSystemExit()
+        checkSilentExit()
+        recovering = File(app.filesDir, FILE).exists()
+        trackForeground()
         val previous = Thread.getDefaultUncaughtExceptionHandler()
         Thread.setDefaultUncaughtExceptionHandler { thread, error ->
             try {
@@ -112,6 +164,8 @@ object CrashReporter {
                     append(sw.toString())
                 }
                 File(app.filesDir, FILE).writeText(text.take(8000))
+                // Un error de Java ya quedó guardado: no contarlo además como cierre silencioso.
+                app.getSharedPreferences(SP, Context.MODE_PRIVATE).edit().putBoolean("running", false).commit()
             } catch (ignored: Throwable) {
                 // Nunca fallar al guardar el reporte.
             }
@@ -130,14 +184,22 @@ object CrashReporter {
         return (head + "" + important.distinct().take(28)).joinToString("\n").take(1800)
     }
 
-    fun offer(activity: AppCompatActivity) {
-        val report = pending(activity) ?: return
+    /**
+     * Ofrece enviar el reporte. [then] se llama al cerrar el aviso con "Ahora no" (para seguir abriendo
+     * la app); si eligió enviarlo, se llama [sent].
+     */
+    fun offer(activity: AppCompatActivity, then: (() -> Unit)? = null, sent: (() -> Unit)? = null) {
+        val report = pending(activity) ?: return run { then?.invoke() }
         File(activity.filesDir, FILE).delete()
         if (activity.isFinishing) return
+        var sending = false
         AlertDialog.Builder(activity)
+            .setCancelable(then == null)
+            .setOnDismissListener { if (sending) sent?.invoke() else then?.invoke() }
             .setTitle("La app se cerró inesperadamente")
             .setMessage("¿Quieres enviar el reporte del error a soporte por WhatsApp? Así podemos solucionarlo.")
             .setPositiveButton("Enviar por WhatsApp") { _, _ ->
+                sending = true
                 val text = "Reporte de error de NexumID IPTV:\n\n" + summary(report)
                 val url = "https://wa.me/${RemoteConfig.whatsapp}?text=" + URLEncoder.encode(text, "UTF-8").replace("+", "%20")
                 try {

@@ -30,6 +30,13 @@ class SplashActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // Si la app se cerró la vez anterior, el reporte se ofrece aquí, antes de entrar al inicio
+        // (si el inicio vuelve a cerrarse, en otra pantalla no alcanzaría a verse).
+        if (com.nexumid.iptv.CrashReporter.hasPending(this)) {
+            setContentView(R.layout.activity_splash)
+            com.nexumid.iptv.CrashReporter.offer(this, then = { next() }, sent = { done = true; finish() })
+            return
+        }
         if (!Prefs.showSplash) {
             next(); return
         }
