@@ -20,20 +20,94 @@ import java.net.URLEncoder
  */
 object CrashReporter {
     private const val FILE = "ultimo_error.txt"
+    private const val SP = "nexumid_diag"
+    private lateinit var app: Application
+
+    /** Último paso que hizo la app (sobrevive aunque Android la cierre sin aviso). */
+    fun step(what: String) {
+        if (!::app.isInitialized) return
+        val rt = Runtime.getRuntime()
+        val mem = "${(rt.totalMemory() - rt.freeMemory()) / 1_048_576}/${rt.maxMemory() / 1_048_576} MB"
+        runCatching { app.getSharedPreferences(SP, Context.MODE_PRIVATE).edit().putString("step", "$what · $mem").apply() }
+    }
+
+    private fun lastStep(): String = runCatching {
+        app.getSharedPreferences(SP, Context.MODE_PRIVATE).getString("step", null)
+    }.getOrNull() ?: "-"
+
+    private fun header(): String {
+        val rt = Runtime.getRuntime()
+        val am = app.getSystemService(Context.ACTIVITY_SERVICE) as android.app.ActivityManager
+        val mi = android.app.ActivityManager.MemoryInfo().also { am.getMemoryInfo(it) }
+        return buildString {
+            appendLine("NexumID IPTV ${BuildConfig.VERSION_NAME} (${BuildConfig.VERSION_CODE})")
+            appendLine("Equipo: ${Build.MANUFACTURER} ${Build.MODEL}")
+            appendLine("Android: ${Build.VERSION.RELEASE} (API ${Build.VERSION.SDK_INT})")
+            appendLine("RAM equipo: ${mi.totalMem / 1_048_576} MB · clase ${am.memoryClass}/${am.largeMemoryClass} MB${if (am.isLowRamDevice) " · gama baja" else ""}")
+            appendLine("Memoria app: usada ${(rt.totalMemory() - rt.freeMemory()) / 1_048_576} de ${rt.maxMemory() / 1_048_576} MB")
+            appendLine("Modo: ${runCatching { Prefs.deviceMode }.getOrNull() ?: "-"}")
+            appendLine("Último paso: ${lastStep()}")
+        }
+    }
+
+    /**
+     * Cierres que no son una excepción de Java (la app se congeló, falló el código nativo o Android la
+     * cerró por falta de memoria): desde Android 11 el sistema guarda el motivo y se lee al volver a abrir.
+     */
+    private fun checkSystemExit() {
+        if (Build.VERSION.SDK_INT < 30) return
+        try {
+            val sp = app.getSharedPreferences(SP, Context.MODE_PRIVATE)
+            val am = app.getSystemService(Context.ACTIVITY_SERVICE) as android.app.ActivityManager
+            val info = am.getHistoricalProcessExitReasons(app.packageName, 0, 1).firstOrNull() ?: return
+            val seen = sp.getLong("exit_seen", 0L)
+            sp.edit().putLong("exit_seen", info.timestamp).apply()
+            if (seen == 0L || info.timestamp <= seen) return // primera vez: solo se anota
+            val reason = when (info.reason) {
+                android.app.ApplicationExitInfo.REASON_ANR -> "La app se congeló (ANR)"
+                android.app.ApplicationExitInfo.REASON_CRASH_NATIVE -> "Error en código nativo (video/audio)"
+                android.app.ApplicationExitInfo.REASON_LOW_MEMORY -> "Android la cerró por falta de memoria"
+                android.app.ApplicationExitInfo.REASON_EXCESSIVE_RESOURCE_USAGE -> "Uso excesivo de recursos"
+                android.app.ApplicationExitInfo.REASON_SIGNALED ->
+                    if (info.status == 9) "Android la cerró (señal 9, normalmente falta de memoria)" else "Señal ${info.status}"
+                else -> return // cierres normales o errores de Java (esos ya se guardan aparte)
+            }
+            if (File(app.filesDir, FILE).exists()) return
+            // Solo interesa si el usuario la estaba usando (no si Android limpió la app en segundo plano).
+            if (info.importance > android.app.ActivityManager.RunningAppProcessInfo.IMPORTANCE_VISIBLE &&
+                info.reason != android.app.ApplicationExitInfo.REASON_ANR
+            ) return
+            val trace = runCatching {
+                info.traceInputStream?.bufferedReader()?.use { r ->
+                    // De la traza del congelamiento basta el hilo principal.
+                    val all = r.readText()
+                    val i = all.indexOf("\"main\"")
+                    (if (i >= 0) all.substring(i) else all).take(3000)
+                }
+            }.getOrNull()
+            val text = buildString {
+                append(header())
+                appendLine("Motivo: $reason · memoria del proceso ${info.pss / 1024} MB (RSS ${info.rss / 1024} MB)")
+                info.description?.let { appendLine("Detalle: $it") }
+                appendLine()
+                trace?.let { append(it) }
+            }
+            File(app.filesDir, FILE).writeText(text.take(8000))
+        } catch (ignored: Throwable) {
+        }
+    }
 
     fun install(app: Application) {
+        this.app = app
+        checkSystemExit()
         val previous = Thread.getDefaultUncaughtExceptionHandler()
         Thread.setDefaultUncaughtExceptionHandler { thread, error ->
             try {
                 val sw = StringWriter()
                 error.printStackTrace(PrintWriter(sw))
-                val rt = Runtime.getRuntime()
                 val text = buildString {
-                    appendLine("NexumID IPTV ${BuildConfig.VERSION_NAME} (${BuildConfig.VERSION_CODE})")
-                    appendLine("Equipo: ${Build.MANUFACTURER} ${Build.MODEL}")
-                    appendLine("Android: ${Build.VERSION.RELEASE} (API ${Build.VERSION.SDK_INT})")
-                    appendLine("Memoria: usada ${(rt.totalMemory() - rt.freeMemory()) / 1_048_576} de ${rt.maxMemory() / 1_048_576} MB")
-                    appendLine("Modo: ${runCatching { Prefs.deviceMode }.getOrNull() ?: "-"} · Hilo: ${thread.name}")
+                    append(header())
+                    appendLine("Hilo: ${thread.name}")
                     appendLine()
                     append(sw.toString())
                 }

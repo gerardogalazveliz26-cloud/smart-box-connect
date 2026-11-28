@@ -50,6 +50,7 @@ class HomeActivity : AppCompatActivity() {
             finish()
             return
         }
+        com.nexumid.iptv.CrashReporter.step("abriendo inicio")
         setContentView(R.layout.activity_home)
         tvAccount = findViewById(R.id.tvAccount)
         tvWarn = findViewById(R.id.tvWarn)

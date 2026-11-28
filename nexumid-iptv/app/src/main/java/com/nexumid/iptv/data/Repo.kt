@@ -38,13 +38,31 @@ object Repo {
 
     fun requireApi(): XtreamApi = api ?: throw XtreamException("La sesión se cerró, vuelve a iniciar sesión")
 
-    private class Cache<T : Any>(private val loader: suspend () -> T) {
+    private class Cache<T : Any>(private val name: String, private val loader: suspend () -> T) {
         private val mutex = Mutex()
 
         @Volatile
         private var value: T? = null
 
-        suspend fun get(): T = value ?: mutex.withLock { value ?: withContext(Dispatchers.Default) { loader() }.also { value = it } }
+        suspend fun get(): T = value ?: mutex.withLock {
+            value ?: withContext(Dispatchers.Default) {
+                com.nexumid.iptv.CrashReporter.step("cargando $name")
+                val v = try {
+                    loader()
+                } catch (e: OutOfMemoryError) {
+                    // Falta memoria: se suelta todo lo demás y se intenta una vez más.
+                    Repo.trim(); Repo.clearOthers(this@Cache); System.gc()
+                    try {
+                        loader()
+                    } catch (e2: OutOfMemoryError) {
+                        com.nexumid.iptv.CrashReporter.step("sin memoria al cargar $name")
+                        throw XtreamException("La lista es muy grande para la memoria de este equipo")
+                    }
+                }
+                com.nexumid.iptv.CrashReporter.step("$name: ${(v as? Collection<*>)?.size ?: "ok"}")
+                v
+            }.also { value = it }
+        }
         fun peek(): T? = value
         fun clear() {
             value = null
@@ -60,13 +78,18 @@ object Repo {
         vod.clear(); series.clear(); epg.clear()
     }
 
-    private val liveCats = Cache { requireApi().liveCategories() }
-    private val vodCats = Cache { requireApi().vodCategories() }
-    private val seriesCats = Cache { requireApi().seriesCategories() }
-    private val live = Cache { requireApi().liveStreams() }
-    private val vod = Cache { requireApi().vodStreams() }
-    private val series = Cache { requireApi().series() }
+    private val liveCats = Cache("categorías TV") { requireApi().liveCategories() }
+    private val vodCats = Cache("categorías películas") { requireApi().vodCategories() }
+    private val seriesCats = Cache("categorías series") { requireApi().seriesCategories() }
+    private val live = Cache("canales") { requireApi().liveStreams() }
+    private val vod = Cache("películas") { requireApi().vodStreams() }
+    private val series = Cache("series") { requireApi().series() }
     private val epg = ConcurrentHashMap<Int, Pair<Long, List<EpgEntry>>>()
+
+    /** Libera las listas grandes que no son [keep]. */
+    private fun clearOthers(keep: Any) {
+        listOf(live, vod, series).forEach { if (it !== keep) it.clear() }
+    }
 
     fun clear() {
         liveCats.clear(); vodCats.clear(); seriesCats.clear()
