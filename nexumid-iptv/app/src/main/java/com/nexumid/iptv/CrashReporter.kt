@@ -184,33 +184,124 @@ object CrashReporter {
         return (head + "" + important.distinct().take(28)).joinToString("\n").take(1800)
     }
 
+    private const val SEEN = "ultimo_error_visto.txt"
+
+    /** Resumen muy corto para el QR (debe caber y escanearse bien desde la TV). */
+    private fun qrText(report: String): String {
+        val lines = report.lines()
+        val head = lines.takeWhile { it.isNotBlank() }
+        val trace = lines.drop(head.size).filter { it.isNotBlank() }
+        val key = trace.take(3) + trace.filter { it.startsWith("Caused by") || it.contains("com.nexumid") }.take(4)
+        return ("Reporte NexumID:\n" + (head + key.distinct()).joinToString("\n") { it.trim() }).take(650)
+    }
+
+    private fun waUrl(text: String) =
+        "https://wa.me/${RemoteConfig.whatsapp}?text=" + URLEncoder.encode(text, "UTF-8").replace("+", "%20")
+
+    private fun qrBitmap(text: String, size: Int): android.graphics.Bitmap? = try {
+        val hints = mapOf(
+            com.google.zxing.EncodeHintType.ERROR_CORRECTION to com.google.zxing.qrcode.decoder.ErrorCorrectionLevel.L,
+            com.google.zxing.EncodeHintType.MARGIN to 2,
+            com.google.zxing.EncodeHintType.CHARACTER_SET to "UTF-8",
+        )
+        val m = com.google.zxing.qrcode.QRCodeWriter().encode(text, com.google.zxing.BarcodeFormat.QR_CODE, size, size, hints)
+        val px = IntArray(m.width * m.height) { if (m[it % m.width, it / m.width]) 0xFF000000.toInt() else 0xFFFFFFFF.toInt() }
+        android.graphics.Bitmap.createBitmap(px, m.width, m.height, android.graphics.Bitmap.Config.RGB_565)
+    } catch (e: Throwable) {
+        null
+    }
+
+    /** Muestra el último reporte guardado (desde Ajustes). */
+    fun showLast(activity: AppCompatActivity) {
+        val report = File(activity.filesDir, SEEN).takeIf { it.exists() }?.readText()
+        if (report == null) {
+            android.widget.Toast.makeText(activity, "No hay cierres registrados", android.widget.Toast.LENGTH_SHORT).show()
+            return
+        }
+        show(activity, report, "Último reporte de error", null, null)
+    }
+
     /**
-     * Ofrece enviar el reporte. [then] se llama al cerrar el aviso con "Ahora no" (para seguir abriendo
-     * la app); si eligió enviarlo, se llama [sent].
+     * Ofrece enviar el reporte. [then] se llama al cerrar el aviso con "Continuar" (para seguir abriendo
+     * la app); si eligió enviarlo por WhatsApp desde el mismo equipo, se llama [sent].
      */
     fun offer(activity: AppCompatActivity, then: (() -> Unit)? = null, sent: (() -> Unit)? = null) {
         val report = pending(activity) ?: return run { then?.invoke() }
-        File(activity.filesDir, FILE).delete()
+        val f = File(activity.filesDir, FILE)
+        runCatching { File(activity.filesDir, SEEN).writeText(report) }
+        f.delete()
         if (activity.isFinishing) return
+        show(activity, report, "La app se cerró inesperadamente", then, sent)
+    }
+
+    /**
+     * Reporte en pantalla: un QR para escanear con el celular (abre WhatsApp con el reporte escrito, sirve en
+     * TV box sin WhatsApp) y el texto completo para leerlo o sacarle foto.
+     */
+    private fun show(activity: AppCompatActivity, report: String, title: String, then: (() -> Unit)?, sent: (() -> Unit)?) {
+        val d = activity.resources.displayMetrics.density
+        fun dp(v: Int) = (v * d).toInt()
+        val tv = activity.resources.configuration.orientation == android.content.res.Configuration.ORIENTATION_LANDSCAPE
+        val qrUrl = waUrl(qrText(report))
+        val root = android.widget.LinearLayout(activity).apply {
+            orientation = if (tv) android.widget.LinearLayout.HORIZONTAL else android.widget.LinearLayout.VERTICAL
+            setPadding(dp(20), dp(12), dp(20), 0)
+        }
+        val qrSize = if (tv) dp(230) else dp(220)
+        val left = android.widget.LinearLayout(activity).apply {
+            orientation = android.widget.LinearLayout.VERTICAL
+            gravity = android.view.Gravity.CENTER_HORIZONTAL
+        }
+        qrBitmap(qrUrl, qrSize)?.let { bmp ->
+            left.addView(android.widget.ImageView(activity).apply { setImageBitmap(bmp) }, android.widget.LinearLayout.LayoutParams(qrSize, qrSize))
+            left.addView(android.widget.TextView(activity).apply {
+                text = "Escanéalo con tu celular:\nse abre WhatsApp con el reporte"
+                gravity = android.view.Gravity.CENTER
+                textSize = 13f
+                setPadding(0, dp(6), 0, dp(8))
+            })
+        }
+        root.addView(left)
+        val scroll = android.widget.ScrollView(activity).apply {
+            isFocusable = true // con el control remoto se baja con las flechas
+            setPadding(if (tv) dp(16) else 0, 0, 0, 0)
+        }
+        scroll.addView(android.widget.TextView(activity).apply {
+            text = report.take(6000)
+            textSize = 11f
+            typeface = android.graphics.Typeface.MONOSPACE
+            setTextIsSelectable(!tv)
+        })
+        root.addView(scroll, android.widget.LinearLayout.LayoutParams(
+            if (tv) 0 else android.view.ViewGroup.LayoutParams.MATCH_PARENT,
+            if (tv) dp(300) else dp(220),
+        ).apply { if (tv) weight = 1f })
+
         var sending = false
-        AlertDialog.Builder(activity)
+        val b = AlertDialog.Builder(activity)
+            .setTitle(title)
+            .setView(root)
             .setCancelable(then == null)
             .setOnDismissListener { if (sending) sent?.invoke() else then?.invoke() }
-            .setTitle("La app se cerró inesperadamente")
-            .setMessage("¿Quieres enviar el reporte del error a soporte por WhatsApp? Así podemos solucionarlo.")
-            .setPositiveButton("Enviar por WhatsApp") { _, _ ->
-                sending = true
-                val text = "Reporte de error de NexumID IPTV:\n\n" + summary(report)
-                val url = "https://wa.me/${RemoteConfig.whatsapp}?text=" + URLEncoder.encode(text, "UTF-8").replace("+", "%20")
-                try {
-                    activity.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
-                } catch (e: Exception) {
-                    activity.startActivity(
-                        Intent.createChooser(Intent(Intent.ACTION_SEND).setType("text/plain").putExtra(Intent.EXTRA_TEXT, text), "Enviar reporte")
-                    )
-                }
+            .setPositiveButton(if (then != null) "Continuar" else "Cerrar", null)
+        val canWhatsapp = runCatching {
+            Intent(Intent.ACTION_VIEW, Uri.parse("https://wa.me/1")).setPackage("com.whatsapp").resolveActivity(activity.packageManager) != null ||
+                Intent(Intent.ACTION_VIEW, Uri.parse("https://wa.me/1")).setPackage("com.whatsapp.w4b").resolveActivity(activity.packageManager) != null
+        }.getOrDefault(false)
+        if (canWhatsapp) b.setNeutralButton("Enviar por WhatsApp") { _, _ ->
+            sending = sent != null
+            val text = "Reporte de error de NexumID IPTV:\n\n" + summary(report)
+            try {
+                activity.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(waUrl(text))))
+            } catch (e: Exception) {
+                activity.startActivity(
+                    Intent.createChooser(Intent(Intent.ACTION_SEND).setType("text/plain").putExtra(Intent.EXTRA_TEXT, text), "Enviar reporte")
+                )
             }
-            .setNegativeButton("Ahora no", null)
-            .show()
+        }
+        b.show().also { dlg ->
+            if (tv) dlg.window?.setLayout((activity.resources.displayMetrics.widthPixels * 0.9f).toInt(), android.view.ViewGroup.LayoutParams.WRAP_CONTENT)
+            dlg.getButton(AlertDialog.BUTTON_POSITIVE)?.requestFocus()
+        }
     }
 }
