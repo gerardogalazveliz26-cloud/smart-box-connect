@@ -36,7 +36,7 @@ class SettingsActivity : AppCompatActivity() {
             Row("Código de activación de este equipo", { Activation.display() }) {
                 ActivationActivity.open(this)
             },
-            Row("Tipo de equipo", { if (Device.isMobile) "Celular / Tablet" else "Android TV / TV Box" }) {
+            Row("Tipo de equipo", { (if (Device.isMobile) "Celular / Tablet" else "Android TV / TV Box") + " · " + Screen.info() }) {
                 ModeActivity.change(this)
             },
             Row("Video de inicio", { if (Prefs.showSplash) "Activado" else "Desactivado" }) {

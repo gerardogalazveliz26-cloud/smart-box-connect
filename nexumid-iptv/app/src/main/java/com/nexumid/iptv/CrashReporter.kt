@@ -45,7 +45,7 @@ object CrashReporter {
             appendLine("Android: ${Build.VERSION.RELEASE} (API ${Build.VERSION.SDK_INT})")
             appendLine("RAM equipo: ${mi.totalMem / 1_048_576} MB · clase ${am.memoryClass}/${am.largeMemoryClass} MB${if (am.isLowRamDevice) " · gama baja" else ""}${if (com.nexumid.iptv.data.Repo.lowRam) " · modo liviano" else ""}")
             appendLine("Memoria app: usada ${(rt.totalMemory() - rt.freeMemory()) / 1_048_576} de ${rt.maxMemory() / 1_048_576} MB")
-            appendLine("Modo: ${runCatching { Prefs.deviceMode }.getOrNull() ?: "-"}")
+            appendLine("Modo: ${runCatching { Prefs.deviceMode }.getOrNull() ?: "-"} · Pantalla: ${com.nexumid.iptv.ui.Screen.info()}")
             appendLine("Último paso: ${lastStep()}")
         }
     }
@@ -136,7 +136,7 @@ object CrashReporter {
                     mark(false)
                 }
             }
-            override fun onActivityCreated(a: android.app.Activity, b: android.os.Bundle?) {}
+            override fun onActivityCreated(a: android.app.Activity, b: android.os.Bundle?) = com.nexumid.iptv.ui.Screen.adapt(a)
             override fun onActivityResumed(a: android.app.Activity) {}
             override fun onActivityPaused(a: android.app.Activity) {}
             override fun onActivitySaveInstanceState(a: android.app.Activity, b: android.os.Bundle) {}

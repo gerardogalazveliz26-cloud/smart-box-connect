@@ -66,11 +66,11 @@ object Players {
             else -> 15_000 to 50_000
         }
         val load = if (Repo.lowRam) {
-            // Poca RAM: el búfer se limita por tamaño (16 MB). Con canales de alta calidad, 50 s de video
+            // Poca RAM: el búfer se limita por tamaño (32 MB). Con canales de alta calidad, 50 s de video
             // pueden pasar de 50 MB y Android cierra la app.
             DefaultLoadControl.Builder()
-                .setBufferDurationsMs(8_000, 20_000, 1_500, 3_000)
-                .setTargetBufferBytes(16 * 1024 * 1024)
+                .setBufferDurationsMs(15_000, 30_000, 2_500, 5_000)
+                .setTargetBufferBytes(32 * 1024 * 1024)
                 .setPrioritizeTimeOverSizeThresholds(false)
                 .build()
         } else DefaultLoadControl.Builder()

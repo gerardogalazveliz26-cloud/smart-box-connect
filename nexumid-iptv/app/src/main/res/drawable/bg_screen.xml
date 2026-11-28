@@ -6,5 +6,5 @@
     <item>
         <bitmap android:gravity="fill" android:src="@drawable/brand_bg" />
     </item>
-    <item android:drawable="@drawable/tex_noise_tile" />
+    <item android:width="1dp" android:height="1dp" android:gravity="fill" android:drawable="@drawable/tex_noise_tile" />
 </layer-list>

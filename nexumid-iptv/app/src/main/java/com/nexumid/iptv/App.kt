@@ -14,7 +14,7 @@ class App : Application(), ImageLoaderFactory {
         val am = getSystemService(ACTIVITY_SERVICE) as android.app.ActivityManager
         val mi = android.app.ActivityManager.MemoryInfo().also { am.getMemoryInfo(it) }
         // Equipos de 1 GB o menos (p. ej. TV box de 800 MB) se tratan como gama baja.
-        am.isLowRamDevice || am.memoryClass <= 128 || mi.totalMem in 1..1_400L * 1_048_576
+        am.isLowRamDevice || am.memoryClass < 128 || mi.totalMem in 1..1_400L * 1_048_576
     }
 
     override fun onCreate() {
