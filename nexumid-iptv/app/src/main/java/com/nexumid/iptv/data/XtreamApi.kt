@@ -166,8 +166,8 @@ class XtreamApi(server: String, val user: String, val pass: String) {
             num = o.i("num"),
             name = o.s("name") ?: "Canal $id",
             icon = o.s("stream_icon"),
-            categoryId = o.s("category_id"),
-            epgId = o.s("epg_channel_id"),
+            categoryId = o.s("category_id")?.intern(),
+            epgId = null, // no se usa: se ahorra memoria en listas grandes
             archive = o.i("tv_archive") == 1,
         )
     }
@@ -179,10 +179,10 @@ class XtreamApi(server: String, val user: String, val pass: String) {
             id = id,
             name = o.s("name") ?: "Película $id",
             image = o.s("stream_icon"),
-            categoryId = o.s("category_id"),
+            categoryId = o.s("category_id")?.intern(),
             rating = o.d("rating"),
             added = o.l("added"),
-            ext = o.s("container_extension") ?: "mp4",
+            ext = o.s("container_extension")?.intern() ?: "mp4",
         )
     }
 
@@ -193,7 +193,7 @@ class XtreamApi(server: String, val user: String, val pass: String) {
             id = id,
             name = o.s("name") ?: "Serie $id",
             image = o.s("cover"),
-            categoryId = o.s("category_id"),
+            categoryId = o.s("category_id")?.intern(),
             rating = o.d("rating"),
             added = o.l("last_modified"),
             ext = "",

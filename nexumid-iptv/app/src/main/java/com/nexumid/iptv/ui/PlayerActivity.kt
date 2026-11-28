@@ -163,6 +163,7 @@ class PlayerActivity : AppCompatActivity() {
         if (startPos > 0) toast("Continuando desde ${duration(startPos)}")
 
         player.addListener(listener)
+        com.nexumid.iptv.CrashReporter.step("reproductor: ${mediaItems.getOrNull(index)?.mediaId ?: "-"}")
         player.setMediaItems(mediaItems, index, startPos)
         player.prepare()
         player.play()

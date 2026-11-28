@@ -386,6 +386,7 @@ class LiveActivity : AppCompatActivity() {
     // ------------------------------------------------------------------ reproducción
 
     private fun play(ch: LiveStream) {
+        com.nexumid.iptv.CrashReporter.step("canal ${ch.id}")
         val old = playing?.id
         playing = ch
         retries = 0
